@@ -1,0 +1,25 @@
+{
+  "name": "idea",
+  "version": "0.0.0",
+  "author": {
+    "name": "Chris Campbell",
+    "url": "https://github.com/quaelin"
+  },
+  "keywords": [
+    "ipfs"
+  ],
+  "bugs": {
+    "url": "https://github.com/quaelin/idea/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/quaelin/idea"
+  },
+  "engines": {
+    "node": ">=10",
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
