@@ -1,12 +1,14 @@
 # idea
 
-`idea` is a command-line and web interface that facilitates the creation of
-Ideas, Relations, Perspectives.  Uses IPFS for decentralized storage.
+`idea` is a command-line _and_ web interface that facilitates creating and
+working with Ideas, Relations and Perspectives.  Uses IPFS for decentralized
+storage.
 
 # Concepts
 
 **Idea**: an immutable text document asserting an idea, thought or statement of
-fact. Identifiable by a unique iid.     
+fact.  Identifiable by a unique iid (which, as it is inherited from IPFS, is
+actually a consistent hash of the Idea contents).
 
 ```
 $ idea add "Grass is green"
@@ -23,7 +25,7 @@ Grass is green
 
 **Relation**: an Idea subtype that, instead of containing free text, asserts a
 logical or otherwise meaningful relationship between other iids.  There are
-numerous types of Relations, the simplest being "Negation".
+numerous [types of Relations](./doc/RELATIONS.md), the simplest being "Negation".
 
 ```
 $ idea add --R:Negation A=349t8ureughsiet7y45hteisuhtg
@@ -41,22 +43,22 @@ $ idea get dfg78yr5tuehrte875y859586495
 }
 ```
 
-**Perspective**: a hash of iids (incl. Relations) to Valuations.  Immutable, and identifiable by a unique pid.
+**Perspective**: a hash of iids (incl. Relations) to Valuations.  Immutable, and
+identifiable by a unique pid.
 
 **Valuation**: a floating point number in the range [-1, 1], where 1 means
 total agreement, -1 means total disagreement, and 0 is neutral.    
 
-A Perspective can easily be created by providing one or more pairs of
-iid->valuation:
+A Perspective can easily be created by providing one or more iid=valuation pairs:
 
 ```
 $ idea perspective 349t8ureughsiet7y45hteisuhtg=0.5
 w487yeruhs8e75t345ttre
 ```
 
-This is ascribing a valuation of 0.5, indicating _partial agreement_, to the
-idea "Grass is green".  The resulting perspective (with only 1 idea:valuation
-pair) can be identified by its unique ID;
+This is ascribing a valuation of 0.5 (indicating _partial agreement_) to the
+idea "Grass is green".  The resulting Perspective (with only 1 idea:valuation
+pair) can be identified by its unique ID:
 
 ```
 $ idea perspective get w487yeruhs8e75t345ttre
