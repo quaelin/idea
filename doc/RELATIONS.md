@@ -4,12 +4,12 @@ _Relations_ are specially formatted Ideas that assert some meaningful
 relationship between _other_ Ideas (including other Relations).
 
 When notating Relations, we use **A-D** as variables representing different
-iids.     
+iids.
 
 ## Analogy(A, B, C, D)
 
 The most complex relation, this asserts an analogy of the form **A:B::C:D**.  In
-other words, _"**A** is to **B** as **C** is to **D**"_.    
+other words, _"**A** is to **B** as **C** is to **D**"_.
 
 ## And(A, B)
 
@@ -27,7 +27,7 @@ Asserts that **A** _improves upon_ **B** in some meaningful way, overall.
 ## IsA(A, B)
 
 Asserts that **A** is in some way a _specific example_, _subgroup_ or _instance_
-of **B** (and hence **B** is a _generalization_ of **A**).   
+of **B** (and hence **B** is a _generalization_ of **A**).
 
 ## Negation(A)
 

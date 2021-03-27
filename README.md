@@ -1,8 +1,12 @@
 # idea
 
 `idea` is a command-line _and_ web interface that facilitates creating and
-working with Ideas, Relations and Perspectives.  Uses IPFS for decentralized
-storage.
+working with Ideas, Relations and Perspectives.  It is intended as a
+foundational technology for applications dealing with fact verification, fuzzy
+logic, beliefs, agreement, preferences, argumentation/discourse, etc.
+
+It uses [IPFS](https://ipfs.io), meaning data goes into a global, decentralized
+and content-addressable storage network.
 
 # Concepts
 
@@ -47,7 +51,7 @@ $ idea get dfg78yr5tuehrte875y859586495
 identifiable by a unique pid.
 
 **Valuation**: a floating point number in the range [-1, 1], where 1 means
-total agreement, -1 means total disagreement, and 0 is neutral.    
+total agreement, -1 means total disagreement, and 0 is neutral.
 
 A Perspective can easily be created by providing one or more iid=valuation pairs:
 
