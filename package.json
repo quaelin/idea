@@ -1,13 +1,25 @@
 {
   "name": "idea",
   "version": "0.0.0",
+  "description": "",
   "author": {
     "name": "Chris Campbell",
     "url": "https://github.com/quaelin"
   },
   "keywords": [
-    "ipfs"
+    "idea",
+    "ipfs",
+    "perspective",
+    "relation"
   ],
+  "files": [
+    "**/*.js"
+  ],
+  "bin": {
+    "idea": "./cli/idea.js",
+    "perspective": "./cli/perspective.js",
+    "relation": "./cli/relation.js"
+  },
   "bugs": {
     "url": "https://github.com/quaelin/idea/issues"
   },
@@ -16,10 +28,11 @@
     "url": "git://github.com/quaelin/idea"
   },
   "engines": {
-    "node": ">=10",
+    "node": ">=10"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
