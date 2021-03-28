@@ -102,13 +102,13 @@ valuations) from A where the iCid is found in Perspective B.
 $ perspective scope <pex A> by <pex B>
 ```
 
-## Weighted Merge
+## Skew
 
 Two perspectives can be merged with a weighting indicating how much to skew
 valuations towards the _second_ `<pex>`.
 
 ```
-$ idea perspective weighted <pex> <pex> <weighting>
+$ perspective skew <pex> <pex> <weighting>
 ```
 
 The `<weighting>` value can be in the range [-1, 1], where for duplicate iCids:
