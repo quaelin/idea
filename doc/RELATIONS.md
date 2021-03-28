@@ -18,6 +18,10 @@ other words, _"**A** is to **B** as **C** is to **D**"_.
 
 Asserts that _both_ **A** and **B** are true.
 
+## R:Identity(A, B)
+
+Asserts that **A** and **B** are so similar as to be effectively the same thing.
+
 ## R:Implies(A, B)
 
 Asserts that if **A** is true, **B** must also be true.  Or, more fuzzily, _"to
