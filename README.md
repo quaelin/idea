@@ -32,7 +32,7 @@ logical or otherwise meaningful relationship between other iids.  There are
 numerous [types of Relations](./doc/RELATIONS.md), the simplest being "Negation".
 
 ```
-$ idea add --R:Negation A=349t8ureughsiet7y45hteisuhtg
+$ idea add R:Negation A=349t8ureughsiet7y45hteisuhtg
 dfg78yr5tuehrte875y859586495
 ```
 
@@ -78,7 +78,7 @@ combine them into _new_ Perspectives.
 $ idea add "Cows eat grass"
 4587yser8gs7yert8745yt
 
-$ idea perspective --with=w487yeruhs8e75t345ttre 4587yser8gs7yert8745yt=1
+$ idea perspective merge w487yeruhs8e75t345ttre 4587yser8gs7yert8745yt=1
 aw4t87yarughsudryghsdfg
 
 $ idea perspective get aw4t87yarughsudryghsdfg
