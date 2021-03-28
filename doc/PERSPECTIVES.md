@@ -1,32 +1,30 @@
 # Perspectives
 
-A _Perspective_ is a hash collection of iids (representing Ideas, including
+A _Perspective_ is a hash collection of iCids (representing Ideas, including
 [Relations](./RELATIONS.md)), with a valuation for each.  _Valuations_ are
 floating point numbers in the range [-1, 1], where 1 means complete agreement,
 -1 means complete disagreement, and 0 means neutral.
 
-Like all data types that `idea` deals with, Perspectives are immutable.  A
-Perspective is stored as a JSON object in IPFS, so the content hash that serves
-as its "id" can't change.  However, there are a number of operations that can be
-performed on Perspectives, which can result in new or derivative Perspectives
-being created.
+Like Ideas, Perspectives are immutable.  A Perspective is stored as a JSON
+object in IPFS, so the content hash that serves as its unique `pCid` can't
+change.  However, there are a number of operations that can be performed on
+Perspectives, which can result in new or derivative Perspectives being created.   
 
 In the CLI commands below, a `<pex>` represents a "perspective expression",
-which can be either a Perspective content hash/id, or else a literal list of
-iid=valuation pairs.
+which can be either a pCid, or else a literal list of iCid=valuation pairs.
 
 ## Get
 
 Fetches the actual content of a perspective.
 
 ```
-$ idea perspective get <pex>
+$ perspective get <pex>
 ```
 
 The default output format is JSON, eg:
 
 ```
-$ idea perspective get 3t5837yert87erygeryt345t
+$ perspective get 3t5837yert87erygeryt345t
 {
   "a48t9y348t7yreusghseighuseg": 0.5,
   "34t98w4eyrgtuseyrghesuyrghiwe7r": -0.25
@@ -36,7 +34,7 @@ $ idea perspective get 3t5837yert87erygeryt345t
 or:
 
 ```
-$ idea perspective get 34r9834y5tg87rgy=0.75391 34r9385ytge8rgherg=-1 --format=csv
+$ perspective get 34r9834y5tg87rgy=0.75391 34r9385ytge8rgherg=-1 --format=csv
 34r9385ytge8rgherg,-1
 34r9834y5tg87rgy,0.75391
 ```
@@ -44,19 +42,19 @@ $ idea perspective get 34r9834y5tg87rgy=0.75391 34r9385ytge8rgherg=-1 --format=c
 ## Intersect
 
 Two or more perspectives can be "intersected", resulting in a new perspective
-that contains _only_ the iids common to ALL the input perspectives.  The
-valuations for each kept iid will be the _average_ of those input.
+that contains _only_ the iCids common to ALL the input perspectives.  The
+valuations for each kept iCid will be the _average_ of those input.
 
 ```
-$ idea perspective intersect <pex> [<pex> ...]
+$ perspective intersect <pex> [<pex> ...]
 ```
 
 ## Keys
 
-Lists just the iids from a perspective.
+Lists just the iCids from a perspective, with no valuations.
 
 ```
-$ idea perspective keys 3t5837yert87erygeryt345t
+$ perspective keys 3t5837yert87erygeryt345t
 a48t9y348t7yreusghseighuseg
 34t98w4eyrgtuseyrghesuyrghiwe7r
 ```
@@ -64,13 +62,13 @@ a48t9y348t7yreusghseighuseg
 ## Merge
 
 Two or more perspectives can be "merged", resulting in a new perspective with
-_all_ the iid:valuation pairs of the constituent perspectives.  With merge
+_all_ the iCid:valuation pairs of the constituent perspectives.  With merge
 operations, there is right-to-left precedence.  That is, whichever perspective
 is specified _last_ in the order of arguments is the one whose valuations are
-used in the case of any duplicate iids.
+used in the case of any duplicate iCids.
 
 ```
-$ idea perspective merge <pex> [<pex> ...]
+$ perspective merge <pex> [<pex> ...]
 ```
 
 ## Neutralize
@@ -80,7 +78,7 @@ valuations set to 0.  Neutralizing is the same as polarizing with a polarization
 factor of 0.
 
 ```
-$ idea perspective neutralize <pex>
+$ perspective neutralize <pex>
 ```
 
 ## Polarize
@@ -92,16 +90,16 @@ A perspective can be "polarized", where all valuations are adjusted by a
  * 1 means all negative valuations become -1 and all positive ones become 1
 
 ```
-$ idea perspective polarize <pex> <polarization_factor>
+$ perspective polarize <pex> <polarization_factor>
 ```
 
 ## Scope By
 
-You can select a subset of a Perspective A, preserving only the keys (and
-values) from A where the iid is found in Perspective B.
+You can select a subset of a Perspective A, preserving only the iCids (and
+valuations) from A where the iCid is found in Perspective B.
 
 ```
-$ idea perspective scope <pex A> by <pex B>
+$ perspective scope <pex A> by <pex B>
 ```
 
 ## Weighted Merge
@@ -113,7 +111,7 @@ valuations towards the _second_ `<pex>`.
 $ idea perspective weighted <pex> <pex> <weighting>
 ```
 
-The `<weighting>` value can be in the range [-1, 1], where for duplicate iids:
+The `<weighting>` value can be in the range [-1, 1], where for duplicate iCids:
  * -1 means to take the valuation from the _first_ perspective
  * \<0 means to skew towards the first
  * 0 means take a straight average

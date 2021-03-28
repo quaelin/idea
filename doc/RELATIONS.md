@@ -4,7 +4,7 @@ _Relations_ are specially formatted Ideas that assert some meaningful
 relationship between _other_ Ideas (including other Relations).
 
 When notating Relations, we use **A-D** as variables representing different
-iids.
+iCids.
 
 The types are as follows.
 
