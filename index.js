@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   ...require('./lib/api/idea'),
   perspective: require('./lib/api/perspective'),
