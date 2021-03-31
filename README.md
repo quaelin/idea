@@ -15,14 +15,14 @@ fact.  Identifiable by its unique IPFS cid, which we refer to as an `iCid`.
 
 ```
 $ idea add "Grass is green"
-349t8ureughsiet7y45hteisuhtg
+QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC
 ```
 
 The idea "Grass is green" has been stored in IPFS, and its unique iCid was
 returned.  It can be fetched by anyone who has the iCid:
 
 ```
-$ idea get 349t8ureughsiet7y45hteisuhtg
+$ idea get QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC
 Grass is green
 ```
 
@@ -31,19 +31,16 @@ logical or otherwise meaningful relationship between other iCids.  There are
 numerous [types of Relations](./doc/RELATIONS.md), the simplest being "Negation".
 
 ```
-$ relation R:Negation A=349t8ureughsiet7y45hteisuhtg
-dfg78yr5tuehrte875y859586495
+$ relation R:Negation A=QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC
+QmXTAPeuEEtuonUQy16pdc9VakSJufeg3BwcPyhevURrzW
 ```
 
 The above is asserting an idea that is the logical negation of "Grass is green".
 Relations have a JSON representation that makes them easier to work with:
 
 ```
-$ idea get dfg78yr5tuehrte875y859586495
-{
-  "Relation": "Negation(A)",
-  "A": "349t8ureughsiet7y45hteisuhtg"
-}
+$ idea get QmXTAPeuEEtuonUQy16pdc9VakSJufeg3BwcPyhevURrzW
+{"Relation":"Negation","A":"QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC"}
 ```
 
 **Perspective**: a hash of iCids (incl. Relations) to Valuations.  Immutable,
@@ -56,7 +53,7 @@ A Perspective can easily be created by providing one or more iCid:valuation
 pairs:
 
 ```
-$ perspective 349t8ureughsiet7y45hteisuhtg=0.5
+$ perspective merge QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC=0.5
 w487yeruhs8e75t345ttre
 ```
 
@@ -67,7 +64,7 @@ pair) can be identified by its unique ID:
 ```
 $ perspective get w487yeruhs8e75t345ttre
 {
-  "349t8ureughsiet7y45hteisuhtg": 0.5
+  "": 0.5
 }
 ```
 
