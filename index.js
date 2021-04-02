@@ -1,6 +1,10 @@
 /* eslint-disable global-require */
-module.exports = {
-  ...require('./lib/api/idea'),
-  perspective: require('./lib/api/perspective'),
-  relation: require('./lib/api/relation'),
+module.exports = (options) => {
+  const ipfsClient = require('./lib/ipfs')(options && options.ipfsConfig);
+
+  return {
+    ...require('./lib/api/idea')(ipfsClient, options),
+    perspective: require('./lib/api/perspective')(ipfsClient, options),
+    relation: require('./lib/api/relation')(ipfsClient, options),
+  };
 };

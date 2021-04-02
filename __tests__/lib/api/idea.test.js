@@ -1,5 +1,5 @@
-const idea = require('../../..');
-const { expectTypeError } = require('../../helpers');
+const { expectTypeError, ipfsTestConfig } = require('../../helpers');
+const idea = require('../../..')({ ipfsConfig: ipfsTestConfig });
 const { assertCid: expectCid } = require('../../../lib/assert');
 
 const simpleText = 'foo';

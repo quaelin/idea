@@ -1,3 +1,5 @@
+const ipfsTestConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://localhost:5001/api/v0' };
+
 class NotATypeError extends Error {
 }
 
@@ -12,5 +14,6 @@ async function expectTypeError(promise) {
 
 module.exports = {
   expectTypeError,
+  ipfsTestConfig,
   NotATypeError,
 };
