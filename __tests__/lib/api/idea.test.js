@@ -5,7 +5,7 @@ const { assertCid: expectCid } = require('../../../lib/assert');
 const simpleText = 'foo';
 const variousSpecialChars = '"<>\'&\n. `${}';
 
-describe('idea.* methods', () => {
+describe('idea.*', () => {
   describe('idea.add()', () => {
     describe('Attempts to pass in non-strings should always be rejected with a TypeError', () => {
       test('no args', () => expectTypeError(idea.add()));
