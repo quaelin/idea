@@ -28,7 +28,7 @@
     "url": "git://github.com/quaelin/idea"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "pretest": "eslint .",
