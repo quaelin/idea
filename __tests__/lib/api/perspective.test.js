@@ -21,22 +21,19 @@ describe('idea.perspective.*', () => {
     });
 
     test('correctly averages', async () => {
-      const perspectiveA = {
+      const pCidA = await idea.perspective.merge({
         [iCid]: -1,
         [iCid2]: 0.8,
-      };
-      const pCidA = await idea.perspective.merge(perspectiveA);
-
+      });
       const perspectiveB = {
         [iCid]: 0.8,
         [iCid2]: -0.4,
       };
+      const pCidC = await idea.perspective.merge({ [iCid2]: 0.2 });
 
-      const perspectiveC = { [iCid2]: 0.2 };
-      const pCidC = await idea.perspective.merge(perspectiveC);
-
-      const averagedCid = await idea.perspective.average(pCidA, perspectiveB, pCidC);
-      const averaged = await idea.perspective.get(averagedCid);
+      const averaged = await idea.perspective.get(
+        await idea.perspective.average(pCidA, perspectiveB, pCidC)
+      );
 
       expect(averaged).toMatchObject({
         [iCid]: -0.1,
@@ -75,8 +72,9 @@ describe('idea.perspective.*', () => {
         [iCid2]: -0.4,
         [iCid3]: 1,
       });
-      const pCidIntersection = await idea.perspective.intersect(pCidA, pCidB);
-      const intersection = await idea.perspective.get(pCidIntersection);
+      const intersection = await idea.perspective.get(
+        await idea.perspective.intersect(pCidA, pCidB)
+      );
       expect(intersection).toMatchObject({ [iCid2]: 0.1 });
     });
   });
@@ -107,7 +105,7 @@ describe('idea.perspective.*', () => {
     });
 
     test('when merging 2+ perspectives that share iCids, the last value takes precedence', async () => {
-      const pCid = await idea.perspective.merge(
+      const merged = await idea.perspective.get(await idea.perspective.merge(
         {
           [iCid]: 0.1,
           [iCid2]: 0.1,
@@ -115,8 +113,7 @@ describe('idea.perspective.*', () => {
         },
         { [iCid]: 0.2 },
         { [iCid2]: 0.3 }
-      );
-      const merged = await idea.perspective.get(pCid);
+      ));
       expect(merged).toMatchObject({
         [iCid]: 0.2,
         [iCid2]: 0.3,
@@ -133,12 +130,11 @@ describe('idea.perspective.*', () => {
     });
 
     test('produces a perspective with same iCids, but all values set to 0', async () => {
-      const pCid = await idea.perspective.neutralize({
+      const neutralized = await idea.perspective.get(await idea.perspective.neutralize({
         [iCid]: 0.1,
         [iCid2]: 0.2,
         [iCid3]: -0.3,
-      });
-      const neutralized = await idea.perspective.get(pCid);
+      }));
       expect(neutralized).toMatchObject({
         [iCid]: 0,
         [iCid2]: 0,
@@ -158,11 +154,10 @@ describe('idea.perspective.*', () => {
 
     describe('polarization factor math', () => {
       test('-1 reduces all values to 0', async () => {
-        const pCid = await idea.perspective.polarize({
+        const polarized = await idea.perspective.get(await idea.perspective.polarize({
           [iCid]: 0.5,
           [iCid2]: -0.5,
-        }, -1);
-        const polarized = await idea.perspective.get(pCid);
+        }, -1));
         expect(polarized).toMatchObject({
           [iCid]: 0,
           [iCid2]: 0,
@@ -170,11 +165,10 @@ describe('idea.perspective.*', () => {
       });
 
       test('-0.5 reduces all absolute values by half', async () => {
-        const pCid = await idea.perspective.polarize({
+        const polarized = await idea.perspective.get(await idea.perspective.polarize({
           [iCid]: 0.4,
           [iCid2]: -0.4,
-        }, -0.5);
-        const polarized = await idea.perspective.get(pCid);
+        }, -0.5));
         expect(polarized).toMatchObject({
           [iCid]: 0.2,
           [iCid2]: -0.2,
@@ -191,11 +185,10 @@ describe('idea.perspective.*', () => {
       });
 
       test('0.5 reduces the distance to -1 and 1 by half', async () => {
-        const pCid = await idea.perspective.polarize({
+        const polarized = await idea.perspective.get(await idea.perspective.polarize({
           [iCid]: 0.4,
           [iCid2]: -0.4,
-        }, 0.5);
-        const polarized = await idea.perspective.get(pCid);
+        }, 0.5));
         expect(polarized).toMatchObject({
           [iCid]: 0.7,
           [iCid2]: -0.7,
@@ -203,11 +196,10 @@ describe('idea.perspective.*', () => {
       });
 
       test('1 increases all absolute values to 1', async () => {
-        const pCid = await idea.perspective.polarize({
+        const polarized = await idea.perspective.get(await idea.perspective.polarize({
           [iCid]: 0.5,
           [iCid2]: -0.5,
-        }, 1);
-        const polarized = await idea.perspective.get(pCid);
+        }, 1));
         expect(polarized).toMatchObject({
           [iCid]: 1,
           [iCid2]: -1,
@@ -231,6 +223,24 @@ describe('idea.perspective.*', () => {
       test('non-perspective object', () => expectTypeError(idea.perspective.skew(iCid, { p: false })));
 
       test('valid pexes, but invalid skew factor', () => expectTypeError(idea.perspective.skew(iCid, iCid2, true)));
+    });
+
+    test('skews correctly', async () => {
+      const skewed = await idea.perspective.get(await idea.perspective.skew(
+        {
+          [iCid]: -1,
+          [iCid2]: 0.6,
+        },
+        {
+          [iCid]: 1,
+          [iCid2]: 0.4,
+        },
+        -0.5 // skew somewhat towards first perspective
+      ));
+      expect(skewed).toMatchObject({
+        [iCid]: -0.5,
+        [iCid2]: 0.55,
+      });
     });
   });
 });
