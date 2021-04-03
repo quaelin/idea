@@ -80,6 +80,7 @@ describe('idea.perspective.*', () => {
       expect(intersection).toMatchObject({ [iCid2]: 0.1 });
     });
   });
+
   describe('idea.perspective.keys()', () => {
     describe('throws TypeError if the argument is not a CID', () => {
       test('no args', () => expectTypeError(idea.perspective.keys()));

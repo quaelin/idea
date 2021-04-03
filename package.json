@@ -1,7 +1,7 @@
 {
-  "name": "idea",
+  "name": "@quaelin/idea",
   "version": "0.0.0",
-  "description": "",
+  "description": "Decentralized API/toolkit for apps using Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
     "url": "https://github.com/quaelin"
@@ -9,6 +9,7 @@
   "keywords": [
     "idea",
     "ipfs",
+    "logic",
     "perspective",
     "relation"
   ],
