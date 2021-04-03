@@ -6,7 +6,8 @@ foundational technology for applications dealing with fact verification, fuzzy
 logic, beliefs, agreement, preferences, argumentation/discourse, etc.
 
 It uses [IPFS](https://ipfs.io), meaning data goes into a global, decentralized
-and content-addressable storage network.
+and content-addressable storage network.  You'll need to have an IPFS daemon
+running locally for it to work.
 
 Install it via npm:
 
