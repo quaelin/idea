@@ -8,6 +8,12 @@ logic, beliefs, agreement, preferences, argumentation/discourse, etc.
 It uses [IPFS](https://ipfs.io), meaning data goes into a global, decentralized
 and content-addressable storage network.
 
+Install it via npm:
+
+```
+$ npm i -g @quaelin/idea
+```
+
 # Concepts
 
 **Idea**: an immutable text document asserting an idea, thought or statement of
@@ -54,7 +60,7 @@ pairs:
 
 ```
 $ perspective merge QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC=0.5
-w487yeruhs8e75t345ttre
+QmfLkCRRR8FViV2i59FbGjxx8UV65AkD8sXXwkxRZRQK6G
 ```
 
 This is ascribing a valuation of 0.5 (indicating _partial agreement_) to the
@@ -62,9 +68,9 @@ idea "Grass is green".  The resulting Perspective (with only 1 iCid:valuation
 pair) can be identified by its unique ID:
 
 ```
-$ perspective get w487yeruhs8e75t345ttre
+$ perspective get QmfLkCRRR8FViV2i59FbGjxx8UV65AkD8sXXwkxRZRQK6G
 {
-  "": 0.5
+  "QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC": 0.5
 }
 ```
 
@@ -73,15 +79,15 @@ combine them into _new_ Perspectives.
 
 ```
 $ idea add "Cows eat grass"
-4587yser8gs7yert8745yt
+Qma8LMQ92Audtnc2jnRWy7uXo3X6Z1whQjR9v4eBqcdyBf
 
-$ perspective merge w487yeruhs8e75t345ttre 4587yser8gs7yert8745yt=1
-aw4t87yarughsudryghsdfg
+$ perspective merge QmfLkCRRR8FViV2i59FbGjxx8UV65AkD8sXXwkxRZRQK6G Qma8LMQ92Audtnc2jnRWy7uXo3X6Z1whQjR9v4eBqcdyBf=1
+QmbRJAZa5yzRgAeFWDFaWjQ9zjDCaM81uiCXz5Zm2cDW4F
 
-$ perspective get aw4t87yarughsudryghsdfg
+$ perspective get QmbRJAZa5yzRgAeFWDFaWjQ9zjDCaM81uiCXz5Zm2cDW4F
 {
-  "349t8ureughsiet7y45hteisuhtg": 0.5,
-  "4587yser8gs7yert8745yt": 1
+  "QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC": 0.5,
+  "Qma8LMQ92Audtnc2jnRWy7uXo3X6Z1whQjR9v4eBqcdyBf": 1
 }
 ```
 

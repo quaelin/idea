@@ -75,7 +75,7 @@ $ perspective merge <pex> [<pex> ...]
 
 A perspective can be "neutralized", resulting in a new perspective with all
 valuations set to 0.  Neutralizing is the same as polarizing with a polarization
-factor of 0.
+factor of -1.
 
 ```
 $ perspective neutralize <pex>
@@ -84,9 +84,11 @@ $ perspective neutralize <pex>
 ## Polarize
 
 A perspective can be "polarized", where all valuations are adjusted by a
-`<polarization_factor>` in the range [0, 1], where:
- * 0 is the same as neutralize (all valuations set to 0)
- * \>0 means all valuations get skewed towards -1 and 1
+`<polarization_factor>` in the range [-1, 1], where:
+ * -1 is the same as neutralize (all valuations set to 0)
+ * <0 means valuations get skewed towards 0
+ * 0 means no change
+ * >0 all negative valuations get skewed towards -1, and positive ones towards 1
  * 1 means all negative valuations become -1 and all positive ones become 1
 
 ```
@@ -96,16 +98,17 @@ $ perspective polarize <pex> <polarization_factor>
 ## Scope By
 
 You can select a subset of a Perspective A, preserving only the iCids (and
-valuations) from A where the iCid is found in Perspective B.
+valuations) from A where the iCid is found in Perspective B.  (Valuations of B
+are ignored.)
 
 ```
-$ perspective scope <pex A> by <pex B>
+$ perspective scope <pex A> <pex B>
 ```
 
 ## Skew
 
 Two perspectives can be merged with a weighting indicating how much to skew
-valuations towards the _second_ `<pex>`.
+valuations towards one or the other.
 
 ```
 $ perspective skew <pex> <pex> <weighting>
