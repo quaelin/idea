@@ -15,7 +15,9 @@
     "relation"
   ],
   "files": [
-    "**/*.js"
+    "index.js",
+    "cli/**",
+    "lib/**/*.js"
   ],
   "bin": {
     "idea": "./cli/idea.js",
