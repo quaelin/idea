@@ -1,11 +1,12 @@
 {
   "name": "@quaelin/idea",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Decentralized API/toolkit for apps using Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
     "url": "https://github.com/quaelin"
   },
+  "license": "ISC",
   "keywords": [
     "idea",
     "ipfs",
@@ -51,7 +52,11 @@
     "jest": "^26.6.3"
   },
   "jest": {
-    "modulePathIgnorePatterns": ["./__tests__/helpers.js"],
-    "setupFiles": ["./__tests__/helpers.js"]
+    "modulePathIgnorePatterns": [
+      "./__tests__/helpers.js"
+    ],
+    "setupFiles": [
+      "./__tests__/helpers.js"
+    ]
   }
 }
