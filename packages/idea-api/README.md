@@ -149,4 +149,4 @@ else a literal object with `iCids` for keys and valuations for values.
 
 ### idea.perspective.scope(pexA, pexB)
 
-## idea.perspective.skew(pexA, pexB, weighting)
+### idea.perspective.skew(pexA, pexB, weighting)
