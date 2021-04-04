@@ -1,19 +1,23 @@
 # idea
 
-`idea` is a command-line _and_ web interface that facilitates creating and
-working with Ideas, Relations and Perspectives.  It is intended as a
-foundational technology for applications dealing with fact verification, fuzzy
-logic, beliefs, agreement, preferences, argumentation/discourse, etc.
+`idea` is a suite of tools for interacting with the [Idea-DAG][Idea-DAG].
 
-It uses [IPFS](https://ipfs.io), meaning data goes into a global, decentralized
-and content-addressable storage network.  You'll need to have an IPFS daemon
-running locally for it to work.
+It is intended as a foundational technology for applications dealing with fact
+verification, fuzzy logic, beliefs, agreement, preferences,
+argumentation/discourse, etc.  
 
-Install it via npm:
+It uses [IPFS][IPFS], meaning data goes into a global, decentralized and
+content-addressable storage network.  You'll need to have an IPFS daemon running
+locally for it to work.
+
+Install the whole suite via npm:
 
 ```
 $ npm i -g @quaelin/idea
 ```
+
+Or else have a look in [packages/](./packages/) and install just components you
+need.
 
 # Concepts
 
@@ -94,3 +98,7 @@ $ perspective get QmbRJAZa5yzRgAeFWDFaWjQ9zjDCaM81uiCXz5Zm2cDW4F
 
 Here we have started with one Perspective, and used it as a base while adding
 additional idea valuations to it to generate a new Perspective.
+
+
+[Idea-DAG]: ./doc/IDEA_DAG.md
+[IPFS]: https://ipfs.io
