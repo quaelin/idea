@@ -1,8 +1,8 @@
 # @quaelin/idea-cli
 
-CLI tool for accessing the Idea-DAG: decentralized Idea, Relation & Perspective
-data.  Provides convenient command-line access to the
-[idea-api](/quaelin/idea/tree/main/packages/idea-api).
+CLI tool for interacting with the [Idea-DAG][Idea-DAG]: decentralized
+[Idea][Ideas], [Relation][Relations] & [Perspective][Perspectives] data.
+Provides convenient command-line access to the [idea-api][idea-api].
 
 ```sh
 $ npm install -g @quaelin/idea-cli
@@ -10,9 +10,14 @@ $ npm install -g @quaelin/idea-cli
 
 This installs the commands `idea`, `relation` and `perspective`.
 
-**Note**: For the commands to work, you'll need to have an IPFS daemon running.
+**Note**: For the commands to work, you'll need to have an [IPFS daemon][IPFS]
+running.  The commands will look for a daemon running on the default local port
+(5001), but if your daemon is running elsewhere, use the `IDEA_IPFS_HTTP`
+environment variable to specify where it can be found.
 
 ```sh
+$ export IDEA_IPFS_HTTP=http://localhost:5001/api/v0
+
 $ idea add "Not a bad idea"
 QmRXZEpbAqbZtj59g7D8rWSFJ6KpAVAVhDRxNAEpwUYW4L
 
@@ -67,3 +72,11 @@ Not a bad idea
 ### perspective scope
 
 ### perspective skew
+
+
+[idea-api]: https://github.com/quaelin/idea/tree/main/packages/idea-api#readme
+[Idea-DAG]: https://github.com/quaelin/idea/blob/main/doc/IDEA_DAG.md
+[Ideas]: https://github.com/quaelin/idea/blob/main/doc/IDEAS.md
+[IPFS]: https://ipfs.io
+[Perspectives]: https://github.com/quaelin/idea/blob/main/doc/PERSPECTIVES.md
+[Relations]: https://github.com/quaelin/idea/blob/main/doc/RELATIONS.md

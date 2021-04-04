@@ -1,13 +1,11 @@
 # Relations
 
-_Relations_ are specially formatted Ideas that assert some meaningful
-relationship between _other_ Ideas (including other Relations).
+A _Relation_ is a type of data stored in the [Idea-DAG][Idea-DAG]. Relations are
+specially formatted [Ideas][Ideas] that assert some meaningful relationship
+between _other_ Ideas (including other Relations).
 
 When notating Relations, we use **A-D** as variables representing different
-iCids.
-
-The types are as follows.
-
+`iCids`.  The types are as follows.
 
 ## R:Analogy(A, B, C, D)
 
@@ -49,3 +47,7 @@ meaning it allows for _both_ to be true.  Contrast with `R:XOr`.
 
 _Exclusive_ "or".  Asserts that either **A** or **B** must be true, _but NOT
 both_.
+
+
+[Ideas]: ./IDEAS.md
+[Idea-DAG]: ./IDEA_DAG.md

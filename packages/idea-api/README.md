@@ -1,16 +1,16 @@
 # @quaelin/idea-api
 
-JavaScript API for accessing the Idea-DAG: decentralized Idea, Relation &
-Perspective data.
+JavaScript API for interacting with the [Idea-DAG][Idea-DAG]: decentralized
+Idea, Relation & Perspective data.  
 
-You'll need access to an IPFS daemon, ideally a locally running one.
+You'll need access to an [IPFS daemon][IPFS], ideally a locally running one.
 
 # API Reference
 
 Most of the API methods are asynchronous, returning promises.  Data objects
-(Ideas, Relations & Perspectives) are referenced by their IPFS content ID, or
-`cid`, which is a specially formatted string that also happens to be a
-cryptographic hash of the object itself.
+([Ideas][Ideas], [Relations][Relations] & [Perspectives][Perspectives]) are
+referenced by their IPFS content ID, or `cid`, which is a specially formatted
+string that also happens to be a cryptographic hash of the object itself.
 
 ## Initialization
 
@@ -31,7 +31,7 @@ const idea = initApi({
 
 Ideas are the foundational data type &mdash; the leaves of the Idea-DAG.  They
 are referenced by their IPFS content ID, which we conventionally abbreviate as
-`iCid`.
+`iCid` (for Idea Content ID).
 
 ### ideas.add(text)
 
@@ -47,7 +47,7 @@ console.log(await idea.get(iCid));
 // This is an idea
 ```
 
-Can also be used to fetch _relations_, in which case they are returned as an
+Can also be used to fetch Relations, in which case they are returned as an
 object rather than a string.
 
 ## Relations
@@ -56,7 +56,7 @@ Relations are a special subtype of Idea.  They are logical or otherwise
 meaningful operators that use Ideas and other Relations as operands.
 
 Relations can be created using the `idea.relations.*()` methods, and fetched
-using `idea.get()`.  We often call their content IDs `rCid`, but they're also
+using `idea.get()`.  We often call their content IDs `rCids`, but they're also
 Ideas so `iCid` is still applicable.
 
 The operands provided must be content IDs for other Ideas or Relations.
@@ -194,3 +194,10 @@ both inputs we skew the valuations towards one or the other, based on the
  - `1` take the valutaions from `pexB`
 
 Returns the `pCid` of the new perspective.
+
+
+[Idea-DAG]: https://github.com/quaelin/idea/blob/main/doc/IDEA_DAG.md
+[Ideas]: https://github.com/quaelin/idea/blob/main/doc/IDEAS.md
+[IPFS]: https://ipfs.io
+[Perspectives]: https://github.com/quaelin/idea/blob/main/doc/PERSPECTIVES.md
+[Relations]: https://github.com/quaelin/idea/blob/main/doc/RELATIONS.md
