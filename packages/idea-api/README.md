@@ -33,7 +33,7 @@ Ideas are the foundational data type &mdash; the leaves of the Idea-DAG.  They
 are referenced by their IPFS content ID, which we conventionally abbreviate as
 `iCid`.
 
-### ideas.add("<text>")
+### ideas.add(text)
 
 ```js
 // iCid is the IPFS content ID of this idea
@@ -121,10 +121,16 @@ Create a `Negation` relation, meaning _"the opposite of A"_, and returning the
 Create an `Or` relation, meaning _"A is true, or else B is; possibly both"_,
 and returning the `rCid`.
 
+`Or` is a commutative relation, so it doesn't matter which order you pass the
+operands.  Calling `.or(a, b)` will result in the same `rCid` as `.or(b, a)`.
+
 ### idea.relation.xor(A, B)
 
 Create an `XOr` relation, meaning _"A is true, or else B is; but not both"_,
 and returning the `rCid`.
+
+`XOr` is a commutative relation, so it doesn't matter which order you pass the
+operands.  Calling `.xor(a, b)` will result in the same `rCid` as `.xor(b, a)`.
 
 ## Perspectives
 
@@ -134,19 +140,57 @@ complete disagreement with an Idea, 0 means neutral, and 1 means complete
 agreement.
 
 In the API functions described here, most take 1 or more _perspective
-exoression_.  A perspective expression, or `pex`, can be either a `pCid`, or
+expressions_.  A perspective expression, or `pex`, can be either a `pCid`, or
 else a literal object with `iCids` for keys and valuations for values.
 
-### idea.perspective.average()
+### idea.perspective.average(...pexes)
 
-### idea.perspective.get()
+Merge two or more perspectives together, taking the _average_ of the valuations
+for any matching `iCids`.  Return the `pCid` of the new perspective.
 
-### idea.perspective.intersect()
+### idea.perspective.get(pCid)
 
-### idea.perspective.neutralize(pexA)
+Fetch a perspective by `pCid`, returning an object with `iCid:valuation` pairs.
 
-### idea.perspective.polarize(pexA, factor)
+### idea.perspective.intersect(...pexes)
+
+Merge two or more perspectives together, but only retain keys that were present
+in _all_ the input perspectives.  For each key, take the _average_ of the input
+valuations.  Return the `pCid` of the new perspective.
+
+### idea.perspective.neutralize(pex)
+
+Create a new perspective containing all the keys from `pex`, but with all
+valuations set to 0, and return the `pCid`.
+
+### idea.perspective.polarize(pex, factor)
+
+Create a new perspective containing all the keys from `pex`, but with all
+valuations skewed according to `factor`, which must be a number in the range
+`[-1,1]`:
+ - `-1` sets all valuations to 0 (same as _neutralize)
+ - `<0` skews valuations towards 0
+ - `0` leaves all valuations the same
+ - `>0` skews all valuations towards 1
+ - `1` sets all valuations to 1
+
+Returns the `pCid` of the new perspective.
 
 ### idea.perspective.scope(pexA, pexB)
 
+Create a new perspective based on `pexA`, but containing only those keys found
+in `pexB`.  Similar to `.intersect()` but always keeps the valuations from
+`pexA`.  Returns the `pCid` of the new perspective.
+
 ### idea.perspective.skew(pexA, pexB, weighting)
+
+Create a new perspective by merging `pexA` and `pexB`, but for any keys found in
+both inputs we skew the valuations towards one or the other, based on the
+`weighting` value in the range `[-1,1]`.
+ - `-1` just take the valuations from `pexA`
+ - `<0` skew valuations towards `pexA`
+ - `0` take a straight average of the valuations
+ - `>0` skew valuations towards `pexB`
+ - `1` take the valutaions from `pexB`
+
+Returns the `pCid` of the new perspective.
