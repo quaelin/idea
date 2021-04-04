@@ -1,6 +1,6 @@
 const { expectTypeError, ipfsTestConfig } = require('../../helpers');
 const idea = require('../../..')({ ipfsConfig: ipfsTestConfig });
-const { assertCid: expectCid } = require('../../../lib/assert');
+const { assertCid: expectCid } = require('../../../src/assert');
 
 const simpleText = 'foo';
 const variousSpecialChars = '"<>\'&\n. `${}';

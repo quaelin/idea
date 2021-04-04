@@ -1,0 +1,53 @@
+{
+  "name": "@quaelin/idea-cli",
+  "version": "0.0.1",
+  "description": "CLI commands for accessing the Idea-DAG: decentralized Idea, Relation & Perspective data",
+  "author": {
+    "name": "Chris Campbell",
+    "url": "https://github.com/quaelin"
+  },
+  "license": "ISC",
+  "keywords": [
+    "cli",
+    "idea",
+    "ipfs",
+    "logic",
+    "perspective",
+    "relation"
+  ],
+  "files": [
+    "bin",
+    "lib/**/*.js"
+  ],
+  "bin": {
+    "idea": "./bin/idea.js",
+    "perspective": "./bin/perspective.js",
+    "relation": "./bin/relation.js"
+  },
+  "bugs": {
+    "url": "https://github.com/quaelin/idea/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/quaelin/idea",
+    "directory": "packages/idea-cli"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "eslint ."
+  },
+  "dependencies": {
+    "cids": "^1.1.6",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "@quaelin/idea-api": "^0.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-lodash": "^7.2.0"
+  }
+}

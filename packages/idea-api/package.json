@@ -1,13 +1,14 @@
 {
-  "name": "@quaelin/idea",
-  "version": "0.0.1",
-  "description": "Decentralized API/toolkit for apps using Idea, Relation & Perspective data",
+  "name": "@quaelin/idea-api",
+  "version": "0.0.2",
+  "description": "JavaScript API for accessing the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
     "url": "https://github.com/quaelin"
   },
   "license": "ISC",
   "keywords": [
+    "api",
     "idea",
     "ipfs",
     "logic",
@@ -16,20 +17,15 @@
   ],
   "files": [
     "index.js",
-    "cli/**",
-    "lib/**/*.js"
+    "src/**/*.js"
   ],
-  "bin": {
-    "idea": "./cli/idea.js",
-    "perspective": "./cli/perspective.js",
-    "relation": "./cli/relation.js"
-  },
   "bugs": {
     "url": "https://github.com/quaelin/idea/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/quaelin/idea"
+    "url": "git://github.com/quaelin/idea",
+    "directory": "packages/idea-api"
   },
   "engines": {
     "node": ">=12"
@@ -42,8 +38,7 @@
     "cids": "^1.1.6",
     "google-protobuf": "^3.15.6",
     "ipfs-client": "^0.3.4",
-    "lodash": "^4.17.21",
-    "minimist": "^1.2.5"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^7.2.0",

@@ -1,4 +1,4 @@
-const createApi = require('..');
+const { initApi } = require('@quaelin/idea-api');
 const cli_idea = require('./cli/idea');
 const cli_perspective = require('./cli/perspective');
 const cli_relation = require('./cli/relation');
@@ -10,7 +10,7 @@ function cli_unknown(firstArg) {
 module.exports = (args) => {
   const firstArg = args._.shift();
   const { ipfsConfig } = args;
-  const idea = createApi({ ipfsConfig });
+  const idea = initApi({ ipfsConfig });
 
   switch (firstArg) {
     case 'idea': return cli_idea(idea, args);

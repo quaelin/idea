@@ -1,5 +1,5 @@
 const { each, includes } = require('lodash');
-const { RELATION_TYPES } = require('../relationTypes');
+const { RELATION_TYPES } = require('@quaelin/idea-api');
 
 function usage() {
   console.log('Usage:');
