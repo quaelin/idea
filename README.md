@@ -103,7 +103,7 @@ Here we have started with one Perspective, and used it as a base while adding
 additional idea valuations to it to generate a new Perspective.
 
 
-[Ideas]: ./doc/IDEAS.md
+[Idea]: ./doc/IDEAS.md
 [Idea-DAG]: ./doc/IDEA_DAG.md
 [IPFS]: https://ipfs.io
 [Perspective]: ./doc/PERSPECTIVES.md
