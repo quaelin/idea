@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools for interracting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
@@ -12,10 +12,12 @@
     "ipfs",
     "logic",
     "perspective",
-    "relation"
+    "relation",
+    "suite"
   ],
   "bin": {
     "idea": "./node_modules/.bin/idea",
+    "idea-web": "./node_modules/.bin/idea-web",
     "perspective": "./node_modules/.bin/perspective",
     "relation": "./node_modules/.bin/relation"
   },
@@ -31,7 +33,7 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@quaelin/idea-api": "^0.0.3",
-    "@quaelin/idea-cli": "^0.0.2"
+    "@quaelin/idea-cli": "0.0.3",
+    "@quaelin/idea-web": "0.0.1"
   }
 }
