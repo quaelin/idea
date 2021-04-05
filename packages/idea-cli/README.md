@@ -200,7 +200,7 @@ A perspective can be "polarized", where all valuations are adjusted by a
  * >0 all negative valuations get skewed towards -1, and positive ones towards 1
  * 1 means all negative valuations become -1 and all positive ones become 1
 
-```
+```sh
 $ perspective polarize <pex> <factor>
 ```
 
@@ -210,7 +210,7 @@ You can select a subset of a Perspective A, preserving only the iCids (and
 valuations) from A where the iCid is found in Perspective B.  (Valuations of B
 are ignored.)
 
-```
+```sh
 $ perspective scope <pex A> <pex B>
 ```
 
@@ -219,7 +219,7 @@ $ perspective scope <pex A> <pex B>
 Two perspectives can be merged with a weighting indicating how much to skew
 valuations towards one or the other.
 
-```
+```sh
 $ perspective skew <pex> <pex> <weighting>
 ```
 
