@@ -4,7 +4,7 @@
 
 It is intended as a foundational technology for applications dealing with fact
 verification, fuzzy logic, beliefs, agreement, preferences,
-argumentation/discourse, etc.  
+argumentation/discourse, etc.
 
 It uses [IPFS][IPFS], meaning data goes into a global, decentralized and
 content-addressable storage network.  You'll need to have an IPFS daemon running
@@ -21,8 +21,10 @@ need.
 
 # Concepts
 
-**Idea**: an immutable text document asserting an idea, thought or statement of
-fact.  Identifiable by its unique IPFS cid, which we refer to as an `iCid`.
+[Idea][Idea]: an immutable text document asserting an idea, thought or statement
+of fact.  Identifiable by its unique IPFS cid, which we refer to as an `iCid`.
+
+Using the CLI tools:
 
 ```
 $ idea add "Grass is green"
@@ -37,9 +39,9 @@ $ idea get QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC
 Grass is green
 ```
 
-**Relation**: an Idea subtype that, instead of containing free text, asserts a
-logical or otherwise meaningful relationship between other iCids.  There are
-numerous [types of Relations](./doc/RELATIONS.md), the simplest being "Negation".
+[Relation][Relation]: an Idea subtype that, instead of containing free text,
+asserts a logical or otherwise meaningful relationship between other iCids.
+There are numerous types of Relations, the simplest being "Negation".
 
 ```
 $ relation R:Negation A=QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC
@@ -54,10 +56,11 @@ $ idea get QmXTAPeuEEtuonUQy16pdc9VakSJufeg3BwcPyhevURrzW
 {"Relation":"Negation","A":"QmQ5yJw5nW3D5zyt9xJcJ9wiKA7vreborfrvRxyVsaT9zC"}
 ```
 
-**Perspective**: a hash of iCids (incl. Relations) to Valuations.  Immutable,
-and identifiable by a unique pCid.
+[Perspective][Perspective]: a hash of iCids to valuations, representing a point
+of view with respect to the veracity of the Ideas represented.  Identifiable by
+a unique `pCid`.
 
-**Valuation**: a floating point number in the range [-1, 1], where 1 means
+The valuations are floating point numbers in the range [-1, 1], where 1 means
 total agreement, -1 means total disagreement, and 0 is neutral.
 
 A Perspective can easily be created by providing one or more iCid:valuation
@@ -100,5 +103,8 @@ Here we have started with one Perspective, and used it as a base while adding
 additional idea valuations to it to generate a new Perspective.
 
 
+[Ideas]: ./doc/IDEAS.md
 [Idea-DAG]: ./doc/IDEA_DAG.md
 [IPFS]: https://ipfs.io
+[Perspective]: ./doc/PERSPECTIVES.md
+[Relation]: ./doc/RELATIONS.md

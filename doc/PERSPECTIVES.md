@@ -1,6 +1,6 @@
 # Perspectives
 
-A _Perspective_ is a type of data stored in the [Idea-DAG][Idea-DAG].  It is a
+A _Perspective_ is a type of immutable data stored in the [Idea-DAG][Idea-DAG].  It is a
 mapping of `iCids` (representing [Ideas][Ideas], including
 [Relations][Relations]), with a valuation for each.  _Valuations_ are floating
 point numbers in the range [-1, 1], where 1 means complete agreement, -1 means

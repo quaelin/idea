@@ -1,10 +1,10 @@
 # Relations
 
-A _Relation_ is a type of data stored in the [Idea-DAG][Idea-DAG]. Relations are
-specially formatted [Ideas][Ideas] that assert some meaningful relationship
-between _other_ Ideas (including other Relations).
+A _Relation_ is a type of immutable data stored in the [Idea-DAG][Idea-DAG].
+Relations are specially formatted [Ideas][Ideas] that assert some meaningful
+relationship between _other_ Ideas (including other Relations).
 
-When notating Relations, we use **A-D** as variables representing different
+When notating Relations, we use **A-D** as operands representing different
 `iCids`.  The types are as follows.
 
 ## R:Analogy(A, B, C, D)
