@@ -1,0 +1,35 @@
+{
+  "name": "@quaelin/idea",
+  "version": "0.0.2",
+  "description": "Tools for interracting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
+  "author": {
+    "name": "Chris Campbell",
+    "url": "https://github.com/quaelin"
+  },
+  "license": "ISC",
+  "keywords": [
+    "idea",
+    "ipfs",
+    "logic",
+    "perspective",
+    "relation"
+  ],
+  "bugs": {
+    "url": "https://github.com/quaelin/idea/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/quaelin/idea",
+    "directory": "packages/idea"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "eslint ."
+  },
+  "dependencies": {
+    "@quaelin/idea-api": "^0.0.2",
+    "@quaelin/idea-cli": "^0.0.1"
+  }
+}
