@@ -17,12 +17,6 @@ environment variable to specify where it can be found.
 
 ```sh
 $ export IDEA_IPFS_HTTP=http://localhost:5001/api/v0
-
-$ idea add "Not a bad idea"
-QmRXZEpbAqbZtj59g7D8rWSFJ6KpAVAVhDRxNAEpwUYW4L
-
-$ idea get QmRXZEpbAqbZtj59g7D8rWSFJ6KpAVAVhDRxNAEpwUYW4L
-Not a bad idea
 ```
 
 # Commands
@@ -31,27 +25,81 @@ Not a bad idea
 
 ### idea add
 
+Create a text Idea, printing its resulting `iCid`:
+
+```sh
+$ idea add "Not a bad idea"
+QmRXZEpbAqbZtj59g7D8rWSFJ6KpAVAVhDRxNAEpwUYW4L
+```
+
 ### idea get
+
+Fetch an Idea (or Relation) by `iCid`:
+
+```sh
+$ idea get QmRXZEpbAqbZtj59g7D8rWSFJ6KpAVAVhDRxNAEpwUYW4L
+Not a bad idea
+```
 
 ## Relations
 
+All of the `relation` commands are for _creating_ Relations, and they all return
+the `rCid` of the created Relation.  Use `idea get` to fetch the Relation object
+itself.
+
 ### relation R:Analogy
+
+```sh
+$ relation R:Analogy A=<icid> B=<icid> C=<icid> D=<icid>
+```
 
 ### relation R:And
 
+```sh
+$ relation R:And A=<icid> B=<icid>
+```
+
 ### relation R:Identity
+
+```sh
+$ relation R:Identity A=<icid> B=<icid>
+```
 
 ### relation R:Implies
 
+```sh
+$ relation R:Implies A=<icid> B=<icid>
+```
+
 ### relation R:Improves
+
+```sh
+$ relation R:Improves A=<icid> B=<icid>
+```
 
 ### relation R:IsA
 
+```sh
+$ relation R:IsA A=<icid> B=<icid>
+```
+
 ### relation R:Negation
+
+```sh
+$ relation R:Negation A=<icid>
+```
 
 ### relation R:Or
 
+```sh
+$ relation R:Or A=<icid> B=>icid>
+```
+
 ### relation R:XOr
+
+```sh
+$ relation R:XOr A=<icid> B=>icid>
+```
 
 ## Perspectives
 
@@ -63,7 +111,7 @@ which can be either a pCid, or else a literal list of iCid=valuation pairs.
 Merge two or more perspectives together, taking the average valuation for a any
 given key.
 
-```
+```sh
 $ perspective average <pex> <pex> [<pex> ...]
 ```
 
@@ -71,13 +119,13 @@ $ perspective average <pex> <pex> [<pex> ...]
 
 Fetches the actual content of a perspective.
 
-```
+```sh
 $ perspective get <pex>
 ```
 
 The default output format is JSON, eg:
 
-```
+```sh
 $ perspective get 3t5837yert87erygeryt345t
 {
   "a48t9y348t7yreusghseighuseg": 0.5,
@@ -87,7 +135,7 @@ $ perspective get 3t5837yert87erygeryt345t
 
 or:
 
-```
+```sh
 $ perspective get 34r9834y5tg87rgy=0.75391 34r9385ytge8rgherg=-1 --format=csv
 34r9385ytge8rgherg,-1
 34r9834y5tg87rgy,0.75391
@@ -99,7 +147,7 @@ Two or more perspectives can be "intersected", resulting in a new perspective
 that contains _only_ the iCids common to ALL the input perspectives.  The
 valuations for each kept iCid will be the _average_ of those input.
 
-```
+```sh
 $ perspective intersect <pex> <pex> [<pex> ...]
 ```
 
@@ -107,7 +155,7 @@ $ perspective intersect <pex> <pex> [<pex> ...]
 
 Lists just the iCids from a perspective, with no valuations.
 
-```
+```sh
 $ perspective keys 3t5837yert87erygeryt345t
 a48t9y348t7yreusghseighuseg
 34t98w4eyrgtuseyrghesuyrghiwe7r
@@ -121,8 +169,15 @@ operations, there is right-to-left precedence.  That is, whichever perspective
 is specified _last_ in the order of arguments is the one whose valuations are
 used in the case of any duplicate iCids.
 
-```
+```sh
 $ perspective merge <pex> [<pex> ...]
+```
+
+You can also _create_ arbitrary perspectives using `perspective merge` by
+specifying a set of iCid=valuation pairs:
+
+```sh
+$ perspective merge <icid>=<valuation> [<icid>=<valuation> ...]
 ```
 
 ### perspective neutralize
@@ -131,7 +186,7 @@ A perspective can be "neutralized", resulting in a new perspective with all
 valuations set to 0.  Neutralizing is the same as polarizing with a polarization
 factor of -1.
 
-```
+```sh
 $ perspective neutralize <pex>
 ```
 
