@@ -1,7 +1,7 @@
 # @quaelin/idea
 
-Installs a suite of tools for dealing with the [Idea-DAG][Idea-DAG].  Currently,
-this includes:
+Installs a suite of tools for interacting with the [Idea-DAG][Idea-DAG].
+Currently, this includes:
 
  * [idea-cli][idea-cli]: a command-line interface to the Idea-DAG
  * [idea-web][idea-web]: a web UI interface to the Idea-DAG

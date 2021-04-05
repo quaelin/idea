@@ -6,7 +6,7 @@ A web UI for interacting with the [Idea-DAG][Idea-DAG]: decentralized
 To install:
 
 ```sh
-$ npm i -g idea-web
+$ npm i -g @quaelin/idea-web
 ```
 
 To run:
