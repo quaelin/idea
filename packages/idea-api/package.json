@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JavaScript API for accessing the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
