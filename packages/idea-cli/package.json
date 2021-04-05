@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI commands for accessing the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
@@ -42,7 +42,7 @@
     "cids": "^1.1.6",
     "lodash": "^4.17.21",
     "minimist": "^1.2.5",
-    "@quaelin/idea-api": "^0.0.2"
+    "@quaelin/idea-api": "^0.0.3"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
