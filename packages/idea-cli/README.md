@@ -103,8 +103,8 @@ $ relation R:XOr A=<icid> B=>icid>
 
 ## Perspectives
 
-In the CLI commands below, a `<pex>` represents a "perspective expression",
-which can be either a pCid, or else a literal list of iCid=valuation pairs.
+In the CLI commands below, a `<pex>` represents a _"perspective expression"_,
+which can be either a `pCid`, or else a literal list of `iCid=valuation` pairs.
 
 ### perspective average
 
@@ -123,22 +123,14 @@ Fetches the actual content of a perspective.
 $ perspective get <pex>
 ```
 
-The default output format is JSON, eg:
+The default (and currently only) output format is `console.log()` style, eg:
 
 ```sh
-$ perspective get 3t5837yert87erygeryt345t
+$ perspective get QmdE8HdS615NjvtypfF2FPZc4H7WnS5why67ueUqVdR7tZ
 {
-  "a48t9y348t7yreusghseighuseg": 0.5,
-  "34t98w4eyrgtuseyrghesuyrghiwe7r": -0.25
+  QmWP7mJwoH9a63yB5YEGnKeVz73Trimn4783w9XCRRM1QA: 0.78,
+  QmaFpVwJJc8V4tZLjD3hFTTqTquTR7QFkGy6rYhMEPELva: -0.78
 }
-```
-
-or:
-
-```sh
-$ perspective get 34r9834y5tg87rgy=0.75391 34r9385ytge8rgherg=-1 --format=csv
-34r9385ytge8rgherg,-1
-34r9834y5tg87rgy,0.75391
 ```
 
 ### perspective intersect
@@ -156,9 +148,11 @@ $ perspective intersect <pex> <pex> [<pex> ...]
 Lists just the iCids from a perspective, with no valuations.
 
 ```sh
-$ perspective keys 3t5837yert87erygeryt345t
-a48t9y348t7yreusghseighuseg
-34t98w4eyrgtuseyrghesuyrghiwe7r
+$ perspective keys QmdE8HdS615NjvtypfF2FPZc4H7WnS5why67ueUqVdR7tZ
+[
+  'QmWP7mJwoH9a63yB5YEGnKeVz73Trimn4783w9XCRRM1QA',
+  'QmaFpVwJJc8V4tZLjD3hFTTqTquTR7QFkGy6rYhMEPELva'
+]
 ```
 
 ### perspective merge
@@ -194,11 +188,11 @@ $ perspective neutralize <pex>
 
 A perspective can be "polarized", where all valuations are adjusted by a
 `<factor>` in the range [-1, 1], where:
- * -1 is the same as neutralize (all valuations set to 0)
- * <0 means valuations get skewed towards 0
- * 0 means no change
- * >0 all negative valuations get skewed towards -1, and positive ones towards 1
- * 1 means all negative valuations become -1 and all positive ones become 1
+ * `-1` is the same as neutralize (all valuations set to 0)
+ * `<0` means valuations get skewed towards 0
+ * `0` means no change
+ * `>0` all negative valuations get skewed towards -1, and positive ones towards 1
+ * `1` means all negative valuations become -1 and all positive ones become 1
 
 ```sh
 $ perspective polarize <pex> <factor>
@@ -224,11 +218,11 @@ $ perspective skew <pex> <pex> <weighting>
 ```
 
 The `<weighting>` value can be in the range [-1, 1], where for duplicate iCids:
- * -1 means to take the valuation from the _first_ perspective
- * \<0 means to skew towards the first
- * 0 means take a straight average
- * \>0 means skew towards the second
- * 1 means take the valuation from the _second_ perspective
+ * `-1` means to take the valuation from the _first_ perspective
+ * `<0` means to skew towards the first
+ * `0` means take a straight average
+ * `>0` means skew towards the second
+ * `1` means take the valuation from the _second_ perspective
 
 
 [idea-api]: https://github.com/quaelin/idea/tree/main/packages/idea-api#readme
