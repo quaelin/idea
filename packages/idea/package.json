@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tools for interracting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
@@ -14,6 +14,11 @@
     "perspective",
     "relation"
   ],
+  "bin": {
+    "idea": "./node_modules/.bin/idea",
+    "perspective": "./node_modules/.bin/perspective",
+    "relation": "./node_modules/.bin/relation"
+  },
   "bugs": {
     "url": "https://github.com/quaelin/idea/issues"
   },
