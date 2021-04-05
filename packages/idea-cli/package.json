@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI commands for interacting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
