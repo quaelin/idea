@@ -10,12 +10,12 @@ Data objects are stored in [IPFS][IPFS], and can be referenced by their IPFS
 content ID, or `cid`.
 
 Tools for interacting with the Idea-DAG include the [JavaScript client
-API][idea-api] and the [CLI commands][idea-cli]... and also a web interface
-(coming soon!).
+API][idea-api], some [CLI commands][idea-cli], and a [web UI][idea-web].
 
 
 [idea-api]: https://github.com/quaelin/idea/tree/main/packages/idea-api#readme
 [idea-cli]: https://github.com/quaelin/idea/tree/main/packages/idea-cli#readme
+[idea-web]: https://github.com/quaelin/idea/tree/main/packages/idea-web#readme
 [Ideas]: ./IDEAS.md
 [IPFS]: https://ipfs.io
 [Perspectives]: ./PERSPECTIVES.md
