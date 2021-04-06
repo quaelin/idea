@@ -33,6 +33,7 @@
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",
+    "pretest": "npm run lint",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
