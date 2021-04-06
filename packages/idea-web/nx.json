@@ -1,34 +1,23 @@
 {
-  "npmScope": "idea-web",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "idea-web",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "idea-web": {
-      "tags": []
-    },
-    "idea-web-e2e": {
-      "tags": [],
-      "implicitDependencies": ["idea-web"]
-    }
+    "idea-web": { "tags": [] },
+    "idea-web-e2e": { "tags": [], "implicitDependencies": ["idea-web"] },
+    "api": { "tags": [] }
   }
 }
