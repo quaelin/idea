@@ -11,10 +11,8 @@ describe('GET /api/idea/:icid', () => {
     routeIdeaGet(app);
   });
 
-  test('hello world', async () => {
-    const response = await request(app).get('/api/idea/13');
-    expect(response).toMatchObject({
-      status: 500,
-    });
+  test('invalid CID param results in 400 error', async () => {
+    const { status } = await request(app).get('/api/idea/13');
+    expect(status).toBe(400);
   });
 });

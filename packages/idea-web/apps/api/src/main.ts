@@ -6,6 +6,7 @@
 import { initApi } from '@quaelin/idea-api';
 import * as express from 'express';
 import { routeIdeaGet } from './routes/idea/get';
+import { routeIdeaPost } from './routes/idea/post';
 
 const app = express();
 const ipfsConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://localhost:5001/api/v0' };

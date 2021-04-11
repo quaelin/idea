@@ -1,14 +1,19 @@
 import * as CID from 'cids';
 import { Request, Response } from 'express';
 import { HandlerFunction } from './types';
+import { BadInputs } from './httpErrors';
+
+export function isCid(val: string) {
+  try {
+    return CID.isCID(new CID(val));
+  } catch (ex) {
+    return false;
+  }
+}
 
 export function assertCid(val: string) {
-  try {
-    if (!CID.isCID(new CID(val))) {
-      throw new TypeError();
-    }
-  } catch (ex) {
-    throw new TypeError('Not a CID');
+  if (!isCid(val)) {
+    throw new BadInputs(`Not a CID: ${val}`);
   }
 }
 
