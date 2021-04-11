@@ -1,8 +1,14 @@
-export class BadInputs extends TypeError {
+export class HttpError extends TypeError {
   status: number;
 
-  constructor(message: string) {
+  constructor(status: number, message: string) {
     super(message);
-    this.status = 400;
+    this.status = status;
+  }
+}
+
+export class BadInputs extends HttpError {
+  constructor(message: string) {
+    super(400, message);
   }
 }

@@ -14,7 +14,7 @@ export interface Relation {
   D?: ICID;
 }
 
-export type AbstractIdea = string | Relation;
+export type AbstractIdea = Relation | string;
 
 export interface PerspectiveApi {
 }
