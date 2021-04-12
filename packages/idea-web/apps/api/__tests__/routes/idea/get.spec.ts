@@ -25,7 +25,7 @@ describe('GET /api/idea/:icid', () => {
       .set('content-type', 'text/plain')
       .send(ideaContent);
     const response = await request(app).get(`/api/idea/${icid}`);
-    const { status, headers, text: retrievedContent, body } = response;
+    const { status, headers, text: retrievedContent } = response;
     expect(status).toBe(200);
     expect(headers['content-type']).toEqual(expect.stringMatching(/^text\/plain.*/));
     expect(retrievedContent).toBe(ideaContent);

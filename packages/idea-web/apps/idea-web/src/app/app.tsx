@@ -1,4 +1,5 @@
 import React from 'react';
+import { IdeaWell } from '../components/IdeaWell';
 
 import './app.css';
 
@@ -14,6 +15,7 @@ export function App() {
         <h1>Welcome to idea-web!</h1>
       </header>
       <main>
+        <IdeaWell />
       </main>
     </div>
   );

@@ -17,6 +17,7 @@ app.use('*', (req, res, next) => {
 });
 
 routeIdeaGet(app);
+routeIdeaPost(app);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
