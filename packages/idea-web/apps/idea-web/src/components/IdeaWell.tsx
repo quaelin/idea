@@ -1,34 +1,64 @@
+import { filter, includes, uniq } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
 
+import './IdeaWell.css';
+
 export function IdeaWell({ namespace }) {
-  const key = `iw:${namespace}:items`;
+  const key = `iw:${namespace || ''}:items`;
 
   const [ideas, setIdeas] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [trash, setTrash] = useState([]);
 
   console.log({ ideas });
 
   useEffect(() => {
     const lsIdeas = localStorage.getItem(key);
     const savedIdeas = lsIdeas ? lsIdeas.split(',') : [];
-    setIdeas([...ideas, ...savedIdeas]);
+    setIdeas(uniq([...ideas, ...savedIdeas]));
   }, []);
 
-  function onIdeaAdded(icid) {
-    const newIdeas = [icid, ...ideas];
+  function saveIdeas(newIdeas) {
     localStorage.setItem(key, newIdeas.join(','));
     setIdeas(newIdeas);
   }
 
+  function onIdeaAdded(icid) {
+    saveIdeas(uniq([icid, ...ideas]));
+  }
+
+  function handleItemClick(icid) {
+    setSelected([icid]);
+  }
+
+  function trashIdea(icid) {
+    saveIdeas(filter(ideas, idea => idea !== icid));
+    setTrash([{ icid, addedToTrash: Date.now() }, ...trash]);
+  }
+
+  function moveToTop(icid) {
+    saveIdeas(uniq([icid, ...ideas]));
+  }
+
   return (
     <div className="idea-well">
+      <div className="idea-well-key">{key}</div>
       <IdeaEntry onIdeaAdded={onIdeaAdded}/>
-      <>
+      <ol>
         {ideas.map((icid) => (
-          <IdeaWellItem namespace={namespace} key={icid} icid={icid} />
+          <IdeaWellItem
+            icid={icid}
+            key={icid}
+            namespace={namespace}
+            onClick={() => handleItemClick(icid)}
+            onClickTrash={() => trashIdea(icid)}
+            onClickTop={() => moveToTop(icid)}
+            selected={includes(selected, icid)}
+          />
         ))}
-      </>
+      </ol>
     </div>
   );
 }
