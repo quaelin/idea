@@ -8,11 +8,10 @@ import './IdeaWell.css';
 export function IdeaWell({ namespace }) {
   const key = `iw:${namespace || ''}:items`;
 
+  const [initialEntryText, setInitialEntryText] = useState('');
   const [ideas, setIdeas] = useState([]);
   const [selected, setSelected] = useState([]);
   const [trash, setTrash] = useState([]);
-
-  console.log({ ideas });
 
   useEffect(() => {
     const lsIdeas = localStorage.getItem(key);
@@ -33,6 +32,13 @@ export function IdeaWell({ namespace }) {
     setSelected([icid]);
   }
 
+  function populateEditor(icid) {
+    fetch(`/api/idea/${icid}`)
+      .then(response => response.text())
+      .then(setInitialEntryText)
+      .then(() => trashIdea(icid));
+  }
+
   function trashIdea(icid) {
     saveIdeas(filter(ideas, idea => idea !== icid));
     setTrash([{ icid, addedToTrash: Date.now() }, ...trash]);
@@ -45,7 +51,7 @@ export function IdeaWell({ namespace }) {
   return (
     <div className="idea-well">
       <div className="idea-well-key">{key}</div>
-      <IdeaEntry onIdeaAdded={onIdeaAdded}/>
+      <IdeaEntry initialText={initialEntryText} onIdeaAdded={onIdeaAdded}/>
       <ol>
         {ideas.map((icid) => (
           <IdeaWellItem
@@ -53,6 +59,7 @@ export function IdeaWell({ namespace }) {
             key={icid}
             namespace={namespace}
             onClick={() => handleItemClick(icid)}
+            onClickEdit={() => populateEditor(icid)}
             onClickTrash={() => trashIdea(icid)}
             onClickTop={() => moveToTop(icid)}
             selected={includes(selected, icid)}

@@ -12,7 +12,7 @@ export function App() {
   return (
     <div className="app">
       <header className="flex">
-        <h1>Welcome to idea-web!</h1>
+        <h1>💡</h1>
       </header>
       <main>
         <IdeaWell />

@@ -8,6 +8,6 @@ describe('idea-web', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to idea-web!');
+    getGreeting().contains('💡');
   });
 });

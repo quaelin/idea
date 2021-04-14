@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 async function saveIdea(text) {
   const response = await fetch('/api/idea', {
@@ -17,9 +17,16 @@ function useFocus() {
   return [ htmlElRef, setFocus ];
 }
 
-export function IdeaEntry({ onIdeaAdded }) {
+export function IdeaEntry({ initialText, onIdeaAdded }) {
   const [textAreaValue, setTextAreaValue] = useState('');
   const [textAreaRef, setTextAreaFocus] = useFocus();
+
+  useEffect(() => {
+    if (initialText) {
+      setTextAreaValue(initialText);
+      setTextAreaFocus();
+    }
+  }, [initialText]);
 
   const handleTextChange = ({ target: { value }}) => setTextAreaValue(value);
   const handleButtonClick = async () => {

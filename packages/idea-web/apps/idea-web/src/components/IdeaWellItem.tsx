@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 export function IdeaWellItem({
   icid,
   onClick,
+  onClickEdit,
   onClickTrash,
   onClickTop,
   selected
@@ -27,6 +28,7 @@ export function IdeaWellItem({
       <pre>{idea}</pre>
       {selected ? (
         <div className="idea-well-item-actions">
+          <a href="#" title="Edit" onClick={onClickEdit}>✎</a>
           <a href="#" title="Trash" onClick={onClickTrash}>🗑</a>
           <a href="#" title="Top" onClick={onClickTop}>⬆️</a>
         </div>
