@@ -28,9 +28,9 @@ export function IdeaWellItem({
       <pre>{idea}</pre>
       {selected ? (
         <div className="idea-well-item-actions">
+          <a href="#" title="Top" onClick={onClickTop}>⬆️</a>
           <a href="#" title="Edit" onClick={onClickEdit}>✎</a>
           <a href="#" title="Trash" onClick={onClickTrash}>🗑</a>
-          <a href="#" title="Top" onClick={onClickTop}>⬆️</a>
         </div>
       ) : ''}
     </li>

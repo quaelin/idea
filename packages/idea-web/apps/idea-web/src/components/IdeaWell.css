@@ -39,7 +39,6 @@
   padding: 0.5em;
 }
 .idea-well .idea-well-item.selected {
-  background-color: #def;
   border: 2px dashed #22c;
   border-radius: 0.5em;
 }
@@ -52,6 +51,23 @@
   padding: 0px;
 }
 
+.idea-well .idea-well-item-actions {
+  background-color: #eee;
+  border: 1px solid #888;
+  border-radius: 0.5em;
+  float: right;
+  opacity: 0.9;
+  position: relative;
+  top: -0.5em;
+}
+.idea-well .idea-well-item-actions:hover {
+  opacity: 1;
+}
+
 .idea-well .idea-well-item-actions a {
-  padding: 0.1em 0.5em;
+  opacity: 0.7;
+  padding: 0.2em 0.5em;
+}
+.idea-well .idea-well-item-actions a:hover {
+  opacity: 1;
 }
