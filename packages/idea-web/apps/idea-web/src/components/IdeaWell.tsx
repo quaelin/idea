@@ -5,8 +5,9 @@ import { IdeaWellItem } from './IdeaWellItem';
 
 import './IdeaWell.css';
 
-export function IdeaWell({ namespace }) {
-  const key = `iw:${namespace || ''}:items`;
+export function IdeaWell({ namespace, sharedTrashKey }) {
+  const key = `iw:${namespace || 'default'}:items`;
+  const trashKey = sharedTrashKey || `${key}:trash`;
 
   const [initialEntryText, setInitialEntryText] = useState('');
   const [ideas, setIdeas] = useState([]);
@@ -17,11 +18,27 @@ export function IdeaWell({ namespace }) {
     const lsIdeas = localStorage.getItem(key);
     const savedIdeas = lsIdeas ? lsIdeas.split(',') : [];
     setIdeas(uniq([...ideas, ...savedIdeas]));
+    const ssTrash = sessionStorage.getItem(trashKey);
+    const sessionTrash = ssTrash ? ssTrash.split(',') : [];
+    setTrash(sessionTrash);
   }, []);
 
   function saveIdeas(newIdeas) {
-    localStorage.setItem(key, newIdeas.join(','));
+    if (newIdeas.length) {
+      localStorage.setItem(key, newIdeas.join(','));
+    } else {
+      localStorage.removeItem(key);
+    }
     setIdeas(newIdeas);
+  }
+
+  function saveTrash(newTrash) {
+    if (newTrash.length) {
+      sessionStorage.setItem(trashKey, newTrash.join(','));
+    } else {
+      sessionStorage.removeItem(trashKey);
+    }
+    setTrash(newTrash);
   }
 
   function onIdeaAdded(icid) {
@@ -41,7 +58,7 @@ export function IdeaWell({ namespace }) {
 
   function trashIdea(icid) {
     saveIdeas(filter(ideas, idea => idea !== icid));
-    setTrash([{ icid, addedToTrash: Date.now() }, ...trash]);
+    saveTrash(uniq([icid, ...trash]));
   }
 
   function moveToTop(icid) {
