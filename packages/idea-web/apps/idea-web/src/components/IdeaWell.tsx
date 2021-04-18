@@ -1,9 +1,18 @@
 import { filter, includes, uniq } from 'lodash';
 import React, { useEffect, useState } from 'react';
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
 
 import './IdeaWell.css';
+
+// helper function to reorder the list after a drag operation
+function reorder(list, startIndex, endIndex) {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+  return result;
+}
 
 export function IdeaWell({ namespace, sharedTrashKey }) {
   const key = `iw:${namespace || 'default'}:items`;
@@ -65,24 +74,41 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     saveIdeas(uniq([icid, ...ideas]));
   }
 
+  function onDragEnd({ source, destination }) {
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
+
+    saveIdeas(reorder(ideas, source.index, destination.index));
+  }
+
   return (
     <div className="idea-well">
       <div className="idea-well-key">{key}</div>
       <IdeaEntry initialText={initialEntryText} onIdeaAdded={onIdeaAdded}/>
-      <ol>
-        {ideas.map((icid) => (
-          <IdeaWellItem
-            icid={icid}
-            key={icid}
-            namespace={namespace}
-            onClick={() => handleItemClick(icid)}
-            onClickEdit={() => populateEditor(icid)}
-            onClickTrash={() => trashIdea(icid)}
-            onClickTop={() => moveToTop(icid)}
-            selected={includes(selected, icid)}
-          />
-        ))}
-      </ol>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="idea-well-droppable">
+          {(provided, snapshot) => (
+            <ol className="idea-well-droppable" {...provided.droppableProps} ref={provided.innerRef}>
+              {ideas.map((icid, index) => (
+                <IdeaWellItem
+                  icid={icid}
+                  index={index}
+                  key={icid}
+                  namespace={namespace}
+                  onClick={() => handleItemClick(icid)}
+                  onClickEdit={() => populateEditor(icid)}
+                  onClickTrash={() => trashIdea(icid)}
+                  onClickTop={() => moveToTop(icid)}
+                  selected={includes(selected, icid)}
+                />
+              ))}
+              {provided.placeholder}
+            </ol>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }
