@@ -70,15 +70,9 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     saveTrash(uniq([icid, ...trash]));
   }
 
-  function moveToTop(icid) {
-    saveIdeas(uniq([icid, ...ideas]));
-  }
-
   function onDragEnd({ source, destination }) {
     // dropped outside the list
-    if (!destination) {
-      return;
-    }
+    if (!destination) return;
 
     saveIdeas(reorder(ideas, source.index, destination.index));
   }
@@ -100,7 +94,6 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
                   onClick={() => handleItemClick(icid)}
                   onClickEdit={() => populateEditor(icid)}
                   onClickTrash={() => trashIdea(icid)}
-                  onClickTop={() => moveToTop(icid)}
                   selected={includes(selected, icid)}
                 />
               ))}

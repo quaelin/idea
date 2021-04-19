@@ -7,7 +7,6 @@ export function IdeaWellItem({
   onClick,
   onClickEdit,
   onClickTrash,
-  onClickTop,
   selected
 }) {
   const [idea, setIdea] = useState();
@@ -29,17 +28,22 @@ export function IdeaWellItem({
           onClick={onClick}
           ref={provided.innerRef}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
         >
-          {selected ? <div className="idea-well-icid">{icid}</div> : ''}
-          <pre>{idea}</pre>
           {selected ? (
-            <div className="idea-well-item-actions">
-              <a href="#" title="Top" onClick={onClickTop}>⬆️</a>
-              <a href="#" title="Edit" onClick={onClickEdit}>✎</a>
-              <a href="#" title="Trash" onClick={onClickTrash}>🗑</a>
-            </div>
+            <>
+              <div className="idea-well-item-border" />
+              <div className="idea-well-item-actions">
+                <a href="#" title="Edit" onClick={onClickEdit}>✎</a>
+                <a href="#" title="Trash" onClick={onClickTrash}>X</a>
+              </div>
+            </>
           ) : ''}
+          <div className="idea-well-item-grip" {...provided.dragHandleProps}>
+            <div className="idea-well-item-icon">💡</div>
+            <div className="idea-well-item-grip-inner" />
+          </div>
+          <div className="idea-well-item-icid">{icid}</div>
+          <pre>{idea}</pre>
         </li>
       )}
     </Draggable>

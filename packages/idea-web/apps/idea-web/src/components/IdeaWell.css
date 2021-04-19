@@ -26,35 +26,75 @@
   padding-inline-end: 1em;
 }
 
-.idea-well .idea-well-icid {
-  color: #999;
-  font-size: 0.7em;
+.idea-well li {
+  list-style: none;
 }
-
 .idea-well .idea-well-item {
   background-color: #ffc;
   border: 1px solid #cc6;
-  list-style: none;
-  margin: 0.5em;
-  padding: 0.5em;
+  margin: 0.5em 0.5em 1.3em 0.5em;
+  padding: 1em 0.5em 0.5em 0.5em;
+  position: relative;
 }
-.idea-well .idea-well-item.selected {
-  border: 2px dashed #22c;
-  border-radius: 0.5em;
+.idea-well .idea-well-item-border {
+  border: 2px solid #000;
+  border-radius: 4px;
+  bottom: -10px;
+  left: -10px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+
+.idea-well .idea-well-item .idea-well-item-grip {
+  background-color: #ee9;
+  border: 1px solid #cc6;
+  border-bottom-right-radius: 10px;
+  height: 11px;
+  left: -1px;
+  position: absolute;
+  top: -1px;
+  width: 50px;
+}
+.idea-well .idea-well-item:hover .idea-well-item-grip {
+  background-color: #ee5;
+}
+.idea-well .idea-well-item-icon {
+  font-size: 2em;
+  left: -0.8em;
+  position: absolute;
+  top: -0.3em;
+}
+.idea-well .idea-well-item-grip .idea-well-item-grip-inner {
+  border-bottom: 1px dotted #999;
+  border-top: 1px dotted #999;
+  bottom: 3px;
+  left: 4px;
+  position: absolute;
+  right: 4px;
+  top: 3px;
+}
+
+.idea-well .idea-well-item .idea-well-item-icid {
+  color: #cca;
+  font-size: 0.7em;
+  left: 54px;
+  position: absolute;
+  top: 0px;
+}
+.idea-well .idea-well-item:hover .idea-well-item-icid {
+  color: #aa9;
 }
 
 .idea-well .idea-well-item pre {
   background-color: transparent;
-  color: #422;
+  color: #544;
   font-size: 1.5em;
   margin: 0px;
   padding: 0px;
 }
 
 .idea-well .idea-well-item-actions {
-  background-color: #eee;
-  border: 1px solid #888;
-  border-radius: 0.5em;
   float: right;
   opacity: 0.9;
   position: relative;
@@ -65,8 +105,12 @@
 }
 
 .idea-well .idea-well-item-actions a {
+  background-color: #eee;
+  border: 1px solid #888;
+  border-radius: 0.5em;
+  margin-left: 0.2em;
   opacity: 0.7;
-  padding: 0.2em 0.5em;
+  padding: 0.2em 0.3em;
 }
 .idea-well .idea-well-item-actions a:hover {
   opacity: 1;
