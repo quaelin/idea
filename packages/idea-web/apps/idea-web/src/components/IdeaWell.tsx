@@ -6,6 +6,11 @@ import { IdeaWellItem } from './IdeaWellItem';
 
 import './IdeaWell.css';
 
+function clearHTMLSelection() {
+  if (window.getSelection) window.getSelection().removeAllRanges();
+  else if (document.selection) document.selection.empty();
+}
+
 // helper function to reorder the list after a drag operation
 function reorder(list, startIndex, endIndex) {
   const result = Array.from(list);
@@ -50,12 +55,18 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     setTrash(newTrash);
   }
 
-  function onIdeaAdded(icid) {
+  function moveToTop(icid) {
     saveIdeas(uniq([icid, ...ideas]));
+    clearHTMLSelection();
   }
 
-  function handleItemClick(icid) {
+  function onIdeaAdded(icid) {
+    moveToTop(icid);
+  }
+
+  function handleItemSelected(icid) {
     setSelected([icid]);
+    moveToTop(icid);
   }
 
   function populateEditor(icid) {
@@ -91,9 +102,9 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
                   index={index}
                   key={icid}
                   namespace={namespace}
-                  onClick={() => handleItemClick(icid)}
                   onClickEdit={() => populateEditor(icid)}
                   onClickTrash={() => trashIdea(icid)}
+                  onSelected={() => handleItemSelected(icid)}
                   selected={includes(selected, icid)}
                 />
               ))}

@@ -4,9 +4,9 @@ import { Draggable } from "react-beautiful-dnd";
 export function IdeaWellItem({
   icid,
   index,
-  onClick,
   onClickEdit,
   onClickTrash,
+  onSelected,
   selected
 }) {
   const [idea, setIdea] = useState();
@@ -25,24 +25,28 @@ export function IdeaWellItem({
         <li
           className={classNames.join(' ')}
           data-icid={icid}
-          onClick={onClick}
+          onDoubleClick={onSelected}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          {selected ? (
-            <>
-              <div className="idea-well-item-border" />
-              <div className="idea-well-item-actions">
-                <a href="#" title="Edit" onClick={onClickEdit}>✎</a>
-                <a href="#" title="Trash" onClick={onClickTrash}>X</a>
-              </div>
-            </>
-          ) : ''}
           <div className="idea-well-item-grip" {...provided.dragHandleProps}>
             <div className="idea-well-item-icon">💡</div>
             <div className="idea-well-item-grip-inner" />
           </div>
-          <div className="idea-well-item-icid">{icid}</div>
+          <div className="idea-well-item-icid">{
+            selected ? icid : `${icid.substr(0, 10)}...`
+          }</div>
+          {selected ? (
+            <>
+              <div className="idea-well-item-border" />
+              <div className="idea-well-item-actions">
+                <a href="#" title="Edit" onClick={onClickEdit}>
+                  <img src="assets/pencil-icon.png" alt="edit" />
+                </a>
+                <a href="#" title="Trash" onClick={onClickTrash}>X</a>
+              </div>
+            </>
+          ) : ''}
           <pre>{idea}</pre>
         </li>
       )}
