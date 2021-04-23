@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.idea-well a {
+  text-decoration: none;
+}
+
 .idea-well .idea-well-key {
   color: #999;
   font-size: 0.9em;
@@ -24,12 +28,22 @@
 .idea-well ol {
   padding-inline-start: 1em;
   padding-inline-end: 1em;
+  margin-right: 100px;
   margin-top: 1.6em;
 }
 
 .idea-well li {
   list-style: none;
 }
+
+.idea-well .idea-well-body {
+  display: flex;
+}
+
+.idea-well .idea-well-droppable {
+  flex-grow: 2;
+}
+
 .idea-well .idea-well-item {
   background-color: #ffc;
   border: 1px solid #cc6;
@@ -57,8 +71,11 @@
   left: -1px;
   position: absolute;
   top: -1px;
-  width: 50px;
+  width: 250px;
   z-index: 1;
+}
+.idea-well .idea-well-item.selected .idea-well-item-grip {
+  width: 50px;
 }
 .idea-well .idea-well-item:hover .idea-well-item-grip {
   background-color: #ee5;
@@ -94,24 +111,28 @@
 .idea-well .idea-well-item .idea-well-item-icid {
   color: #dda;
   font-size: 0.7em;
-  left: 54px;
+  left: 254px;
   position: absolute;
   top: 0px;
   z-index: 4;
 }
 .idea-well .idea-well-item:hover .idea-well-item-icid {
-  color: #bb8;
+  color: #cc9;
 }
 .idea-well .idea-well-item.selected .idea-well-item-icid {
-  color: #996;
+  color: #aa8;
+  left: 54px;
 }
 
 .idea-well .idea-well-item pre {
   background-color: transparent;
   color: #544;
   font-size: 1.5em;
+  overflow-x: auto;
   margin: 0px;
   padding: 0.2em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .idea-well .idea-well-item-actions {
@@ -127,7 +148,6 @@
 .idea-well .idea-well-item-actions a {
   opacity: 0.7;
   padding: 0.2em;
-  text-decoration: none;
   vertical-align: middle;
 }
 .idea-well .idea-well-item-actions a:hover {
@@ -135,4 +155,32 @@
 }
 .idea-well .idea-well-item-actions a img {
   width: 1em;
+}
+
+.idea-well .idea-well-item-relation-label {
+  background-color: #08f;
+  border: 1px solid #115;
+  border-radius: 1em;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  height: 1.2em;
+  position: absolute;
+  right: -1em;
+  text-align: center;
+  top: 1.3em;
+  vertical-align: middle;
+  width: 1.2em;
+}
+
+.idea-well .idea-well-relation-selector ul {
+  margin-block-start: 0px;
+}
+.idea-well .idea-well-relation-selector li {
+  padding: 0.1em 0.3em;
+}
+.idea-well .idea-well-relation-selector a {
+  color: #555;
+  font-size: 0.9em;
+  font-weight: bold;
 }

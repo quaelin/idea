@@ -7,6 +7,7 @@ import { initApi } from '@quaelin/idea-api';
 import * as express from 'express';
 import { routeIdeaGet } from './routes/idea/get';
 import { routeIdeaPost } from './routes/idea/post';
+import { routeRelationPost } from './routes/relation/post';
 
 const app = express();
 const ipfsConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://localhost:5001/api/v0' };
@@ -18,6 +19,7 @@ app.use('*', (req, res, next) => {
 
 routeIdeaGet(app);
 routeIdeaPost(app);
+routeRelationPost(app);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {

@@ -7,7 +7,9 @@ export function IdeaWellItem({
   onClickEdit,
   onClickTrash,
   onSelected,
-  selected
+  selected,
+  relationLabel,
+  relationLabelRef,
 }) {
   const [idea, setIdea] = useState();
   const classNames = ['idea-well-item'];
@@ -25,6 +27,7 @@ export function IdeaWellItem({
         <li
           className={classNames.join(' ')}
           data-icid={icid}
+          key={icid}
           onDoubleClick={onSelected}
           ref={provided.innerRef}
           {...provided.draggableProps}
@@ -48,6 +51,9 @@ export function IdeaWellItem({
             </>
           ) : ''}
           <pre>{idea}</pre>
+          {relationLabel ? (
+            <div ref={relationLabelRef} className="idea-well-item-relation-label">{relationLabel}</div>
+          ) : ''}
         </li>
       )}
     </Draggable>
