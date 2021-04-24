@@ -22,7 +22,7 @@ export function Relation({ relation }) {
   function pickComponent() {
     switch (relation.Relation) {
       case 'Analogy': return <Analogy {...operands} />;
-      case 'And': return <And {...operands} />;
+      case 'And': return <And {...operands} layout="side-by-side" />;
       case 'Identity': return <Identity {...operands} />;
       case 'Implies': return <Implies {...operands} />;
       case 'Improves': return <Improves {...operands} />;
