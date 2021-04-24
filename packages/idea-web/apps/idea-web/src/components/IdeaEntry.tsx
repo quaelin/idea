@@ -39,7 +39,9 @@ export function IdeaEntry({ initialText, onIdeaAdded }) {
   return (
     <div className="idea-entry">
       <textarea ref={textAreaRef} value={textAreaValue} onChange={handleTextChange} />
-      <button onClick={handleButtonClick}>Save</button>
+      <div className="idea-entry-buttons">
+        <button onClick={handleButtonClick}>Save</button>
+      </div>
     </div>
   );
 };

@@ -62,6 +62,7 @@
     "react": "17.0.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.1",
+    "react-media-hook": "^0.4.9",
     "react-xarrows": "^1.6.1",
     "tslib": "^2.0.0"
   },

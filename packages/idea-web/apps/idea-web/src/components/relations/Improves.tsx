@@ -1,9 +1,10 @@
 import React from 'react';
+import { CID } from './CID';
 
 export function Improves({ A, B }) {
   return (
     <div className="relation relation-improves">
-      {A} <strong>IS BETTER THAN</strong> {B}
+      <CID cid={A} /> <strong>IS BETTER THAN</strong> <CID cid={B} />
     </div>
   );
 };

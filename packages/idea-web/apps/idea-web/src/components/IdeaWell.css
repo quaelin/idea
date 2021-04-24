@@ -11,24 +11,35 @@
 
 .idea-well .idea-well-key {
   color: #999;
-  font-size: 0.9em;
+  font-family: monospace;
+  font-size: 1.6em;
+  font-style: italic;
   text-align: center;
   margin-bottom: 1em;
   width: 100%;
 }
 
+.idea-well .idea-entry {
+  display: flex;
+  flex-direction: column;
+}
 .idea-well .idea-entry textarea {
   background-color: #ffc;
   color: #422;
   font-size: 1.5em;
+  flex-grow: 1;
   padding: 0.5em;
   width: 95%;
+}
+.idea-well .idea-entry-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1.5em;
 }
 
 .idea-well ol {
   padding-inline-start: 1em;
   padding-inline-end: 1em;
-  margin-right: 100px;
   margin-top: 1.6em;
 }
 
@@ -44,11 +55,15 @@
   flex-grow: 2;
 }
 
+.idea-well .idea-well-relation-buffer {
+  margin-right: 80px;
+}
+
 .idea-well .idea-well-item {
   background-color: #ffc;
   border: 1px solid #cc6;
   margin: 0.5em 0.5em 1.3em 0.5em;
-  padding: 1em 0.5em 0.5em 0.5em;
+  padding: 1em 1em 0.5em 0.5em;
   position: relative;
 }
 .idea-well .idea-well-item-border {
@@ -157,24 +172,29 @@
   width: 1em;
 }
 
+.idea-well .idea-well-item-relation-label-wrapper {
+  font-size: 0.8em;
+  padding-right: 0.3em;
+  position: absolute;
+  right: -1em;
+  top: 1em;
+  vertical-align: middle;
+}
 .idea-well .idea-well-item-relation-label {
   background-color: #08f;
   border: 1px solid #115;
   border-radius: 1em;
   color: #fff;
-  font-size: 0.8em;
+  cursor: crosshair;
   font-weight: bold;
   height: 1.2em;
-  position: absolute;
-  right: -1em;
   text-align: center;
-  top: 1.3em;
-  vertical-align: middle;
   width: 1.2em;
 }
 
 .idea-well .idea-well-relation-selector ul {
   margin-block-start: 0px;
+  padding-inline-start: 5px;
 }
 .idea-well .idea-well-relation-selector li {
   padding: 0.1em 0.3em;
@@ -183,4 +203,12 @@
   color: #555;
   font-size: 0.9em;
   font-weight: bold;
+}
+
+.idea-well .relation-cid {
+  background-color: #cfc;
+  border: 1px solid #5c5;
+  color: #555;
+  font-family: sans-serif;
+  font-size: 0.8em;
 }

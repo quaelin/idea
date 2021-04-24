@@ -13,7 +13,7 @@ import { relationArity } from '../relationArity';
 export function Relation({ relation }) {
   const arity = relationArity[relation.Relation];
   const operands = { A: relation.A };
-  if (arity === 2) operands.B = relation.B;
+  if (arity >= 2) operands.B = relation.B;
   if (arity === 4) {
     operands.C = relation.C;
     operands.D = relation.D;

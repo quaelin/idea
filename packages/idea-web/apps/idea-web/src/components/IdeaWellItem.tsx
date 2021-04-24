@@ -68,7 +68,9 @@ export function IdeaWellItem({
             <em>Loading...</em>
           )}
           {relationLabel ? (
-            <div ref={relationLabelRef} className="idea-well-item-relation-label">{relationLabel}</div>
+            <div ref={relationLabelRef} className="idea-well-item-relation-label-wrapper">
+              <div className="idea-well-item-relation-label">{relationLabel}</div>
+            </div>
           ) : ''}
         </li>
       )}

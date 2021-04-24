@@ -23,7 +23,8 @@ function reorder(list, startIndex, endIndex) {
 }
 
 export function IdeaWell({ namespace, sharedTrashKey }) {
-  const key = `iw:${namespace || 'default'}:items`;
+  const name = namespace || 'default';
+  const key = `iw:${name}:items`;
   const trashKey = sharedTrashKey || `${key}:trash`;
 
   const [initialEntryText, setInitialEntryText] = useState('');
@@ -182,11 +183,12 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
   }
 
   const operands = editRelation && ['A', 'B', 'C', 'D'].slice(0, relationArity[editRelation.R])
+  const rightBuffer = editRelation ? 'idea-well-relation-buffer' : '';
 
   return (
     <div className="idea-well">
       <div className="idea-well-head">
-        <div className="idea-well-key">{key}</div>
+        <div className="idea-well-key">{name}</div>
         {editRelation ? (
           <RelationEntry relation={editRelation} onRelationAdded={onRelationAdded} />
         ) : (
@@ -197,7 +199,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="idea-well-droppable">
             {(provided, snapshot) => (
-              <ol className="idea-well-droppable" {...provided.droppableProps} ref={provided.innerRef}>
+              <ol className={`idea-well-droppable ${rightBuffer}`} {...provided.droppableProps} ref={provided.innerRef}>
                 {ideas.map((icid, index) => {
                   const relationLabelProps = {};
                   if (editRelation && index < relationArity[editRelation.R]) {
@@ -237,7 +239,14 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
           </ul>
         </div>
         {editRelation ? (operands.map((operand) => (
-          <Xarrow start={refs[editRelation.R]} end={refs[operand]} curveness={0.5} />
+          <Xarrow
+            start={refs[editRelation.R]}
+            end={refs[operand]}
+            curveness={0.5}
+            strokeWidth={3}
+            headSize={4}
+            path="grid"
+          />
         ))) : ''}
       </div>
     </div>
