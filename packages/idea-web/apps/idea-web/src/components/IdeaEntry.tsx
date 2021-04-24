@@ -42,4 +42,4 @@ export function IdeaEntry({ initialText, onIdeaAdded }) {
       <button onClick={handleButtonClick}>Save</button>
     </div>
   );
-}
+};

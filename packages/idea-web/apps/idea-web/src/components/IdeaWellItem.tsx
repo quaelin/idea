@@ -1,5 +1,7 @@
+import { startsWith } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
+import { Relation } from './Relation';
 
 export function IdeaWellItem({
   icid,
@@ -17,10 +19,16 @@ export function IdeaWellItem({
 
   useEffect(() => {
     fetch(`/api/idea/${icid}`)
-      .then(response => response.text())
+      .then(response => {
+        if (startsWith(response.headers.get('Content-Type'), 'application/json')) {
+          return response.json();
+        }
+        return response.text();
+      })
       .then(setIdea);
   }, []);
 
+  console.log(idea);
   return (
     <Draggable key={icid} draggableId={icid} index={index}>
       {(provided) => (
@@ -50,7 +58,15 @@ export function IdeaWellItem({
               </div>
             </>
           ) : ''}
-          <pre>{idea}</pre>
+          {idea ? (
+            typeof idea === 'string' ? (
+              <pre>{idea}</pre>
+            ) : (
+              <Relation relation={idea} />
+            )
+          ) : (
+            <em>Loading...</em>
+          )}
           {relationLabel ? (
             <div ref={relationLabelRef} className="idea-well-item-relation-label">{relationLabel}</div>
           ) : ''}
@@ -58,4 +74,4 @@ export function IdeaWellItem({
       )}
     </Draggable>
   );
-}
+};

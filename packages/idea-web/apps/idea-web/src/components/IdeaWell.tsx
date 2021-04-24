@@ -4,20 +4,10 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Xarrow from "react-xarrows";
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
+import { RelationEntry } from './RelationEntry';
+import { relationArity } from '../relationArity';
 
 import './IdeaWell.css';
-
-const relationArity = {
-  Analogy: 4,
-  And: 2,
-  Identity: 2,
-  Implies: 2,
-  Improves: 2,
-  IsA: 2,
-  Negation: 1,
-  Or: 2,
-  XOr: 2,
-};
 
 function clearHTMLSelection() {
   if (window.getSelection) window.getSelection().removeAllRanges();
@@ -108,6 +98,11 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     moveToTop(icid);
   }
 
+  function onRelationAdded(rcid) {
+    moveToTop(rcid);
+    setEditRelation(null);
+  }
+
   function handleItemSelected(icid) {
     setSelected([icid]);
     moveToTop(icid);
@@ -192,7 +187,11 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     <div className="idea-well">
       <div className="idea-well-head">
         <div className="idea-well-key">{key}</div>
-        <IdeaEntry initialText={initialEntryText} onIdeaAdded={onIdeaAdded}/>
+        {editRelation ? (
+          <RelationEntry relation={editRelation} onRelationAdded={onRelationAdded} />
+        ) : (
+          <IdeaEntry initialText={initialEntryText} onIdeaAdded={onIdeaAdded} />
+        )}
       </div>
       <div className="idea-well-body">
         <DragDropContext onDragEnd={onDragEnd}>

@@ -20,7 +20,7 @@ const types = keys(relationArity);
 const relationArgs = ['A', 'B', 'C', 'D'];
 
 function getExpectedKeys(type) {
-  switch (relationArity(type)) {
+  switch (relationArity[type]) {
     case 1: return ['A', 'R'];
     case 2: return ['A', 'B', 'R'];
     default: return ['A', 'B', 'C', 'D', 'R'];
