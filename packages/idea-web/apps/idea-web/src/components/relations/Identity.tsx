@@ -1,7 +1,7 @@
 import React from 'react';
+import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
-import { CID } from './CID';
 
 export function Identity({ A, B, layout, onSelected }) {
   function select(cid) {
@@ -19,7 +19,7 @@ export function Identity({ A, B, layout, onSelected }) {
       ) : ''}
       {!layout || layout === 'cids' ? (
         <>
-          <CID cid={A} /> <strong>IS THE SAME AS</strong> <CID cid={B} />
+          <CIDOrPhrase cid={A} /> <strong>IS THE SAME AS</strong> <CIDOrPhrase cid={B} />
         </>
       ) : ''}
     </div>

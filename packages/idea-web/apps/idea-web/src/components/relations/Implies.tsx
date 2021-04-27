@@ -1,21 +1,25 @@
 import React from 'react';
+import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
-import { CID } from './CID';
 
-export function Implies({ A, B, layout }) {
+export function Implies({ A, B, layout, onSelected }) {
+  function select(cid) {
+    if (onSelected) return onSelected(cid);
+  }
+
   return (
     <div className="relation relation-implies">
       {layout === 'side-by-side' ? (
         <SideBySide>
-          <SideBySideOperand cid={A} position="left" />
+          <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
           <strong>=</strong>
-          <SideBySideOperand cid={B} position="right" />
+          <SideBySideOperand cid={B} position="right" onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
       {!layout || layout === 'cids' ? (
         <>
-          <strong>IF</strong> <CID cid={A} /> <strong>THEN</strong> <CID cid={B} />
+          <strong>IF</strong> <CIDOrPhrase cid={A} /> <strong>THEN</strong> <CIDOrPhrase cid={B} />
         </>
       ) : ''}
     </div>
