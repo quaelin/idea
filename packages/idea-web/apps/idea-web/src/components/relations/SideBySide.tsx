@@ -5,13 +5,13 @@ export function SideBySide({ children }) {
 
   return (
     <>
-      <div className="relation-left-operand">
+      <div className="relation-side-by-side-operand relation-left-operand">
         {left}
       </div>
       <div className="relation-operator">
         {center}
       </div>
-      <div className="relation-right-operand">
+      <div className="relation-side-by-side-operand relation-right-operand">
         {right}
       </div>
     </>

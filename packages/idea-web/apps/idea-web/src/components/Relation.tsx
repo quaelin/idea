@@ -10,9 +10,9 @@ import { Or } from './relations/Or';
 import { XOr } from './relations/XOr';
 import { relationArity } from '../relationArity';
 
-export function Relation({ relation }) {
+export function Relation({ relation, onSelected }) {
   const arity = relationArity[relation.Relation];
-  const operands = { A: relation.A };
+  const operands = { A: relation.A, onSelected };
   if (arity >= 2) operands.B = relation.B;
   if (arity === 4) {
     operands.C = relation.C;

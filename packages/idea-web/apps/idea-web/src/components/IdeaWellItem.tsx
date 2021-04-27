@@ -2,6 +2,7 @@ import { startsWith } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { Relation } from './Relation';
+import { fetchIdea } from '../fetcher';
 
 export function IdeaWellItem({
   icid,
@@ -18,14 +19,7 @@ export function IdeaWellItem({
   if (selected) classNames.push('selected');
 
   useEffect(() => {
-    fetch(`/api/idea/${icid}`)
-      .then(response => {
-        if (startsWith(response.headers.get('Content-Type'), 'application/json')) {
-          return response.json();
-        }
-        return response.text();
-      })
-      .then(setIdea);
+    fetchIdea(icid).then(setIdea);
   }, []);
 
   console.log(idea);
@@ -36,7 +30,7 @@ export function IdeaWellItem({
           className={classNames.join(' ')}
           data-icid={icid}
           key={icid}
-          onDoubleClick={onSelected}
+          onDoubleClick={() => onSelected(icid)}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
@@ -62,7 +56,7 @@ export function IdeaWellItem({
             typeof idea === 'string' ? (
               <pre>{idea}</pre>
             ) : (
-              <Relation relation={idea} />
+              <Relation relation={idea} onSelected={onSelected} />
             )
           ) : (
             <em>Loading...</em>

@@ -207,21 +207,23 @@
 
 .idea-well .relation {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
-.idea-well .relation-side-by-side .relation-left-operand {
+.idea-well .relation-side-by-side .relation-side-by-side-operand {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  font-size: 0.85em;
+  justify-content: center;
   padding: 0.5em;
-  text-align: right;
+  text-align: center;
 }
 .idea-well .relation-side-by-side .relation-operator {
+  display: flex;
+  flex-direction: column;
   flex-grow: 0;
+  justify-content: center;
   padding: 0.5em;
-}
-.idea-well .relation-side-by-side .relation-right-operand {
-  flex-grow: 1;
-  padding: 0.5em;
-  text-align: left;
 }
 
 .idea-well .relation-cid {
@@ -230,4 +232,29 @@
   color: #555;
   font-family: sans-serif;
   font-size: 0.8em;
+}
+
+.idea-well .relation pre.idea-well-json {
+  background-color: #000;
+  color: green;
+  font-size: 1em;
+}
+
+.idea-well .relation-side-by-side-operand .relation {
+  display: flex;
+  align-items: center;
+}
+.idea-well .relation-side-by-side-operand .relation:before {
+  content: '{';
+  color: #f88;
+  font-size: 5em;
+  text-align: right;
+  padding-right: 10px;
+}
+.idea-well .relation-side-by-side-operand .relation:after {
+  content: '}';
+  color: #f88;
+  font-size: 5em;
+  text-align: left;
+  padding-left: 10px;
 }

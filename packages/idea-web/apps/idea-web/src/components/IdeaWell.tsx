@@ -214,7 +214,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
                       namespace={namespace}
                       onClickEdit={() => populateEditor(icid)}
                       onClickTrash={() => trashIdea(icid)}
-                      onSelected={() => handleItemSelected(icid)}
+                      onSelected={(selectedCid) => handleItemSelected(selectedCid || icid)}
                       selected={includes(selected, icid)}
                       {...relationLabelProps}
                     />
