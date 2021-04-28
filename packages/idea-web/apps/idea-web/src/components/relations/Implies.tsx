@@ -13,7 +13,7 @@ export function Implies({ A, B, layout, onSelected }) {
       {layout === 'side-by-side' ? (
         <SideBySide>
           <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
-          <strong>=</strong>
+          <strong>IMPLIES</strong>
           <SideBySideOperand cid={B} position="right" onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
