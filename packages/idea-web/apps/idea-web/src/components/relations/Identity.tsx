@@ -9,7 +9,7 @@ export function Identity({ A, B, layout, onSelected }) {
   }
 
   return (
-    <div className="relation relation-identity">
+    <div className={`relation relation-identity relation-${layout}`}>
       {layout === 'side-by-side' ? (
         <SideBySide>
           <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />

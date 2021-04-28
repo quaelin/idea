@@ -22,7 +22,7 @@ export function CIDOrPhrase({ cid }) {
 
   return (
     phrase ? (
-      <div className="relation-cid-phrase">{phrase}</div>
+      <span className="relation-cid-phrase">{phrase}</span>
     ) : (
       <CID cid={cid} />
     )

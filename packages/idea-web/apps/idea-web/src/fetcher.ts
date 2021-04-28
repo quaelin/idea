@@ -5,7 +5,7 @@ const cacheKey = cid => `idea-dag:${cid}`;
 const isJson = ({ headers }) => startsWith(headers.get('Content-Type'), 'application/json');
 const { need, provide } = particl();
 
-export async function fetchIdea(icid) {
+export function fetchIdea(icid) {
   provide(icid, async () => {
     const key = cacheKey(icid);
 

@@ -9,7 +9,7 @@ export function Implies({ A, B, layout, onSelected }) {
   }
 
   return (
-    <div className="relation relation-implies">
+    <div className={`relation relation-implies relation-${layout}`}>
       {layout === 'side-by-side' ? (
         <SideBySide>
           <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
