@@ -52,15 +52,17 @@ export function IdeaWellItem({
               </div>
             </>
           ) : ''}
-          {idea ? (
-            typeof idea === 'string' ? (
-              <pre>{idea}</pre>
+          <div className="idea-well-item-body">
+            {idea ? (
+              typeof idea === 'string' ? (
+                <pre>{idea}</pre>
+              ) : (
+                <Relation relation={idea} onSelected={onSelected} />
+              )
             ) : (
-              <Relation relation={idea} onSelected={onSelected} />
-            )
-          ) : (
-            <em>Loading...</em>
-          )}
+              <em>Loading...</em>
+            )}
+          </div>
           {relationLabel ? (
             <div ref={relationLabelRef} className="idea-well-item-relation-label-wrapper">
               <div className="idea-well-item-relation-label">{relationLabel}</div>

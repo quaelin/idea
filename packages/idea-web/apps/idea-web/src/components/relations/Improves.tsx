@@ -12,9 +12,9 @@ export function Improves({ A, B, layout, onSelected }) {
     <div className={`relation relation-improves relation-${layout}`}>
       {layout === 'side-by-side' ? (
         <SideBySide>
-          <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
-          <strong>=</strong>
-          <SideBySideOperand cid={B} position="right" onClick={() => select(B)} />
+          <SideBySideOperand cid={A} onClick={() => select(A)} />
+          <strong>IS BETTER THAN</strong>
+          <SideBySideOperand cid={B} onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
       {!layout || layout === 'cids' ? (

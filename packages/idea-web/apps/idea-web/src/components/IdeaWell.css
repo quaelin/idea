@@ -139,6 +139,10 @@
   left: 54px;
 }
 
+.idea-well .idea-well-item .idea-well-item-body {
+  overflow: hidden;
+}
+
 .idea-well .idea-well-item pre {
   background-color: transparent;
   color: #544;
@@ -224,6 +228,7 @@
   flex-grow: 0;
   justify-content: center;
   padding: 0.5em;
+  text-align: center;
 }
 
 .idea-well .relation-cid {
@@ -263,4 +268,37 @@
   border: 1px dotted #484;
   margin: 0em 0.3em;
   padding: 0.1em 0.2em;
+}
+
+.idea-well .relation-negation {
+  position: relative;
+}
+.idea-well .relation.relation-negation::before,
+.idea-well .relation.relation-negation::after {
+  border-bottom: 3px solid #f88;
+  content: '';
+  opacity: 0.9;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 100%;
+  z-index: 1;
+}
+.idea-well .relation-negation::before {
+  transform: skewY(-15deg);
+}
+.idea-well .relation-negation::after {
+  transform: skewY(15deg);
+}
+
+.idea-well .relation-negation-not {
+  color: #600;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 2em;
+  left: 0em;
+  position: absolute;
+  top: -0.1em;
+  transform: rotate(-35deg);
+  z-index: 2;
 }

@@ -12,7 +12,7 @@ import { CID } from './CID';
 
 import { fetchIdea } from '../../fetcher';
 
-export function SideBySideOperand({ cid, position, onClick }) {
+export function SideBySideOperand({ cid, onClick }) {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function SideBySideOperand({ cid, position, onClick }) {
       case 'Implies': return <Implies A={A} B={B} />;
       case 'Improves': return <Improves A={A} B={B} />;
       case 'IsA': return <IsA A={A} B={B} />;
-      case 'Negation': return <Negation A={A} />;
+      case 'Negation': return <Negation A={A} layout="side-by-side" />;
       case 'Or': return <Or A={A} B={B} />;
       case 'XOr': return <XOr A={A} B={B} />;
       default: return (

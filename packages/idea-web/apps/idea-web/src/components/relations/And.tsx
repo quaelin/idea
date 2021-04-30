@@ -12,9 +12,9 @@ export function And({ A, B, layout, onSelected }) {
     <div className={`relation relation-and relation-${layout}`}>
       {layout === 'side-by-side' ? (
         <SideBySide>
-          <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
+          <SideBySideOperand cid={A} onClick={() => select(A)} />
           <strong>AND</strong>
-          <SideBySideOperand cid={B} position="right" onClick={() => select(B)} />
+          <SideBySideOperand cid={B} onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
       {!layout || layout === 'cids' ? (

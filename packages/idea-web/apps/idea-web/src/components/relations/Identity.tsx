@@ -12,14 +12,14 @@ export function Identity({ A, B, layout, onSelected }) {
     <div className={`relation relation-identity relation-${layout}`}>
       {layout === 'side-by-side' ? (
         <SideBySide>
-          <SideBySideOperand cid={A} position="left" onClick={() => select(A)} />
-          <strong>=</strong>
-          <SideBySideOperand cid={B} position="right" onClick={() => select(B)} />
+          <SideBySideOperand cid={A} onClick={() => select(A)} />
+          <strong>IS THE SAME AS</strong>
+          <SideBySideOperand cid={B} onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
       {!layout || layout === 'cids' ? (
         <>
-          <CIDOrPhrase cid={A} /> <strong>IS THE SAME AS</strong> <CIDOrPhrase cid={B} />
+          <CIDOrPhrase cid={A} /> <strong>=</strong> <CIDOrPhrase cid={B} />
         </>
       ) : ''}
     </div>
