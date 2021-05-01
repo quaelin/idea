@@ -4,6 +4,8 @@ import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
 export function Improves({ A, B, layout, onSelected }) {
+  layout = layout || 'sentence';
+
   function select(cid) {
     if (onSelected) return onSelected(cid);
   }
@@ -17,7 +19,7 @@ export function Improves({ A, B, layout, onSelected }) {
           <SideBySideOperand cid={B} onClick={() => select(B)} />
         </SideBySide>
       ) : ''}
-      {!layout || layout === 'cids' ? (
+      {layout === 'sentence' ? (
         <>
           <CIDOrPhrase cid={A} /> <strong>IS BETTER THAN</strong> <CIDOrPhrase cid={B} />
         </>

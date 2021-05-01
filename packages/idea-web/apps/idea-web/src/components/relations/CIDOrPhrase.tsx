@@ -3,7 +3,7 @@ import { CID } from './CID';
 import { fetchIdea } from '../../fetcher';
 
 function isShortEnoughPhrase(phrase) {
-  return phrase.length < 120 && phrase.split(' ').length < 10;
+  return phrase.length < 140 && phrase.split(' ').length < 20;
 }
 
 export function CIDOrPhrase({ cid }) {

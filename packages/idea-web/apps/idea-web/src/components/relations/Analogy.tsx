@@ -1,11 +1,19 @@
 import React from 'react';
-import { CID } from './CID';
+import { CIDOrPhrase } from './CIDOrPhrase';
 
-export function Analogy({ A, B, C, D }) {
+export function Analogy({ A, B, C, D, layout }) {
+  layout = layout || 'sentence';
+
   return (
-    <div className="relation relation-analogy">
-      <strong>Analogy:</strong> <CID cid={A} /> <strong>is to</strong> <CID cid={B} />
-      <strong>as</strong> <CID cid={C} /> <strong>is to</strong> <CID cid={D} />
+    <div className={`relation relation-analogy relation-${layout}`}>
+      {layout === 'sentence' ? (
+        <>
+          <strong>Analogy:</strong>
+          <CIDOrPhrase cid={A} /> <strong>IS TO</strong> <CIDOrPhrase cid={B} />
+          <strong>AS</strong>
+          <CIDOrPhrase cid={C} /> <strong>IS TO</strong> <CIDOrPhrase cid={D} />
+        </>
+      ) : ''}
     </div>
   );
 };

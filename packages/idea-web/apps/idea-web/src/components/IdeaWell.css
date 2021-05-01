@@ -302,3 +302,7 @@
   transform: rotate(-35deg);
   z-index: 2;
 }
+
+.idea-well .relation.relation-sentence > * {
+  padding: 0.5em;
+}

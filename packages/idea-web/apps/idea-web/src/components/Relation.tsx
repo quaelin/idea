@@ -27,7 +27,7 @@ export function Relation({ relation, onSelected }) {
       case 'Implies': return <Implies {...operands} layout="side-by-side" />;
       case 'Improves': return <Improves {...operands} layout="side-by-side" />;
       case 'IsA': return <IsA {...operands} layout="side-by-side" />;
-      case 'Negation': return <Negation {...operands} />;
+      case 'Negation': return <Negation {...operands} layout="side-by-side" />;
       case 'Or': return <Or {...operands} layout="side-by-side" />;
       case 'XOr': return <XOr {...operands} layout="side-by-side" />;
       default: return (
