@@ -186,15 +186,15 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
   const rightBuffer = editRelation ? 'idea-well-relation-buffer' : '';
 
   return (
-    <div className="idea-well">
-      <div className="idea-well-head">
-        <div className="idea-well-key">{name}</div>
+    <section className="idea-well">
+      <header className="idea-well-head">
+        <nav className="idea-well-key">{name}</nav>
         {editRelation ? (
           <RelationEntry relation={editRelation} onRelationAdded={onRelationAdded} />
         ) : (
           <IdeaEntry initialText={initialEntryText} onIdeaAdded={onIdeaAdded} />
         )}
-      </div>
+      </header>
       <div className="idea-well-body">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="idea-well-droppable">
@@ -225,7 +225,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
             )}
           </Droppable>
         </DragDropContext>
-        <div className="idea-well-relation-selector">
+        <aside className="idea-well-relation-selector">
           <ul>
             <li key="Negation" ref={refs.Negation}><a href="#" onClick={onClickNegation}>Negation</a></li>
             <li key="And" ref={refs.And}><a href="#" onClick={onClickAnd}>And</a></li>
@@ -237,7 +237,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
             <li key="XOr" ref={refs.XOr}><a href="#" onClick={onClickXOr}>XOr</a></li>
             <li key="Analogy" ref={refs.Analogy}><a href="#" onClick={onClickAnalogy}>Analogy</a></li>
           </ul>
-        </div>
+        </aside>
         {editRelation ? (operands.map((operand) => (
           <Xarrow
             start={refs[editRelation.R]}
@@ -249,6 +249,6 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
           />
         ))) : ''}
       </div>
-    </div>
+    </section>
   );
 }

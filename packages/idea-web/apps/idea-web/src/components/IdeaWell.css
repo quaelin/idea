@@ -5,6 +5,11 @@
   position: relative;
 }
 
+.idea-well header,
+.idea-well header.idea-well-head {
+  background-color: transparent;
+}
+
 .idea-well a {
   text-decoration: none;
 }

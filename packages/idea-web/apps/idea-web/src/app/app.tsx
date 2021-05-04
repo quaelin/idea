@@ -11,7 +11,7 @@ export function App() {
    */
   return (
     <div className="app">
-      <header className="flex">
+      <header className="app-header flex">
         <h1>💡</h1>
       </header>
       <main>

@@ -17,7 +17,7 @@
   justify-content: center;
 }
 
-.app header {
+.app .app-header {
   background-color: #f8f8f8;
   color: white;
   padding: 5px;
