@@ -9,6 +9,8 @@ import { relationArity } from '../relationArity';
 
 import './IdeaWell.css';
 
+const relationTypesOrder = ['Negation', 'And', 'Identity', 'Implies', 'Improves', 'IsA', 'Or', 'XOr', 'Analogy'];
+
 function clearHTMLSelection() {
   if (window.getSelection) window.getSelection().removeAllRanges();
   else if (document.selection) document.selection.empty();
@@ -128,59 +130,61 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
     saveIdeas(reorder(ideas, source.index, destination.index));
   }
 
-  function onClickAnalogy() {
-    if (ideas.length < 4) return;
-    const [A, B, C, D] = ideas;
-    setEditRelation({ R: 'Analogy', A, B, C, D });
-  }
+  const onClick = {
+    Analogy: () => {
+      if (ideas.length < 4) return;
+      const [A, B, C, D] = ideas;
+      setEditRelation({ R: 'Analogy', A, B, C, D });
+    },
 
-  function onClickAnd() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'And', A, B });
-  }
+    And: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'And', A, B });
+    },
 
-  function onClickIdentity() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'Identity', A, B });
-  }
+    Identity: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'Identity', A, B });
+    },
 
-  function onClickImplies() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'Implies', A, B });
-  }
+    Implies: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'Implies', A, B });
+    },
 
-  function onClickImproves() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'Improves', A, B });
-  }
+    Improves: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'Improves', A, B });
+    },
 
-  function onClickIsA() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'IsA', A, B });
-  }
+    IsA: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'IsA', A, B });
+    },
 
-  function onClickNegation() {
-    if (!ideas.length) return;
-    const [A] = ideas;
-    setEditRelation({ R: 'Negation', A });
-  }
+    Negation: () => {
+      if (!ideas.length) return;
+      const [A] = ideas;
+      setEditRelation({ R: 'Negation', A });
+    },
 
-  function onClickOr() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'Or', A, B });
-  }
+    Or: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'Or', A, B });
+    },
 
-  function onClickXOr() {
-    if (ideas.length < 2) return;
-    const [A, B] = ideas;
-    setEditRelation({ R: 'XOr', A, B });
-  }
+    XOr: () => {
+      if (ideas.length < 2) return;
+      const [A, B] = ideas;
+      setEditRelation({ R: 'XOr', A, B });
+    },
+  };
 
   const operands = editRelation && ['A', 'B', 'C', 'D'].slice(0, relationArity[editRelation.R])
   const rightBuffer = editRelation ? 'idea-well-relation-buffer' : '';
@@ -225,17 +229,16 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
             )}
           </Droppable>
         </DragDropContext>
-        <aside className="idea-well-relation-selector">
+        <aside className="relation-selector">
           <ul>
-            <li key="Negation" ref={refs.Negation}><a href="#" onClick={onClickNegation}>Negation</a></li>
-            <li key="And" ref={refs.And}><a href="#" onClick={onClickAnd}>And</a></li>
-            <li key="Identity" ref={refs.Identity}><a href="#" onClick={onClickIdentity}>Identity</a></li>
-            <li key="Implies" ref={refs.Implies}><a href="#" onClick={onClickImplies}>Implies</a></li>
-            <li key="Improves" ref={refs.Improves}><a href="#" onClick={onClickImproves}>Improves</a></li>
-            <li key="IsA" ref={refs.IsA}><a href="#" onClick={onClickIsA}>IsA</a></li>
-            <li key="Or" ref={refs.Or}><a href="#" onClick={onClickOr}>Or</a></li>
-            <li key="XOr" ref={refs.XOr}><a href="#" onClick={onClickXOr}>XOr</a></li>
-            <li key="Analogy" ref={refs.Analogy}><a href="#" onClick={onClickAnalogy}>Analogy</a></li>
+            {relationTypesOrder.map((type) => (
+              <li
+                key={type}
+                ref={refs[type]}
+                className={editRelation?.R === type ? 'selected' : ''}>
+                <a href="#" onClick={onClick[type]}>{type}</a>
+              </li>
+            ))}
           </ul>
         </aside>
         {editRelation ? (operands.map((operand) => (
@@ -245,7 +248,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
             curveness={0.5}
             strokeWidth={3}
             headSize={4}
-            path="grid"
+            path="straight"
           />
         ))) : ''}
       </div>

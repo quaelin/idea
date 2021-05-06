@@ -10,6 +10,10 @@
   background-color: transparent;
 }
 
+.idea-well .idea-well-head button {
+  width: 10em;
+}
+
 .idea-well a {
   text-decoration: none;
 }
@@ -34,9 +38,18 @@
   font-size: 1.5em;
   flex-grow: 1;
   padding: 0.5em;
-  width: 95%;
 }
 .idea-well .idea-entry-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1.5em;
+}
+
+.idea-well .relation-entry {
+  display: flex;
+  flex-direction: column;
+}
+.idea-well .relation-entry-buttons {
   display: flex;
   justify-content: center;
   padding: 0.5em 1.5em;
@@ -45,15 +58,20 @@
 .idea-well ol {
   padding-inline-start: 1em;
   padding-inline-end: 1em;
-  margin-top: 1.6em;
+  margin-top: 0;
 }
 
 .idea-well li {
   list-style: none;
 }
 
+.idea-well aside {
+  flex-grow: 1;
+}
+
 .idea-well .idea-well-body {
   display: flex;
+  margin-top: 0.8em;
 }
 
 .idea-well .idea-well-droppable {
@@ -61,7 +79,8 @@
 }
 
 .idea-well .idea-well-relation-buffer {
-  margin-right: 80px;
+  margin-right: 40px;
+  width: 80%;
 }
 
 .idea-well .idea-well-item {
@@ -81,6 +100,10 @@
   right: -10px;
   top: -10px;
   z-index: 0;
+}
+
+.idea-well .idea-well-item article {
+  overflow: scroll;
 }
 
 .idea-well .idea-well-item .idea-well-item-grip {
@@ -201,17 +224,28 @@
   width: 1.2em;
 }
 
-.idea-well .idea-well-relation-selector ul {
+.idea-well .relation-selector ul {
   margin-block-start: 0px;
   padding-inline-start: 5px;
 }
-.idea-well .idea-well-relation-selector li {
-  padding: 0.1em 0.3em;
+.idea-well .relation-selector li {
+  padding: 0.05em 0.1em;
+  text-align: center;
 }
-.idea-well .idea-well-relation-selector a {
-  color: #555;
-  font-size: 0.9em;
+.idea-well .relation-selector a {
+  color: #666;
+  font-size: 0.8em;
   font-weight: bold;
+}
+.idea-well .relation-selector a:hover {
+  background-color: #8bf;
+}
+.idea-well .relation-selector .selected {
+  background-color: #08f;
+}
+.idea-well .relation-selector a:hover,
+.idea-well .relation-selector .selected a {
+  color: #fff;
 }
 
 .idea-well .relation {

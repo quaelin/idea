@@ -18,7 +18,9 @@ export function RelationEntry({ relation, onRelationAdded }) {
   return (
     <div className="relation-entry">
       <pre>{JSON.stringify(relation, null, 3)}</pre>
-      <button onClick={handleButtonClick}>Save</button>
+      <div className="relation-entry-buttons">
+        <button onClick={handleButtonClick}>Save</button>
+      </div>
     </div>
   );
 };
