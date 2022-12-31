@@ -10,7 +10,7 @@ jobs:
       IDEA_IPFS_HTTP: /ip4/127.0.0.1/tcp/5002/http
     strategy:
       matrix:
-        node-version: [15.x, 16.x, 17.x, 19.x]
+        node-version: [16.x, 17.x, 19.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [15.x, 16.x, 17.x, 18.x]
+        node-version: [16.x, 17.x, 18.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [15.x, 16.x, 17.x, 18.x]
+        node-version: [16.x, 17.x, 18.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
