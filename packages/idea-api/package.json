@@ -28,7 +28,7 @@
     "directory": "packages/idea-api"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "pretest": "eslint .",

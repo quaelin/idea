@@ -33,7 +33,7 @@
     "directory": "packages/idea-cli"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "test": "eslint ."
