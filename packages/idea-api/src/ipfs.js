@@ -1,7 +1,8 @@
-import { create as createClient } from 'ipfs-client';
+// eslint-disable-next-line import/no-unresolved
+import { create } from 'ipfs-client';
 
 export function ipfsInit(ipfsConfig) {
-  const ipfs = createClient(ipfsConfig);
+  const ipfs = create(ipfsConfig);
 
   async function addContent(content) {
     const { cid } = await ipfs.add(content);
