@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-api",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "description": "JavaScript API for interacting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
@@ -16,10 +16,7 @@
     "perspective",
     "relation"
   ],
-  "files": [
-    "index.js",
-    "src/**/*.js"
-  ],
+  "exports": "index.js",
   "bugs": {
     "url": "https://github.com/quaelin/idea/issues"
   },
