@@ -1,6 +1,8 @@
-const { expectTypeError, ipfsTestConfig } = require('../../helpers');
-const idea = require('../../..').initApi({ ipfsConfig: ipfsTestConfig });
-const { assertCid: expectCid } = require('../../../src/assert');
+import { expectTypeError, ipfsTestConfig } from '../../helpers';
+import { assertCid as expectCid } from '../../../src/assert';
+import { initApi } from '../../..';
+
+const idea = initApi({ ipfsConfig: ipfsTestConfig });
 
 const simpleText = 'foo';
 const variousSpecialChars = '"<>\'&\n. `${}';

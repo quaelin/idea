@@ -1,11 +1,9 @@
-const CID = require('cids');
+import CID from 'cids';
 
-function isCID(val) {
+export function isCID(val) {
   try {
     return CID.isCID(new CID(val));
   } catch (ex) {
     return false;
   }
 }
-
-module.exports = isCID;

@@ -1,7 +1,5 @@
-const { isFinite } = require('lodash');
+import isFinite from 'lodash/isFinite';
 
-function isValuation(val) {
+export function isValuation(val) {
   return isFinite(val) && val >= -1 && val <= 1;
 }
-
-module.exports = isValuation;

@@ -1,6 +1,6 @@
-const isCID = require('./isCID');
+import { isCID } from './isCID';
 
-function assertCid(value) {
+export function assertCid(value) {
   function throwError() {
     throw new TypeError(`Not a valid cid: ${value}`);
   }
@@ -11,11 +11,9 @@ function assertCid(value) {
   }
 }
 
-function assertString(val) {
+export function assertString(val) {
   const type = typeof val;
   if (type !== 'string') {
     throw new TypeError(`Expected string, got type: ${type}`);
   }
 }
-
-module.exports = { assertCid, assertString };

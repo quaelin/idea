@@ -1,6 +1,6 @@
-const { create: createClient } = require('ipfs-client');
+import { create as createClient } from 'ipfs-client';
 
-module.exports = (ipfsConfig) => {
+export function ipfsInit(ipfsConfig) {
   const ipfs = createClient(ipfsConfig);
 
   async function addContent(content) {
@@ -21,4 +21,4 @@ module.exports = (ipfsConfig) => {
   }
 
   return { addContent, getContent, getJson };
-};
+}

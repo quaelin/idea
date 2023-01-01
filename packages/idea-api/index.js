@@ -1,14 +1,16 @@
-/* eslint-disable global-require */
-const { RELATION_TYPES } = require('./src/relationTypes');
+import { ipfsInit } from './src/ipfs';
+import { initIdeaApi } from './src/api/idea';
+import { initPerspectiveApi } from './src/api/perspective';
+import { initRelationApi } from './src/api/relation';
 
-function initApi(options) {
-  const ipfsClient = require('./src/ipfs')(options && options.ipfsConfig);
+export { RELATION_TYPES } from './src/relationTypes';
+
+export function initApi(options) {
+  const ipfsClient = ipfsInit(options && options.ipfsConfig);
 
   return {
-    ...require('./src/api/idea')(ipfsClient, options),
-    perspective: require('./src/api/perspective')(ipfsClient, options),
-    relation: require('./src/api/relation')(ipfsClient, options),
+    ...initIdeaApi(ipfsClient, options),
+    perspective: initPerspectiveApi(ipfsClient, options),
+    relation: initRelationApi(ipfsClient, options),
   };
 }
-
-module.exports = { RELATION_TYPES, initApi };
