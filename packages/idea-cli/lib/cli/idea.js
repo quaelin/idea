@@ -1,4 +1,4 @@
-const { first } = require('lodash');
+import first from 'lodash/first';
 
 function handleError(ex, usage) {
   console.error(`${ex}`);
@@ -37,7 +37,7 @@ function idea_unknown(firstArg) {
   console.error(`Unknown idea subcommand: ${firstArg}`);
 }
 
-module.exports = (idea, args) => {
+export function ideaCli(idea, args) {
   const firstArg = args._.shift();
 
   switch (firstArg) {
@@ -45,4 +45,4 @@ module.exports = (idea, args) => {
     case 'get': return idea_get(idea, args);
     default: return idea_unknown(firstArg);
   }
-};
+}
