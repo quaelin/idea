@@ -1,5 +1,6 @@
-const { each, includes } = require('lodash');
-const { RELATION_TYPES } = require('@quaelin/idea-api');
+import each from 'lodash/each.js';
+import includes from 'lodash/includes.js';
+import { RELATION_TYPES } from '@quaelin/idea-api';
 
 function usage() {
   console.log('Usage:');
@@ -113,7 +114,7 @@ function relation_unknown(relationType) {
   usage();
 }
 
-module.exports = (idea, args) => {
+export function relationCli(idea, args) {
   const relationType = args._.shift();
 
   switch (relationType) {
@@ -128,4 +129,4 @@ module.exports = (idea, args) => {
     case 'R:XOr': return relation_xor(idea, args);
     default: return relation_unknown(relationType);
   }
-};
+}

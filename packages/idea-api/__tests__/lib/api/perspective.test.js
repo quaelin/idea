@@ -1,6 +1,8 @@
-const { expectTypeError, ipfsTestConfig } = require('../../helpers');
-const idea = require('../../..').initApi({ ipfsConfig: ipfsTestConfig });
-// const { assertCid: expectCid } = require('../../../lib/assert');
+import { expectTypeError, ipfsTestConfig } from '../../helpers.js';
+
+import { initApi } from '../../../index.js';
+
+const idea = initApi({ ipfsConfig: ipfsTestConfig });
 
 describe('idea.perspective.*', () => {
   const iCid = 'QmXhqJntChQ4WAQZrGuzGnD5Lwpm1DoLjASJfmLD8Q51q7';

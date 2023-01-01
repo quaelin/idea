@@ -1,5 +1,7 @@
-const { expectTypeError, ipfsTestConfig } = require('../../helpers');
-const idea = require('../../..').initApi({ ipfsConfig: ipfsTestConfig });
+import { initApi } from '../../../index.js';
+import { expectTypeError, ipfsTestConfig } from '../../helpers.js';
+
+const idea = initApi({ ipfsConfig: ipfsTestConfig });
 
 describe('idea.relation.*', () => {
   const iCid = 'QmXhqJntChQ4WAQZrGuzGnD5Lwpm1DoLjASJfmLD8Q51q7';

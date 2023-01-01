@@ -1,5 +1,7 @@
-const { each, has } = require('lodash');
-const { assertCid } = require('../assert');
+import each from 'lodash/each.js';
+import has from 'lodash/has.js';
+
+import { assertCid } from '../assert.js';
 
 function assertOperands(operands) {
   each(['A', 'B', 'C', 'D'], (letter) => {
@@ -20,7 +22,7 @@ function canonicalOrderForCommutativeOperands({ A, B }) {
   return { canonicalA: B, canonicalB: A };
 }
 
-module.exports = (ipfs) => {
+export function initRelationApi(ipfs) {
   async function analogy(A, B, C, D) {
     assertOperands({ A, B, C, D });
     const content = `{"Relation":"Analogy","A":"${A}","B":"${B}","C":"${C}","D":"${D}"}`;
@@ -90,4 +92,4 @@ module.exports = (ipfs) => {
     or,
     xor,
   };
-};
+}

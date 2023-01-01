@@ -1,9 +1,9 @@
-const { has } = require('lodash');
-const { assertCid, assertString } = require('../assert');
+import has from 'lodash/has.js';
+import { assertCid, assertString } from '../assert.js';
 
 const jsonEscape = (text) => JSON.stringify(text).slice(1, -1);
 
-module.exports = (ipfs) => {
+export function initIdeaApi(ipfs) {
   async function add(text) {
     assertString(text);
     const content = `{"Idea":"text","content":"${jsonEscape(text)}"}`;
@@ -18,4 +18,4 @@ module.exports = (ipfs) => {
   }
 
   return { add, get };
-};
+}

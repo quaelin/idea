@@ -1,6 +1,6 @@
-const { first } = require('lodash');
-const isCID = require('../isCID');
-const isValuation = require('../isValuation');
+import first from 'lodash/first.js';
+import { isCID } from '../isCID.js';
+import { isValuation } from '../isValuation.js';
 
 // A "perspective expression" is either a CID or else a set of <cid>=<valuation> pairs
 function extractPerspectives(args) {
@@ -182,7 +182,7 @@ function perspective_unknown(firstArg) {
   console.error(`Unknown perspective subcommand: ${firstArg}`);
 }
 
-module.exports = (idea, args) => {
+export function perspectiveCli(idea, args) {
   const firstArg = args._.shift();
 
   switch (firstArg) {
@@ -197,4 +197,4 @@ module.exports = (idea, args) => {
     case 'skew': return perspective_skew(idea, args);
     default: return perspective_unknown(firstArg);
   }
-};
+}

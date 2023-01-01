@@ -18,7 +18,7 @@ The `idea.*` APIs are an abstraction atop IPFS, and as such it's necessary to
 initialize the API by passing in some connection info.
 
 ```js
-const { initApi } = require('@quaelin/idea-api');
+import { initApi } from '@quaelin/idea-api';
 
 const idea = initApi({
   ipfsConfig: {
