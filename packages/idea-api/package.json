@@ -35,7 +35,7 @@
     "test": "jest --verbose __tests__"
   },
   "dependencies": {
-    "cids": "^1.1.6",
+    "cids": "^1.1.9",
     "google-protobuf": "^3.21.2",
     "ipfs-client": "^0.3.4",
     "lodash": "^4.17.21"
