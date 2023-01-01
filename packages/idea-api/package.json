@@ -37,7 +37,7 @@
   "dependencies": {
     "cids": "^1.1.9",
     "google-protobuf": "^3.21.2",
-    "ipfs-client": "^0.3.4",
+    "ipfs-client": "^0.7.9",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

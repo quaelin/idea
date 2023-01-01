@@ -1,4 +1,4 @@
-const createClient = require('ipfs-client');
+const { create: createClient } = require('ipfs-client');
 
 module.exports = (ipfsConfig) => {
   const ipfs = createClient(ipfsConfig);
