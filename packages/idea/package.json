@@ -33,7 +33,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@quaelin/idea-cli": "0.0.3",
+    "@quaelin/idea-cli": "^0.0.5",
     "@quaelin/idea-web": "0.0.1"
   }
 }
