@@ -13,7 +13,7 @@ module.exports = (ipfsConfig) => {
     for await (const chunk of ipfs.cat(cid)) {
       chunks.push(chunk);
     }
-    return chunks.join();
+    return Buffer.concat(chunks).toString();
   }
 
   async function getJson(cid) {
