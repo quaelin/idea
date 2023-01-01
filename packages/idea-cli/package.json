@@ -39,8 +39,8 @@
     "test": "eslint ."
   },
   "dependencies": {
-    "@quaelin/idea-api": "^0.0.3",
-    "cids": "^1.1.6",
+    "@quaelin/idea-api": "^0.0.4",
+    "cids": "^1.1.9",
     "lodash": "^4.17.21",
     "minimist": "^1.2.7"
   },
