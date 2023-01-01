@@ -1,4 +1,4 @@
-import { CID } from 'cids';
+import CID from 'cids';
 
 export function isCID(val) {
   try {

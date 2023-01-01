@@ -1,4 +1,4 @@
-import first from 'lodash/first';
+import first from 'lodash/first.js';
 
 function handleError(ex, usage) {
   console.error(`${ex}`);

@@ -1,4 +1,4 @@
-import { minimist } from 'minimist';
+import minimist from 'minimist';
 
 export function parseArgs({ argv, env }) {
   const args = minimist(argv.slice(2));
