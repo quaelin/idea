@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "CLI commands for interacting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
