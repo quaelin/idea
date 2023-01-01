@@ -1,6 +1,6 @@
-import { expectTypeError, ipfsTestConfig } from '../../helpers';
+import { expectTypeError, ipfsTestConfig } from '../../helpers.js';
 
-import { initApi } from '../../..';
+import { initApi } from '../../../index.js';
 
 const idea = initApi({ ipfsConfig: ipfsTestConfig });
 

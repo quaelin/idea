@@ -1,7 +1,7 @@
-import each from 'lodash/each';
-import has from 'lodash/has';
+import each from 'lodash/each.js';
+import has from 'lodash/has.js';
 
-import { assertCid } from '../assert';
+import { assertCid } from '../assert.js';
 
 function assertOperands(operands) {
   each(['A', 'B', 'C', 'D'], (letter) => {

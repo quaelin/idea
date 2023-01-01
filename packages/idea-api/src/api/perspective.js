@@ -1,7 +1,7 @@
 import lodash from 'lodash';
-import { assertCid } from '../assert';
-import { isCID } from '../isCID';
-import { isValuation } from '../isValuation';
+import { assertCid } from '../assert.js';
+import { isCID } from '../isCID.js';
+import { isValuation } from '../isValuation.js';
 
 const { assign, each, has, isObject, keys: objKeys, map, mapValues } = lodash;
 

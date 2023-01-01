@@ -21,7 +21,9 @@ module.exports = {
     'object-curly-newline': ['error', { multiline: true }],
     'prefer-rest-params': 'off',
 
+    'import/extensions': ['error', 'ignorePackages'],
     'import/prefer-default-export': 'off',
+
     'lodash/callback-binding': 'error',
     'lodash/collection-method-value': 'error',
     'lodash/collection-return': 'error',

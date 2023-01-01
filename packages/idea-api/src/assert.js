@@ -1,4 +1,4 @@
-import { isCID } from './isCID';
+import { isCID } from './isCID.js';
 
 export function assertCid(value) {
   function throwError() {

@@ -1,5 +1,5 @@
-import has from 'lodash/has';
-import { assertCid, assertString } from '../assert';
+import has from 'lodash/has.js';
+import { assertCid, assertString } from '../assert.js';
 
 const jsonEscape = (text) => JSON.stringify(text).slice(1, -1);
 
