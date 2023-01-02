@@ -10,7 +10,7 @@ import { routeIdeaPost } from './routes/idea/post';
 import { routeRelationPost } from './routes/relation/post';
 
 const app = express();
-const ipfsConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://localhost:5001/api/v0' };
+const ipfsConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://127.0.0.1:5001/api/v0' };
 
 app.use('*', (req, res, next) => {
   req.idea = initApi({ ipfsConfig });

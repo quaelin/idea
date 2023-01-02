@@ -12,7 +12,7 @@ $ npm i -g @quaelin/idea-web
 To run:
 
 ```sh
-$ idea-web --port=8088 [--ipfs=http://localhost:5001/api/v0]
+$ idea-web --port=8088 [--ipfs=http://127.0.0.1:5001/api/v0]
 ```
 
 You will need access to a running [IPFS daemon][IPFS].  `idea-web` will look for
