@@ -26,4 +26,4 @@ export function XOr({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

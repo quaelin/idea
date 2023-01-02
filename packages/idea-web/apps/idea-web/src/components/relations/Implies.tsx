@@ -26,4 +26,4 @@ export function Implies({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

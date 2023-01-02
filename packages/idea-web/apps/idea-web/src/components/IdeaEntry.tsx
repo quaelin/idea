@@ -44,4 +44,4 @@ export function IdeaEntry({ initialText, onIdeaAdded }) {
       </div>
     </div>
   );
-};
+}

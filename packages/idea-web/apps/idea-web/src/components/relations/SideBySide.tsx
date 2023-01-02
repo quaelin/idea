@@ -16,4 +16,4 @@ export function SideBySide({ children }) {
       </div>
     </>
   );
-};
+}

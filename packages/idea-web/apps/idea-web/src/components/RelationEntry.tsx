@@ -23,4 +23,4 @@ export function RelationEntry({ relation, onRelationAdded }) {
       </div>
     </div>
   );
-};
+}

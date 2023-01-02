@@ -26,4 +26,4 @@ export function IsA({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

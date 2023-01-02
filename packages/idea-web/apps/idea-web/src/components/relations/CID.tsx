@@ -22,4 +22,4 @@ export function CID({ cid }) {
       {`${cid.substr(0, 4)}...${cid.substr(-4)}`}
     </span>
   );
-};
+}

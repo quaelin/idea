@@ -20,4 +20,4 @@ export function fetchIdea(icid) {
   });
 
   return need(icid);
-};
+}

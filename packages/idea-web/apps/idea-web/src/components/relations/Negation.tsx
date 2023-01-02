@@ -16,4 +16,4 @@ export function Negation({ A, layout }) {
       ) : ''}
     </div>
   );
-};
+}

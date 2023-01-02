@@ -26,4 +26,4 @@ export function Improves({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

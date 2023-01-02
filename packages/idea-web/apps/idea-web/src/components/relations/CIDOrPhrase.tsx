@@ -27,4 +27,4 @@ export function CIDOrPhrase({ cid }) {
       <CID cid={cid} />
     )
   );
-};
+}

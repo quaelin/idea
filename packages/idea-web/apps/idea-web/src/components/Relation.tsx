@@ -40,4 +40,4 @@ export function Relation({ relation, onSelected }) {
   }
 
   return pickComponent();
-};
+}

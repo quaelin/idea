@@ -16,4 +16,4 @@ export function Analogy({ A, B, C, D, layout }) {
       ) : ''}
     </div>
   );
-};
+}

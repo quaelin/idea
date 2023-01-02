@@ -26,4 +26,4 @@ export function And({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

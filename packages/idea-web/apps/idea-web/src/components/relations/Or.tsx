@@ -26,4 +26,4 @@ export function Or({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

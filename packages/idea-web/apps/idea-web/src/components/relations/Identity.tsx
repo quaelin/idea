@@ -26,4 +26,4 @@ export function Identity({ A, B, layout, onSelected }) {
       ) : ''}
     </div>
   );
-};
+}

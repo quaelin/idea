@@ -53,4 +53,4 @@ export function SideBySideOperand({ cid, onClick }) {
       )}
     </div>
   );
-};
+}
