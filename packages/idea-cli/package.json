@@ -40,7 +40,7 @@
     "test": "eslint ."
   },
   "dependencies": {
-    "@quaelin/idea-api": "^0.0.7",
+    "@quaelin/idea-api": "^0.0.8",
     "cids": "^1.1.9",
     "lodash": "^4.17.21",
     "minimist": "^1.2.7"
