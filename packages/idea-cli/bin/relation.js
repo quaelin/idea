@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-vm-modules
 
 import { cli } from '../lib/cli/index.js';
 import { parseArgs } from '../lib/parseArgs.js';

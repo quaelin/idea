@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-vm-modules
 
 import first from 'lodash/first.js';
 import includes from 'lodash/includes.js';

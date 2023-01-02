@@ -1,6 +1,6 @@
 {
   "name": "@quaelin/idea-api",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "description": "JavaScript API for interacting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
@@ -35,7 +35,7 @@
   "dependencies": {
     "cids": "^1.1.9",
     "google-protobuf": "^3.21.2",
-    "ipfs-client": "^0.7.9",
+    "ipfs-client": "^0.9.2",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

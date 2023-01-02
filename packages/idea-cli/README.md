@@ -16,7 +16,7 @@ running.  The commands will look for a daemon running on the default local port
 environment variable to specify where it can be found.
 
 ```sh
-$ export IDEA_IPFS_HTTP=http://localhost:5001/api/v0
+$ export IDEA_IPFS_HTTP=http://127.0.0.1:5001/api/v0
 ```
 
 # Commands
