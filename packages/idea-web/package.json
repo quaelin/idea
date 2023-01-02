@@ -27,7 +27,7 @@
     "directory": "packages/idea-web"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "scripts": {
     "nx": "nx",
