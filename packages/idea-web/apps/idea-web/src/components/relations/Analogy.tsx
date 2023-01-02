@@ -1,7 +1,15 @@
 import React from 'react';
 import { CIDOrPhrase } from './CIDOrPhrase';
 
-export function Analogy({ A, B, C, D, layout }) {
+export type AnalogyProps = {
+  A: string;
+  B: string;
+  C: string;
+  D: string;
+  layout?: 'sentence';
+}
+
+export function Analogy({ A, B, C, D, layout }: AnalogyProps) {
   layout = layout || 'sentence';
 
   return (

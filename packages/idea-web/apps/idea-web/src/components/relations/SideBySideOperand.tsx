@@ -12,7 +12,12 @@ import { CID } from './CID';
 
 import { fetchIdea } from '../../fetcher';
 
-export function SideBySideOperand({ cid, onClick }) {
+type Props = {
+  cid: string;
+  onClick?: () => void;
+}
+
+export function SideBySideOperand({ cid, onClick }: Props) {
   const [content, setContent] = useState(null);
 
   useEffect(() => {

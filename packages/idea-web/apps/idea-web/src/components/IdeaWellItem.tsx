@@ -7,6 +7,7 @@ import { fetchIdea } from '../fetcher';
 export function IdeaWellItem({
   icid,
   index,
+  namespace,
   onClickEdit,
   onClickTrash,
   onSelected,

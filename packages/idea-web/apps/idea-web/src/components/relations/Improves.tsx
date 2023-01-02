@@ -3,7 +3,14 @@ import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export function Improves({ A, B, layout, onSelected }) {
+export type ImprovesProps = {
+  A: string;
+  B: string;
+  layout?: 'sentence' | 'side-by-side';
+  onSelected?: (cid: string) => void;
+}
+
+export function Improves({ A, B, layout, onSelected }: ImprovesProps) {
   layout = layout || 'sentence';
 
   function select(cid) {

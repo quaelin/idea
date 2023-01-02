@@ -3,7 +3,14 @@ import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export function Or({ A, B, layout, onSelected }) {
+export type OrProps = {
+  A: string;
+  B: string;
+  layout?: 'sentence' | 'side-by-side';
+  onSelected?: (cid: string) => void;
+}
+
+export function Or({ A, B, layout, onSelected }: OrProps) {
   layout = layout || 'sentence';
 
   function select(cid) {

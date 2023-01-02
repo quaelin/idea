@@ -1,6 +1,8 @@
-import { filter, includes, uniq } from 'lodash';
+import filter from 'lodash/filter';
+import includes from 'lodash/includes';
+import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Xarrow from "react-xarrows";
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
@@ -13,7 +15,6 @@ const relationTypesOrder = ['Negation', 'And', 'Identity', 'Implies', 'Improves'
 
 function clearHTMLSelection() {
   if (window.getSelection) window.getSelection().removeAllRanges();
-  else if (document.selection) document.selection.empty();
 }
 
 // helper function to reorder the list after a drag operation
@@ -24,7 +25,12 @@ function reorder(list, startIndex, endIndex) {
   return result;
 }
 
-export function IdeaWell({ namespace, sharedTrashKey }) {
+type Props = {
+  namespace?: string;
+  sharedTrashKey?: string;
+}
+
+export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   const name = namespace || 'default';
   const key = `iw:${name}:items`;
   const trashKey = sharedTrashKey || `${key}:trash`;
@@ -205,7 +211,7 @@ export function IdeaWell({ namespace, sharedTrashKey }) {
             {(provided, snapshot) => (
               <ol className={`idea-well-droppable ${rightBuffer}`} {...provided.droppableProps} ref={provided.innerRef}>
                 {ideas.map((icid, index) => {
-                  const relationLabelProps = {};
+                  const relationLabelProps = {} as { relationLabel: string; relationLabelRef: any; };
                   if (editRelation && index < relationArity[editRelation.R]) {
                     relationLabelProps.relationLabel = ['A', 'B', 'C', 'D'][index];
                     relationLabelProps.relationLabelRef = [refs.A, refs.B, refs.C, refs.D][index];

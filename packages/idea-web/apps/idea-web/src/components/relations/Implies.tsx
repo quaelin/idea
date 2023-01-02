@@ -3,7 +3,14 @@ import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export function Implies({ A, B, layout, onSelected }) {
+export type ImpliesProps = {
+  A: string;
+  B: string;
+  layout?: 'sentence' | 'side-by-side';
+  onSelected?: (cid: string) => void;
+}
+
+export function Implies({ A, B, layout, onSelected }: ImpliesProps) {
   layout = layout || 'sentence';
 
   function select(cid) {

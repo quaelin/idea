@@ -9,7 +9,7 @@ async function saveIdea(text) {
   return response.text();
 }
 
-function useFocus() {
+function useFocus(): [any, () => void] {
   const htmlElRef = useRef(null);
   function setFocus() {
     htmlElRef.current && htmlElRef.current.focus();
