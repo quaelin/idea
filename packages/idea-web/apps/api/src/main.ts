@@ -9,12 +9,23 @@ import { routeIdeaGet } from './routes/idea/get';
 import { routeIdeaPost } from './routes/idea/post';
 import { routeRelationPost } from './routes/relation/post';
 
+import type { IdeaWebRequest } from './types';
+
+const dynamicImport = async (packageName: string) => new Function(`return import('${packageName}')`)();
+
 const app = express();
 const ipfsConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://127.0.0.1:5001/api/v0' };
 
-app.use('*', (req, res, next) => {
-  req.idea = initApi({ ipfsConfig });
-  next();
+async function loadApi() {
+  const { initApi } = await dynamicImport('@quaelin/idea-api');
+  return initApi({ ipfsConfig });
+}
+
+app.use('*', (req: IdeaWebRequest, res, next) => {
+  loadApi().then((ideaApi) => {
+    req.idea = ideaApi;
+    next();
+  });
 });
 
 routeIdeaGet(app);
