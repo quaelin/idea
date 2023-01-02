@@ -171,8 +171,8 @@ valuations skewed according to `factor`, which must be a number in the range
  - `-1` sets all valuations to 0 (same as _neutralize)
  - `<0` skews valuations towards 0
  - `0` leaves all valuations the same
- - `>0` skews all valuations towards 1
- - `1` sets all valuations to 1
+ - `>0` skews all positive valuations towards 1, negative towards -1
+ - `1` sets all valuations to 1 or -1
 
 Returns the `pCid` of the new perspective.
 
