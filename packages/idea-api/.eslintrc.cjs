@@ -1,7 +1,9 @@
 module.exports = {
-  extends: ['eslint-config-airbnb-base'],
+  extends: ['eslint-config-airbnb-base', 'plugin:jest/recommended'],
 
-  plugins: ['lodash'],
+  plugins: ['lodash', 'jest'],
+
+  env: { 'jest/globals': true },
 
   rules: {
     camelcase: 'off',
@@ -18,6 +20,9 @@ module.exports = {
     'no-restricted-syntax': 'warn',
     'object-curly-newline': ['error', { multiline: true }],
     'prefer-rest-params': 'off',
+
+    'import/extensions': ['error', 'ignorePackages'],
+    'import/prefer-default-export': 'off',
 
     'lodash/callback-binding': 'error',
     'lodash/collection-method-value': 'error',
@@ -37,5 +42,12 @@ module.exports = {
     'lodash/prefer-wrapper-method': 'error',
     'lodash/prop-shorthand': 'error',
     'lodash/unwrap': 'error',
+
+    'jest/expect-expect': [
+      'error',
+      { assertFunctionNames: ['expect', 'expectCid', 'expectTypeError'] },
+    ],
+    'jest/no-hooks': ['error', { allow: ['afterEach'] }],
+    'jest/prefer-to-have-length': 'error',
   },
 };

@@ -1,7 +1,8 @@
-const createClient = require('ipfs-client');
+// eslint-disable-next-line import/no-unresolved
+import { create } from 'ipfs-client';
 
-module.exports = (ipfsConfig) => {
-  const ipfs = createClient(ipfsConfig);
+export function ipfsInit(ipfsConfig) {
+  const ipfs = create(ipfsConfig);
 
   async function addContent(content) {
     const { cid } = await ipfs.add(content);
@@ -13,7 +14,7 @@ module.exports = (ipfsConfig) => {
     for await (const chunk of ipfs.cat(cid)) {
       chunks.push(chunk);
     }
-    return chunks.join();
+    return Buffer.concat(chunks).toString();
   }
 
   async function getJson(cid) {
@@ -21,4 +22,4 @@ module.exports = (ipfsConfig) => {
   }
 
   return { addContent, getContent, getJson };
-};
+}

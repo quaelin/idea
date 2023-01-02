@@ -1,7 +1,9 @@
-const { assign, each, has, isObject, keys: objKeys, map, mapValues } = require('lodash');
-const { assertCid } = require('../assert');
-const isCID = require('../isCID');
-const isValuation = require('../isValuation');
+import lodash from 'lodash';
+import { assertCid } from '../assert.js';
+import { isCID } from '../isCID.js';
+import { isValuation } from '../isValuation.js';
+
+const { assign, each, has, isObject, keys: objKeys, map, mapValues } = lodash;
 
 function assertValuation(val) {
   if (!isValuation(val)) {
@@ -50,7 +52,7 @@ function collateValuations(perspectives) {
   return collated;
 }
 
-module.exports = (ipfs) => {
+export function initPerspectiveApi(ipfs) {
   async function get(pCid) {
     assertCid(pCid);
     const parsed = await ipfs.getJson(pCid);
@@ -189,4 +191,4 @@ module.exports = (ipfs) => {
     scope,
     skew,
   };
-};
+}

@@ -1,7 +1,9 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-vm-modules
 
-const args = require('../lib/parseArgs')(process);
-const cli = require('../lib/cli');
+import { cli } from '../lib/cli/index.js';
+import { parseArgs } from '../lib/parseArgs.js';
+
+const args = parseArgs(process);
 
 args._.unshift('perspective');
 

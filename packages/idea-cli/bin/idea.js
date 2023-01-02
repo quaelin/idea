@@ -1,9 +1,12 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-vm-modules
 
-const { first, includes } = require('lodash');
+import first from 'lodash/first.js';
+import includes from 'lodash/includes.js';
 
-const args = require('../lib/parseArgs')(process);
-const cli = require('../lib/cli');
+import { cli } from '../lib/cli/index.js';
+import { parseArgs } from '../lib/parseArgs.js';
+
+const args = parseArgs(process);
 
 const firstArg = first(args._);
 if (!includes(['perspective', 'relation'], firstArg)) {

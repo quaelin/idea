@@ -1,6 +1,7 @@
 {
   "name": "@quaelin/idea-cli",
-  "version": "0.0.3",
+  "version": "0.0.6",
+  "type": "module",
   "description": "CLI commands for interacting with the Idea-DAG: decentralized Idea, Relation & Perspective data",
   "author": {
     "name": "Chris Campbell",
@@ -33,21 +34,21 @@
     "directory": "packages/idea-cli"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "scripts": {
     "test": "eslint ."
   },
   "dependencies": {
-    "cids": "^1.1.6",
+    "@quaelin/idea-api": "^0.0.8",
+    "cids": "^1.1.9",
     "lodash": "^4.17.21",
-    "minimist": "^1.2.5",
-    "@quaelin/idea-api": "^0.0.3"
+    "minimist": "^1.2.7"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-lodash": "^7.2.0"
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-lodash": "^7.4.0"
   }
 }

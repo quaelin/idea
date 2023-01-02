@@ -1,9 +1,9 @@
-const ipfsTestConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://localhost:5001/api/v0' };
+export const ipfsTestConfig = { http: process.env.IDEA_IPFS_HTTP || 'http://127.0.0.1:5001/api/v0' };
 
-class NotATypeError extends Error {
+export class NotATypeError extends Error {
 }
 
-async function expectTypeError(promise) {
+export async function expectTypeError(promise) {
   try {
     await promise; // should throw
     throw new NotATypeError();
@@ -11,9 +11,3 @@ async function expectTypeError(promise) {
     expect(ex).toBeInstanceOf(TypeError);
   }
 }
-
-module.exports = {
-  expectTypeError,
-  ipfsTestConfig,
-  NotATypeError,
-};
