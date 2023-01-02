@@ -3,16 +3,16 @@
 A web UI for interacting with the [Idea-DAG][Idea-DAG]: decentralized
 [Idea][Ideas], [Relation][Relations] & [Perspective][Perspectives] data.
 
-To install:
-
-```sh
-$ npm i -g @quaelin/idea-web
-```
-
 To run:
 
 ```sh
-$ idea-web --port=8088 [--ipfs=http://localhost:5001/api/v0]
+$ nx serve api
+```
+
+And then in a separate shell:
+
+```sh
+$ npm start
 ```
 
 You will need access to a running [IPFS daemon][IPFS].  `idea-web` will look for

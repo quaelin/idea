@@ -1,0 +1,347 @@
+.idea-well {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 1.5em;
+  position: relative;
+}
+
+.idea-well header,
+.idea-well header.idea-well-head {
+  background-color: transparent;
+}
+
+.idea-well .idea-well-head button {
+  width: 10em;
+}
+
+.idea-well a {
+  text-decoration: none;
+}
+
+.idea-well .idea-well-key {
+  color: #999;
+  font-family: monospace;
+  font-size: 1.6em;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.idea-well .idea-entry {
+  display: flex;
+  flex-direction: column;
+}
+.idea-well .idea-entry textarea {
+  background-color: #ffc;
+  color: #422;
+  font-size: 1.5em;
+  flex-grow: 1;
+  padding: 0.5em;
+}
+.idea-well .idea-entry-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1.5em;
+}
+
+.idea-well .relation-entry {
+  display: flex;
+  flex-direction: column;
+}
+.idea-well .relation-entry-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1.5em;
+}
+
+.idea-well ol {
+  padding-inline-start: 1em;
+  padding-inline-end: 1em;
+  margin-top: 0;
+}
+
+.idea-well li {
+  list-style: none;
+}
+
+.idea-well aside {
+  flex-grow: 1;
+}
+
+.idea-well .idea-well-body {
+  display: flex;
+  margin-top: 0.8em;
+}
+
+.idea-well .idea-well-droppable {
+  flex-grow: 2;
+}
+
+.idea-well .idea-well-relation-buffer {
+  margin-right: 40px;
+  width: 80%;
+}
+
+.idea-well .idea-well-item {
+  background-color: #ffc;
+  border: 1px solid #cc6;
+  margin: 0.5em 0.5em 1.3em 0.5em;
+  padding: 1em 1em 0.5em 0.5em;
+  position: relative;
+}
+.idea-well .idea-well-item-border {
+  border: none; /* 2px solid #00f; */
+  border-radius: 4px;
+  bottom: -10px;
+  left: -10px;
+  opacity: 0.3;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  z-index: 0;
+}
+
+.idea-well .idea-well-item article {
+  overflow: scroll;
+}
+
+.idea-well .idea-well-item .idea-well-item-grip {
+  background-color: #ee9;
+  border: 1px solid #cc6;
+  border-bottom-right-radius: 10px;
+  height: 11px;
+  left: -1px;
+  position: absolute;
+  top: -1px;
+  width: 250px;
+  z-index: 1;
+}
+.idea-well .idea-well-item.selected .idea-well-item-grip {
+  width: 50px;
+}
+.idea-well .idea-well-item:hover .idea-well-item-grip {
+  background-color: #ee5;
+}
+.idea-well .idea-well-item-icon {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  filter: drop-shadow(1px 1px 2px #ccc);
+  font-size: 2em;
+  height: 1.2em;
+  left: -1em;
+  position: absolute;
+  text-align: center;
+  top: -0.3em;
+  width: 1.2em;
+  z-index: 3;
+}
+.idea-well .idea-well-item.selected .idea-well-item-icon {
+  background-color: #f8f8ff;
+}
+.idea-well .idea-well-item-grip .idea-well-item-grip-inner {
+  border-bottom: 1px dotted #999;
+  border-top: 1px dotted #999;
+  bottom: 3px;
+  left: 4px;
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  z-index: 2;
+}
+
+.idea-well .idea-well-item .idea-well-item-icid {
+  color: #dda;
+  font-size: 0.7em;
+  left: 254px;
+  position: absolute;
+  top: 0px;
+  z-index: 4;
+}
+.idea-well .idea-well-item:hover .idea-well-item-icid {
+  color: #cc9;
+}
+.idea-well .idea-well-item.selected .idea-well-item-icid {
+  color: #aa8;
+  left: 54px;
+}
+
+.idea-well .idea-well-item .idea-well-item-body {
+  overflow: hidden;
+}
+
+.idea-well .idea-well-item pre {
+  background-color: transparent;
+  color: #544;
+  font-size: 1.5em;
+  overflow-x: auto;
+  margin: 0px;
+  padding: 0.2em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.idea-well .idea-well-item-actions {
+  opacity: 0.9;
+  position: absolute;
+  right: 0.1em;
+  top: 0.1em;
+}
+.idea-well .idea-well-item-actions:hover {
+  opacity: 1;
+}
+
+.idea-well .idea-well-item-actions a {
+  opacity: 0.7;
+  padding: 0.2em;
+  vertical-align: middle;
+}
+.idea-well .idea-well-item-actions a:hover {
+  opacity: 1;
+}
+.idea-well .idea-well-item-actions a img {
+  width: 1em;
+}
+
+.idea-well .idea-well-item-relation-label-wrapper {
+  font-size: 0.8em;
+  padding-right: 0.3em;
+  position: absolute;
+  right: -1em;
+  top: 1em;
+  vertical-align: middle;
+}
+.idea-well .idea-well-item-relation-label {
+  background-color: #08f;
+  border: 1px solid #115;
+  border-radius: 1em;
+  color: #fff;
+  cursor: crosshair;
+  font-weight: bold;
+  height: 1.2em;
+  text-align: center;
+  width: 1.2em;
+}
+
+.idea-well .relation-selector ul {
+  margin-block-start: 0px;
+  padding-inline-start: 5px;
+}
+.idea-well .relation-selector li {
+  padding: 0.05em 0.1em;
+  text-align: center;
+}
+.idea-well .relation-selector a {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.idea-well .relation-selector a:hover {
+  background-color: #8bf;
+}
+.idea-well .relation-selector .selected {
+  background-color: #08f;
+}
+.idea-well .relation-selector a:hover,
+.idea-well .relation-selector .selected a {
+  color: #fff;
+}
+
+.idea-well .relation {
+  display: flex;
+  justify-content: space-around;
+}
+.idea-well .relation-side-by-side .relation-side-by-side-operand {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 0.85em;
+  justify-content: center;
+  padding: 0.5em;
+  text-align: center;
+}
+.idea-well .relation-side-by-side .relation-operator {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  justify-content: center;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.idea-well .relation-cid {
+  background-color: #cfc;
+  border: 1px solid #5c5;
+  color: #555;
+  font-family: sans-serif;
+  font-size: 0.8em;
+}
+
+.idea-well .relation pre.idea-well-json {
+  background-color: #000;
+  color: green;
+  font-size: 1em;
+}
+
+.idea-well .relation-side-by-side-operand .relation {
+  display: flex;
+  align-items: center;
+}
+.idea-well .relation-side-by-side-operand .relation:before {
+  content: '{';
+  color: #f88;
+  font-size: 5em;
+  text-align: right;
+  padding-right: 10px;
+}
+.idea-well .relation-side-by-side-operand .relation:after {
+  content: '}';
+  color: #f88;
+  font-size: 5em;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.idea-well .relation-cid-phrase {
+  border: 1px dotted #484;
+  margin: 0em 0.3em;
+  padding: 0.1em 0.2em;
+}
+
+.idea-well .relation-negation {
+  position: relative;
+}
+.idea-well .relation.relation-negation::before,
+.idea-well .relation.relation-negation::after {
+  border-bottom: 3px solid #f88;
+  content: '';
+  opacity: 0.9;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 100%;
+  z-index: 1;
+}
+.idea-well .relation-negation::before {
+  transform: skewY(-15deg);
+}
+.idea-well .relation-negation::after {
+  transform: skewY(15deg);
+}
+
+.idea-well .relation-negation-not {
+  color: #600;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 2em;
+  left: 0em;
+  position: absolute;
+  top: -0.1em;
+  transform: rotate(-35deg);
+  z-index: 2;
+}
+
+.idea-well .relation.relation-sentence > * {
+  padding: 0.5em;
+}
