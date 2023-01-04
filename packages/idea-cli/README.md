@@ -92,13 +92,13 @@ $ relation R:Negation A=<icid>
 ### relation R:Or
 
 ```sh
-$ relation R:Or A=<icid> B=>icid>
+$ relation R:Or A=<icid> B=<icid>
 ```
 
 ### relation R:XOr
 
 ```sh
-$ relation R:XOr A=<icid> B=>icid>
+$ relation R:XOr A=<icid> B=<icid>
 ```
 
 ## Perspectives
