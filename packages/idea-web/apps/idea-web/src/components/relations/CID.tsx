@@ -15,7 +15,7 @@ export function CID({ cid }) {
 
   useEffect(() => {
     setContentAsTooltip();
-  }, []);
+  });
 
   return (
     <span className="relation-cid" title={tooltip}>

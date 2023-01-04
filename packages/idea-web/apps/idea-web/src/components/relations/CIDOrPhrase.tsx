@@ -18,7 +18,7 @@ export function CIDOrPhrase({ cid }) {
 
   useEffect(() => {
     loadContentAndCheckLength();
-  }, []);
+  });
 
   return (
     phrase ? (

@@ -2,7 +2,12 @@ import React from 'react';
 import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export function Negation({ A, layout }) {
+type Props = {
+  A: string;
+  layout?: 'sentence' | 'side-by-side';
+}
+
+export function Negation({ A, layout }: Props) {
   layout = layout || 'sentence';
 
   return (

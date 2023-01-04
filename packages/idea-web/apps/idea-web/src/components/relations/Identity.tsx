@@ -3,14 +3,14 @@ import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export type IdentityProps = {
+type Props = {
   A: string;
   B: string;
   layout?: 'sentence' | 'side-by-side';
   onSelected?: (cid: string) => void;
 }
 
-export function Identity({ A, B, layout, onSelected }: IdentityProps) {
+export function Identity({ A, B, layout, onSelected }: Props) {
   layout = layout || 'sentence';
 
   function select(cid) {

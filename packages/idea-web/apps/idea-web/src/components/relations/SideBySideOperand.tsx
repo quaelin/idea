@@ -22,7 +22,7 @@ export function SideBySideOperand({ cid, onClick }: Props) {
 
   useEffect(() => {
     fetchIdea(cid).then(setContent);
-  }, []);
+  }, [cid]);
 
   function pickComponent() {
     const { A, B, C, D } = content;

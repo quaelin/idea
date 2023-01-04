@@ -3,14 +3,14 @@ import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySide } from './SideBySide';
 import { SideBySideOperand } from './SideBySideOperand';
 
-export type AndProps = {
+type Props = {
   A: string;
   B: string;
   layout?: 'sentence' | 'side-by-side';
   onSelected?: (cid: string) => void;
 }
 
-export function And({ A, B, layout, onSelected }: AndProps) {
+export function And({ A, B, layout, onSelected }: Props) {
   layout = layout || 'sentence';
 
   function select(cid) {
