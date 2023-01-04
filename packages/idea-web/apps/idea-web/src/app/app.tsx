@@ -12,7 +12,9 @@ export function App() {
   return (
     <div className="app">
       <header className="app-header flex">
-        <h1>💡</h1>
+        <h1>
+          <span role="img" aria-label="Idea">💡</span>
+        </h1>
       </header>
       <main>
         <IdeaWell />

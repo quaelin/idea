@@ -1,4 +1,3 @@
-import { startsWith } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { Relation } from './Relation';
@@ -21,7 +20,7 @@ export function IdeaWellItem({
 
   useEffect(() => {
     fetchIdea(icid).then(setIdea);
-  }, []);
+  }, [icid]);
 
   console.log(idea);
   return (
@@ -37,7 +36,9 @@ export function IdeaWellItem({
           <article data-icid={icid}>
             <header>
               <div className="idea-well-item-grip" {...provided.dragHandleProps}>
-                <div className="idea-well-item-icon">💡</div>
+                <div className="idea-well-item-icon">
+                  <span role="img" aria-label="Idea">💡</span>
+                </div>
                 <div className="idea-well-item-grip-inner" />
               </div>
               <div className="idea-well-item-icid">{
@@ -47,10 +48,10 @@ export function IdeaWellItem({
                 <>
                   <div className="idea-well-item-border" />
                   <div className="idea-well-item-actions">
-                    <a href="#" title="Edit" onClick={onClickEdit}>
+                    <button title="Edit" onClick={onClickEdit}>
                       <img src="assets/pencil-icon.png" alt="edit" />
-                    </a>
-                    <a href="#" title="Trash" onClick={onClickTrash}>X</a>
+                    </button>
+                    <button title="Trash" onClick={onClickTrash}>X</button>
                   </div>
                 </>
               ) : ''}

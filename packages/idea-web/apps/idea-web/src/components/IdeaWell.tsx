@@ -3,7 +3,7 @@ import includes from 'lodash/includes';
 import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import Xarrow from "react-xarrows";
+import Xarrow from 'react-xarrows';
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
 import { RelationEntry } from './RelationEntry';
@@ -242,7 +242,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
                 key={type}
                 ref={refs[type]}
                 className={editRelation?.R === type ? 'selected' : ''}>
-                <a href="#" onClick={onClick[type]}>{type}</a>
+                <button onClick={onClick[type]}>{type}</button>
               </li>
             ))}
           </ul>
