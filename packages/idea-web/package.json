@@ -54,7 +54,7 @@
     "help": "nx help"
   },
   "dependencies": {
-    "@quaelin/idea-api": "^0.0.8",
+    "@quaelin/idea-api": "^0.1.1",
     "cids": "^1.1.9",
     "document-register-element": "1.13.1",
     "express": "4.18.2",

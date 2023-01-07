@@ -1,4 +1,4 @@
-import { difference, includes, isEqual, keys } from 'lodash';
+import { includes, isEqual, keys } from 'lodash';
 import { Application } from 'express';
 import * as bodyParser from 'body-parser';
 import { IdeaWebRequest } from '../../types';
@@ -17,7 +17,6 @@ const relationArity = {
   XOr: 2,
 };
 const types = keys(relationArity);
-const relationArgs = ['A', 'B', 'C', 'D'];
 
 function getExpectedKeys(type) {
   switch (relationArity[type]) {
@@ -40,9 +39,9 @@ export function routeRelationPost(app: Application) {
     if (!isEqual(bodyKeys, expectedKeys)) {
       throw new BadInputs(`Did not get the expected operands for R:${type}: ${expectedKeys}`);
     }
-    const rcid = await idea.relation[type.toLowerCase()](body.A, body.B, body.C, body.D);
+    const rCid = await idea.relation[type.toLowerCase()](body.A, body.B, body.C, body.D);
     res.status(201)
       .set('content-type', 'text/plain')
-      .send(rcid);
+      .send(rCid);
   }));
 }
