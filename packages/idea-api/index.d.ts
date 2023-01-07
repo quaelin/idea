@@ -14,23 +14,23 @@ export type AbstractRelation = {
     B?: ICID;
     C?: ICID;
     D?: ICID;
-}
+};
 export type AnalogyRelation = {
     Relation: 'Analogy';
     A: ICID;
     B: ICID;
     C: ICID;
     D: ICID;
-}
+};
 export type NegationRelation = {
     Relation: 'Negation',
     A: ICID;
-}
+};
 export type BinaryRelation = {
     Relation: string;
     A: ICID;
     B: ICID;
-}
+};
 export type AndRelation = BinaryRelation & { Relation: 'And' };
 export type IdentityRelation = BinaryRelation & { Relation: 'Identity' };
 export type ImpliesRelation = BinaryRelation & { Relation: 'Implies' };
@@ -63,15 +63,15 @@ export type IdeaApi = {
     add: (content: string) => ICID;
     get: (iCid: ICID) => AbstractIdea;
     relation: {
-        analogy: (A: CID, B: CID, C: CID, D: CID) => ICID;
-        and: (A: CID, B: CID) => ICID;
-        identity: (A: CID, B: CID) => ICID;
-        implies: (A: CID, B: CID) => ICID;
-        improves: (A: CID, B: CID) => ICID;
-        isa: (A: CID, B: CID) => ICID;
-        negation: (A: CID) => ICID;
-        or: (A: CID, B: CID) => ICID;
-        xor: (A: CID, B: CID) => ICID;
+        analogy: (A: ICID, B: ICID, C: ICID, D: ICID) => ICID;
+        and: (A: ICID, B: ICID) => ICID;
+        identity: (A: ICID, B: ICID) => ICID;
+        implies: (A: ICID, B: ICID) => ICID;
+        improves: (A: ICID, B: ICID) => ICID;
+        isa: (A: ICID, B: ICID) => ICID;
+        negation: (A: ICID) => ICID;
+        or: (A: ICID, B: ICID) => ICID;
+        xor: (A: ICID, B: ICID) => ICID;
     };
     perspective: {
         average: PerspectiveExpressionReducer;
