@@ -25,7 +25,7 @@ export function IdeaWellItem({
     fetchIdea(icid).then(setIdea);
   }, [icid]);
 
-  console.log(idea);
+  // console.log(idea);
   return (
     <Draggable key={icid} draggableId={icid} index={index}>
       {(provided) => (

@@ -1,4 +1,5 @@
 import filter from 'lodash/filter';
+import has from 'lodash/has';
 import includes from 'lodash/includes';
 import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -40,6 +41,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   const [selected, setSelected] = useState([]);
   const [trash, setTrash] = useState([]);
   const [editRelation, setEditRelation] = useState(null);
+  const [valuations, setValuations] = useState({});
 
   const refs = {
     A: useRef(null),
@@ -136,6 +138,11 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     saveIdeas(reorder(ideas, source.index, destination.index));
   }
 
+  async function newPerspective(perspective) {
+    // const { pcid } = await fetch('/per')
+    setValuations({ ...perspective });
+  }
+
   const onClick = {
     Analogy: () => {
       if (ideas.length < 4) return;
@@ -226,8 +233,11 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
                       onClickTrash={() => trashIdea(icid)}
                       onSelected={(selectedCid) => handleItemSelected(selectedCid || icid)}
                       selected={includes(selected, icid)}
-                      valuation="??"
-                      onValuationChange={() => { /* TODO */ }}
+                      valuation={has(valuations, icid) ? valuations[icid] : '??'}
+                      onValuationChange={(newValue: number) => {
+                        valuations[icid] = newValue;
+                        newPerspective(valuations);
+                      }}
                       {...relationLabelProps}
                     />
                   );

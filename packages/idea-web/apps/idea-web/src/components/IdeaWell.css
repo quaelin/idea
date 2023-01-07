@@ -178,13 +178,16 @@
   font-size: 0.8em;
   left: -2em;
   opacity: 0.9;
-  padding: 2px 3px;
+  padding: 0;
   position: absolute;
   top: 2.7em;
   z-index: 3;
 }
 .idea-well .idea-well-item .idea-well-item-valuation:hover {
   opacity: 1;
+}
+.idea-well .idea-well-item .idea-well-item-valuation span {
+  margin: 0.1em 0.2em;
 }
 
 .idea-well .idea-well-item .idea-well-item-body {

@@ -29,14 +29,14 @@ function getExpectedKeys(type) {
 
 export function routeRelationPost(app: Application) {
   app.post('/api/relation', bodyParser.json(), wrapErrors(async (req: IdeaWebRequest, res) => {
-    const { idea, body, headers } = req;
+    const { idea, body } = req;
     const { R: type } = body;
     if (!type || !includes(types, type)) {
       throw new BadInputs(`Expected "R:<type>" where type in ${types}. Got ${type}`);
     }
     const bodyKeys = keys(body).sort();
     const expectedKeys = getExpectedKeys(type);
-    const extraKeys = difference(bodyKeys, expectedKeys);
+    // const extraKeys = difference(bodyKeys, expectedKeys);
     if (!isEqual(bodyKeys, expectedKeys)) {
       throw new BadInputs(`Did not get the expected operands for R:${type}: ${expectedKeys}`);
     }
