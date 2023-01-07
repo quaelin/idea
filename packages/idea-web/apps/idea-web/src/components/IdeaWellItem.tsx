@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { Relation } from './Relation';
 import { fetchIdea } from '../fetcher';
+import { IdeaWellValuation as Valuation } from './IdeaWellValuation';
 
 export function IdeaWellItem({
   icid,
@@ -13,6 +14,8 @@ export function IdeaWellItem({
   selected,
   relationLabel,
   relationLabelRef,
+  valuation,
+  onValuationChange,
 }) {
   const [idea, setIdea] = useState();
   const classNames = ['idea-well-item'];
@@ -41,6 +44,7 @@ export function IdeaWellItem({
                 </div>
                 <div className="idea-well-item-grip-inner" />
               </div>
+              <Valuation valuation={valuation} onChange={onValuationChange} />
               <div className="idea-well-item-icid">{
                 selected ? icid : `${icid.substr(0, 10)}...`
               }</div>

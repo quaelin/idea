@@ -226,6 +226,8 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
                       onClickTrash={() => trashIdea(icid)}
                       onSelected={(selectedCid) => handleItemSelected(selectedCid || icid)}
                       selected={includes(selected, icid)}
+                      valuation="??"
+                      onValuationChange={() => { /* TODO */ }}
                       {...relationLabelProps}
                     />
                   );
