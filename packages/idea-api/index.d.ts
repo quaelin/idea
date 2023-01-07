@@ -57,32 +57,32 @@ export type Valuation = number;
 export type Perspective = Record<ICID, Valuation>;
 export type PerspectiveExpression = PCID | Perspective;
 
-type PerspectiveExpressionReducer = (...pexes: PerspectiveExpression[]) => PCID;
+type PerspectiveExpressionReducer = (...pexes: PerspectiveExpression[]) => Promise<PCID>;
 
 export type IdeaApi = {
-    add: (content: string) => ICID;
-    get: (iCid: ICID) => AbstractIdea;
+    add: (content: string) => Promise<ICID>;
+    get: (iCid: ICID) => Promise<AbstractIdea>;
     relation: {
-        analogy: (A: ICID, B: ICID, C: ICID, D: ICID) => ICID;
-        and: (A: ICID, B: ICID) => ICID;
-        identity: (A: ICID, B: ICID) => ICID;
-        implies: (A: ICID, B: ICID) => ICID;
-        improves: (A: ICID, B: ICID) => ICID;
-        isa: (A: ICID, B: ICID) => ICID;
-        negation: (A: ICID) => ICID;
-        or: (A: ICID, B: ICID) => ICID;
-        xor: (A: ICID, B: ICID) => ICID;
+        analogy: (A: ICID, B: ICID, C: ICID, D: ICID) => Promise<ICID>;
+        and: (A: ICID, B: ICID) => Promise<ICID>;
+        identity: (A: ICID, B: ICID) => Promise<ICID>;
+        implies: (A: ICID, B: ICID) => Promise<ICID>;
+        improves: (A: ICID, B: ICID) => Promise<ICID>;
+        isa: (A: ICID, B: ICID) => Promise<ICID>;
+        negation: (A: ICID) => Promise<ICID>;
+        or: (A: ICID, B: ICID) => Promise<ICID>;
+        xor: (A: ICID, B: ICID) => Promise<ICID>;
     };
     perspective: {
         average: PerspectiveExpressionReducer;
-        get: (pCid: PCID) => Perspective;
+        get: (pCid: PCID) => Promise<Perspective>;
         intersect: PerspectiveExpressionReducer;
-        keys: (pCid: PCID) => ICID[];
+        keys: (pCid: PCID) => Promise<ICID[]>;
         merge: PerspectiveExpressionReducer;
-        neutralize: (pex: PerspectiveExpression) => PCID;
-        polarize: (pex: PerspectiveExpression, factor: Valuation) => PCID;
-        scope: (pexA: PerspectiveExpression, pexB: PerspectiveExpression) => PCID;
-        skew: (pexA: PerspectiveExpression, pexB: PerspectiveExpression, weighting: Valuation) => PCID;
+        neutralize: (pex: PerspectiveExpression) => Promise<PCID>;
+        polarize: (pex: PerspectiveExpression, factor: Valuation) => Promise<PCID>;
+        scope: (pexA: PerspectiveExpression, pexB: PerspectiveExpression) => Promise<PCID>;
+        skew: (pexA: PerspectiveExpression, pexB: PerspectiveExpression, weighting: Valuation) => Promise<PCID>;
     };
 };
 
