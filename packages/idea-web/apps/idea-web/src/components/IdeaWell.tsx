@@ -5,6 +5,7 @@ import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Xarrow from 'react-xarrows';
+import { ICID, Perspective, Relation } from '@quaelin/idea-api';
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
 import { RelationEntry } from './RelationEntry';
@@ -37,11 +38,11 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   const trashKey = sharedTrashKey || `${key}:trash`;
 
   const [initialEntryText, setInitialEntryText] = useState('');
-  const [ideas, setIdeas] = useState([]);
+  const [ideas, setIdeas] = useState<ICID[]>([]);
   const [selected, setSelected] = useState([]);
-  const [trash, setTrash] = useState([]);
-  const [editRelation, setEditRelation] = useState(null);
-  const [valuations, setValuations] = useState({});
+  const [trash, setTrash] = useState<ICID[]>([]);
+  const [editRelation, setEditRelation] = useState<Relation | null>(null);
+  const [currentPerspective, setCurrentPerspective] = useState<Perspective>({});
 
   const refs = {
     A: useRef(null),
@@ -75,6 +76,16 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     const sessionTrash = ssTrash ? ssTrash.split(',') : [];
     setTrash(sessionTrash);
 
+    const path = document.location.pathname;
+    const pCid = path && path.length > 1 && path.charAt(0) === '/' && path.substring(1);
+    if (pCid) {
+      fetch(`/api/perspective/${pCid}`).then(async (response) => {
+        const perspective: Perspective = await response.json()
+        const iCidsFromPerspective: ICID[] = Object.keys(perspective);
+        setCurrentPerspective(perspective);
+        setIdeas(uniq([...iCidsFromPerspective, ...ideas]));
+      });
+    }
     document.addEventListener('keydown', escFunction);
 
     return () => {
@@ -100,35 +111,35 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     setTrash(newTrash);
   }
 
-  function moveToTop(icid) {
-    saveIdeas(uniq([icid, ...ideas]));
+  function moveToTop(iCid) {
+    saveIdeas(uniq([iCid, ...ideas]));
     clearHTMLSelection();
   }
 
-  function onIdeaAdded(icid) {
-    moveToTop(icid);
+  function onIdeaAdded(iCid) {
+    moveToTop(iCid);
   }
 
-  function onRelationAdded(rcid) {
-    moveToTop(rcid);
+  function onRelationAdded(rCid) {
+    moveToTop(rCid);
     setEditRelation(null);
   }
 
-  function handleItemSelected(icid) {
-    setSelected([icid]);
-    moveToTop(icid);
+  function handleItemSelected(iCid) {
+    setSelected([iCid]);
+    moveToTop(iCid);
   }
 
-  function populateEditor(icid) {
-    fetch(`/api/idea/${icid}`)
+  function populateEditor(iCid) {
+    fetch(`/api/idea/${iCid}`)
       .then(response => response.text())
       .then(setInitialEntryText)
-      .then(() => trashIdea(icid));
+      .then(() => trashIdea(iCid));
   }
 
-  function trashIdea(icid) {
-    saveIdeas(filter(ideas, idea => idea !== icid));
-    saveTrash(uniq([icid, ...trash]));
+  function trashIdea(iCid) {
+    saveIdeas(filter(ideas, idea => idea !== iCid));
+    saveTrash(uniq([iCid, ...trash]));
   }
 
   function onDragEnd({ source, destination }) {
@@ -139,67 +150,73 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   }
 
   async function newPerspective(perspective) {
-    // const { pcid } = await fetch('/per')
-    setValuations({ ...perspective });
+    const response = await fetch('/api/perspective', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(perspective),
+    })
+    setCurrentPerspective({ ...perspective });
+    const pCid = await response.text();
+    window.history.replaceState(null, pCid, `/${pCid}`);
   }
 
   const onClick = {
     Analogy: () => {
       if (ideas.length < 4) return;
       const [A, B, C, D] = ideas;
-      setEditRelation({ R: 'Analogy', A, B, C, D });
+      setEditRelation({ Relation: 'Analogy', A, B, C, D });
     },
 
     And: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'And', A, B });
+      setEditRelation({ Relation: 'And', A, B });
     },
 
     Identity: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'Identity', A, B });
+      setEditRelation({ Relation: 'Identity', A, B });
     },
 
     Implies: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'Implies', A, B });
+      setEditRelation({ Relation: 'Implies', A, B });
     },
 
     Improves: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'Improves', A, B });
+      setEditRelation({ Relation: 'Improves', A, B });
     },
 
     IsA: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'IsA', A, B });
+      setEditRelation({ Relation: 'IsA', A, B });
     },
 
     Negation: () => {
       if (!ideas.length) return;
       const [A] = ideas;
-      setEditRelation({ R: 'Negation', A });
+      setEditRelation({ Relation: 'Negation', A });
     },
 
     Or: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'Or', A, B });
+      setEditRelation({ Relation: 'Or', A, B });
     },
 
     XOr: () => {
       if (ideas.length < 2) return;
       const [A, B] = ideas;
-      setEditRelation({ R: 'XOr', A, B });
+      setEditRelation({ Relation: 'XOr', A, B });
     },
   };
 
-  const operands = editRelation && ['A', 'B', 'C', 'D'].slice(0, relationArity[editRelation.R])
+  const operands = editRelation && ['A', 'B', 'C', 'D'].slice(0, relationArity[editRelation.Relation])
   const rightBuffer = editRelation ? 'idea-well-relation-buffer' : '';
 
   return (
@@ -217,26 +234,26 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
           <Droppable droppableId="idea-well-droppable">
             {(provided, snapshot) => (
               <ol className={`idea-well-droppable ${rightBuffer}`} {...provided.droppableProps} ref={provided.innerRef}>
-                {ideas.map((icid, index) => {
+                {ideas.map((iCid, index) => {
                   const relationLabelProps = {} as { relationLabel: string; relationLabelRef: any; };
-                  if (editRelation && index < relationArity[editRelation.R]) {
+                  if (editRelation && index < relationArity[editRelation.Relation]) {
                     relationLabelProps.relationLabel = ['A', 'B', 'C', 'D'][index];
                     relationLabelProps.relationLabelRef = [refs.A, refs.B, refs.C, refs.D][index];
                   }
                   return (
                     <IdeaWellItem
-                      icid={icid}
+                      iCid={iCid}
                       index={index}
-                      key={icid}
+                      key={iCid}
                       namespace={namespace}
-                      onClickEdit={() => populateEditor(icid)}
-                      onClickTrash={() => trashIdea(icid)}
-                      onSelected={(selectedCid) => handleItemSelected(selectedCid || icid)}
-                      selected={includes(selected, icid)}
-                      valuation={has(valuations, icid) ? valuations[icid] : '??'}
+                      onClickEdit={() => populateEditor(iCid)}
+                      onClickTrash={() => trashIdea(iCid)}
+                      onSelected={() => handleItemSelected(iCid)}
+                      selected={includes(selected, iCid)}
+                      valuation={has(currentPerspective, iCid) ? currentPerspective[iCid] : '??'}
                       onValuationChange={(newValue: number) => {
-                        valuations[icid] = newValue;
-                        newPerspective(valuations);
+                        currentPerspective[iCid] = newValue;
+                        newPerspective(currentPerspective);
                       }}
                       {...relationLabelProps}
                     />
@@ -253,7 +270,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
               <li
                 key={type}
                 ref={refs[type]}
-                className={editRelation?.R === type ? 'selected' : ''}>
+                className={editRelation?.Relation === type ? 'selected' : ''}>
                 <button onClick={onClick[type]}>{type}</button>
               </li>
             ))}
@@ -261,7 +278,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
         </aside>
         {editRelation ? (operands.map((operand) => (
           <Xarrow
-            start={refs[editRelation.R]}
+            start={refs[editRelation.Relation]}
             end={refs[operand]}
             curveness={0.5}
             strokeWidth={3}

@@ -11,8 +11,8 @@ async function saveRelation(relation) {
 
 export function RelationEntry({ relation, onRelationAdded }) {
   async function handleButtonClick() {
-    const rcid = await saveRelation(relation);
-    onRelationAdded(rcid);
+    const rCid = await saveRelation(relation);
+    onRelationAdded(rCid);
   }
 
   return (

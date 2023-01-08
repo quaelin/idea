@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Range } from 'react-range';
 
+import type { Valuation } from '@quaelin/idea-api';
+
 type Props = {
-    valuation: number | string;
+    valuation: Valuation | '??';
     onChange: (newValuation: number) => void;
 }
 
@@ -15,8 +17,12 @@ export function valuationColor(val: number | string) {
 }
 
 export function IdeaWellValuation({ valuation, onChange }: Props) {
-    const [editing, setEditing] = useState(false);
-    const [newValue, setNewValue] = useState(Number(valuation === '??' ? 0 : valuation));
+    const [editing, setEditing] = useState<boolean>(false);
+    const [newValue, setNewValue] = useState<Valuation>(0);
+
+    useEffect(() => {
+        setNewValue(Number(valuation === '??' ? 0 : valuation));
+    }, [valuation]);
 
     if (!editing) return (
         <div

@@ -2,10 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { Relation } from './Relation';
 import { fetchIdea } from '../fetcher';
-import { IdeaWellValuation as Valuation } from './IdeaWellValuation';
+import { IdeaWellValuation } from './IdeaWellValuation';
+
+import type { AbstractIdea, ICID, Valuation } from '@quaelin/idea-api';
+
+type Props = {
+  iCid: ICID;
+  index: number;
+  namespace?: string;
+  onClickEdit: () => void;
+  onClickTrash: () => void;
+  onSelected: () => void;
+  selected: boolean;
+  relationLabel: string;
+  relationLabelRef: React.MutableRefObject<any>;
+  valuation: Valuation | '??';
+  onValuationChange: (newVal: Valuation) => void;
+};
 
 export function IdeaWellItem({
-  icid,
+  iCid,
   index,
   namespace,
   onClickEdit,
@@ -16,27 +32,26 @@ export function IdeaWellItem({
   relationLabelRef,
   valuation,
   onValuationChange,
-}) {
-  const [idea, setIdea] = useState();
+}: Props) {
+  const [idea, setIdea] = useState<AbstractIdea>();
   const classNames = ['idea-well-item'];
   if (selected) classNames.push('selected');
 
   useEffect(() => {
-    fetchIdea(icid).then(setIdea);
-  }, [icid]);
+    fetchIdea(iCid).then(setIdea);
+  }, [iCid]);
 
-  // console.log(idea);
   return (
-    <Draggable key={icid} draggableId={icid} index={index}>
+    <Draggable key={iCid} draggableId={iCid} index={index}>
       {(provided) => (
         <li
           className={classNames.join(' ')}
-          key={icid}
-          onDoubleClick={() => onSelected(icid)}
+          key={iCid}
+          onDoubleClick={() => onSelected()}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          <article data-icid={icid}>
+          <article data-icid={iCid}>
             <header>
               <div className="idea-well-item-grip" {...provided.dragHandleProps}>
                 <div className="idea-well-item-icon">
@@ -44,10 +59,8 @@ export function IdeaWellItem({
                 </div>
                 <div className="idea-well-item-grip-inner" />
               </div>
-              <Valuation valuation={valuation} onChange={onValuationChange} />
-              <div className="idea-well-item-icid">{
-                selected ? icid : `${icid.substr(0, 10)}...`
-              }</div>
+              <IdeaWellValuation valuation={valuation} onChange={onValuationChange} />
+              <div className="idea-well-item-icid">{iCid}</div>
               {selected ? (
                 <>
                   <div className="idea-well-item-border" />

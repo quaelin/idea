@@ -7,6 +7,8 @@ import * as express from 'express';
 import { routeIdeaGet } from './routes/idea/get';
 import { routeIdeaPost } from './routes/idea/post';
 import { routeRelationPost } from './routes/relation/post';
+import { routePerspectiveGet } from './routes/perspective/get';
+import { routePerspectivePost } from './routes/perspective/post';
 
 import type { ApiOptions, IdeaApi, IdeaWebRequest } from './types';
 
@@ -30,6 +32,8 @@ app.use('*', (req: IdeaWebRequest, res, next) => {
 routeIdeaGet(app);
 routeIdeaPost(app);
 routeRelationPost(app);
+routePerspectiveGet(app);
+routePerspectivePost(app);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
