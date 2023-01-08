@@ -5,11 +5,12 @@ import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Xarrow from 'react-xarrows';
-import { ICID, Perspective, Relation } from '@quaelin/idea-api';
 import { IdeaEntry } from './IdeaEntry';
 import { IdeaWellItem } from './IdeaWellItem';
 import { RelationEntry } from './RelationEntry';
 import { relationArity } from '../relationArity';
+
+import type { ICID, PCID, Perspective, Relation } from '@quaelin/idea-api';
 
 import './IdeaWell.css';
 
@@ -68,30 +69,39 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   }, []);
 
   useEffect(() => {
+    const { hash, pathname: path } = document.location;
+    const iCid: ICID = hash && hash.length > 1 && hash.substring(1);
+
     const lsIdeas = localStorage.getItem(key);
     const savedIdeas = lsIdeas ? lsIdeas.split(',') : [];
-    setIdeas(uniq([...ideas, ...savedIdeas]));
+    setIdeas(uniq(filter([iCid, ...ideas, ...savedIdeas])));
 
     const ssTrash = sessionStorage.getItem(trashKey);
     const sessionTrash = ssTrash ? ssTrash.split(',') : [];
     setTrash(sessionTrash);
 
-    const path = document.location.pathname;
-    const pCid = path && path.length > 1 && path.charAt(0) === '/' && path.substring(1);
+    const pCid: PCID = path && path.length > 1 && path.charAt(0) === '/' && path.substring(1);
     if (pCid) {
       fetch(`/api/perspective/${pCid}`).then(async (response) => {
         const perspective: Perspective = await response.json()
         const iCidsFromPerspective: ICID[] = Object.keys(perspective);
         setCurrentPerspective(perspective);
-        setIdeas(uniq([...iCidsFromPerspective, ...ideas]));
+        setIdeas(uniq(filter([iCid, ...iCidsFromPerspective, ...ideas])));
       });
     }
-    document.addEventListener('keydown', escFunction);
 
+    document.addEventListener('keydown', escFunction);
     return () => {
       document.removeEventListener('keydown', escFunction);
     };
   }, []);
+
+  useEffect(() => {
+    if (ideas.length >= 1) {
+      const { pathname } = window.location;
+      window.history.replaceState(null, 'Oops', `${pathname}#${ideas[0]}`);
+    }
+  }, [ideas]);
 
   function saveIdeas(newIdeas) {
     if (newIdeas.length) {
