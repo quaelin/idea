@@ -1,6 +1,7 @@
 import filter from 'lodash/filter';
 import has from 'lodash/has';
 import includes from 'lodash/includes';
+import omit from 'lodash/omit';
 import uniq from 'lodash/uniq';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -150,6 +151,9 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   function trashIdea(iCid) {
     saveIdeas(filter(ideas, idea => idea !== iCid));
     saveTrash(uniq([iCid, ...trash]));
+    if (has(currentPerspective, iCid)) {
+      newPerspective(omit(currentPerspective, [iCid]));
+    }
   }
 
   function onDragEnd({ source, destination }) {
