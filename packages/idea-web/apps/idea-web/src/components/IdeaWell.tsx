@@ -22,7 +22,7 @@ function clearHTMLSelection() {
 }
 
 // helper function to reorder the list after a drag operation
-function reorder(list, startIndex, endIndex) {
+function reorder(list: ICID[], startIndex: number, endIndex: number): ICID[] {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -104,53 +104,55 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     }
   }, [ideas]);
 
-  function saveIdeas(newIdeas) {
-    if (newIdeas.length) {
-      localStorage.setItem(key, newIdeas.join(','));
+  function saveIdeas(newIdeas: ICID[]) {
+    const deDuped = uniq(filter(newIdeas));
+    if (deDuped.length) {
+      localStorage.setItem(key, deDuped.join(','));
     } else {
       localStorage.removeItem(key);
     }
-    setIdeas(newIdeas);
+    setIdeas(deDuped);
   }
 
-  function saveTrash(newTrash) {
-    if (newTrash.length) {
-      sessionStorage.setItem(trashKey, newTrash.join(','));
+  function saveTrash(newTrash: ICID[]) {
+    const deDuped = filter(uniq(newTrash));
+    if (deDuped.length) {
+      sessionStorage.setItem(trashKey, deDuped.join(','));
     } else {
       sessionStorage.removeItem(trashKey);
     }
-    setTrash(newTrash);
+    setTrash(deDuped);
   }
 
-  function moveToTop(iCid) {
-    saveIdeas(uniq([iCid, ...ideas]));
+  function moveToTop(iCid: ICID) {
+    saveIdeas([iCid, ...ideas]);
     clearHTMLSelection();
   }
 
-  function onIdeaAdded(iCid) {
+  function onIdeaAdded(iCid: ICID) {
     moveToTop(iCid);
   }
 
-  function onRelationAdded(rCid) {
+  function onRelationAdded(rCid: ICID) {
     moveToTop(rCid);
     setEditRelation(null);
   }
 
-  function handleItemSelected(iCid) {
+  function handleItemSelected(iCid: ICID) {
     setSelected([iCid]);
     moveToTop(iCid);
   }
 
-  function populateEditor(iCid) {
+  function populateEditor(iCid: ICID) {
     fetch(`/api/idea/${iCid}`)
       .then(response => response.text())
       .then(setInitialEntryText)
       .then(() => trashIdea(iCid));
   }
 
-  function trashIdea(iCid) {
+  function trashIdea(iCid: ICID) {
     saveIdeas(filter(ideas, idea => idea !== iCid));
-    saveTrash(uniq([iCid, ...trash]));
+    saveTrash([iCid, ...trash]);
     if (has(currentPerspective, iCid)) {
       newPerspective(omit(currentPerspective, [iCid]));
     }
