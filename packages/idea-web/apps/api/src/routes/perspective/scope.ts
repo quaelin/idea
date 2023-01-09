@@ -9,7 +9,7 @@ export function routePerspectiveScope(app: Application) {
     assertCid(pCidB);
     const pCid = await idea.perspective.scope(pCidA, pCidB);
     res.status(201)
-      .set('content-type', 'text/plain')
+      .set('Content-Type', 'text/plain')
       .send(pCid);
   }));
 }

@@ -83,7 +83,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
 
     const pCid: PCID = path && path.length > 1 && path.charAt(0) === '/' && path.substring(1);
     if (pCid) {
-      fetch(`/api/perspective/${pCid}`).then(async (response) => {
+      fetch(`/api/perspective/${pCid}`, { cache: 'force-cache' }).then(async (response) => {
         const perspective: Perspective = await response.json()
         const iCidsFromPerspective: ICID[] = Object.keys(perspective);
         setCurrentPerspective(perspective);
@@ -144,7 +144,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   }
 
   function populateEditor(iCid: ICID) {
-    fetch(`/api/idea/${iCid}`)
+    fetch(`/api/idea/${iCid}`, { cache: 'force-cache' })
       .then(response => response.text())
       .then(setInitialEntryText)
       .then(() => trashIdea(iCid));
@@ -168,7 +168,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
   async function newPerspective(perspective) {
     const response = await fetch('/api/perspective', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(perspective),
     })
     setCurrentPerspective({ ...perspective });

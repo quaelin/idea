@@ -12,7 +12,7 @@ export function fetchIdea(iCid) {
     const val = sessionStorage.getItem(key);
     if (val) return JSON.parse(val);
 
-    const response = await fetch(`/api/idea/${iCid}`);
+    const response = await fetch(`/api/idea/${iCid}`, { cache: 'force-cache' });
     const content = isJson(response) ? await response.json() : await response.text();
 
     sessionStorage.setItem(key, JSON.stringify(content));

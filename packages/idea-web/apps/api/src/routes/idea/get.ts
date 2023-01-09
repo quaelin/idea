@@ -7,8 +7,10 @@ export function routeIdeaGet(app: Application) {
     const { idea, params: { iCid } } = req;
     assertCid(iCid);
     const content = await idea.get(iCid);
+    res.status(200);
+    res.set('Cache-Control', 'Public');
     if (typeof content === 'string') {
-      res.set('content-type', 'text/plain').send(content);
+      res.set('Content-Type', 'text/plain').send(content);
     } else {
       res.json(content);
     }

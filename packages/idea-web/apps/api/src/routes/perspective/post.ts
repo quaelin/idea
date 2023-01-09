@@ -9,7 +9,7 @@ export function routePerspectivePost(app: Application) {
     assertPerspective(body);
     const pCid = await idea.perspective.merge(body as Perspective);
     res.status(201)
-      .set('content-type', 'text/plain')
+      .set('Content-Type', 'text/plain')
       .send(pCid);
   }));
 }
