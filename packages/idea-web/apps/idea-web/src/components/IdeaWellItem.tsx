@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from 'react-beautiful-dnd';
 import { Relation } from './Relation';
 import { fetchIdea } from '../fetcher';
 import { IdeaWellValuation } from './IdeaWellValuation';

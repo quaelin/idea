@@ -19,6 +19,9 @@ export function valuationColor(val: number | string) {
 export function IdeaWellValuation({ valuation, onChange }: Props) {
     const [editing, setEditing] = useState<boolean>(false);
     const [newValue, setNewValue] = useState<Valuation>(0);
+    const newValueCharacterization = newValue < -0.05 ? 'Disagree' : (
+        newValue > 0.05 ? 'Agree' : 'Neutral'
+    );
 
     useEffect(() => {
         setNewValue(Number(valuation === '??' ? 0 : valuation));
@@ -59,18 +62,19 @@ export function IdeaWellValuation({ valuation, onChange }: Props) {
                 renderThumb={({ props }) => (
                     <div
                         {...props}
+                        className="idea-well-item-valuation-slider-thumb"
                         style={{
                             ...props.style,
                             background: valuationColor(newValue),
-                            border: '1px solid black',
-                            borderRadius: '3px',
-                            height: '1.3em',
-                            minWidth: '1.3em',
-                            padding: '2px 3px',
-                            textAlign: 'center',
                         }}
                     >
                         {(Math.round(newValue * 100) / 100).toFixed(2)}
+                        <div
+                            className="idea-well-item-valuation-floating-text"
+                            style={{ color: valuationColor(newValue) }}
+                        >
+                            <span>{newValueCharacterization}</span>
+                        </div>
                     </div>
                 )}
                 onFinalChange={(values) => {
