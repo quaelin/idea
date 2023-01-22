@@ -18,12 +18,21 @@ export function valuationColor(val: number | string) {
     return `rgb(${red},${green},${blue})`;
 }
 
+function characterize(valuation: number) {
+    if (valuation < -1) return 'ERROR';
+    if (valuation === -1) return 'Totally disagree';
+    if (valuation < -0.05) return 'Disagree';
+    if (valuation <= 0.05) return 'Neutral';
+    if (valuation < 1) return 'Agree';
+    if (valuation === 1) return 'Totally agree';
+    return 'ERROR';
+}
+
 export function IdeaWellValuation({ valuation, onChange }: Props) {
     const [editing, setEditing] = useState<boolean>(false);
     const [newValue, setNewValue] = useState<Valuation>(0);
-    const newValueCharacterization = newValue < -0.05 ? 'Disagree' : (
-        newValue > 0.05 ? 'Agree' : 'Neutral'
-    );
+
+    const newValueCharacterization = characterize(newValue);
 
     useEffect(() => {
         setNewValue(Number(valuation === '??' ? 0 : valuation));
