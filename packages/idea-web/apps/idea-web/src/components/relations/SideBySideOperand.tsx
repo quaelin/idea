@@ -27,7 +27,7 @@ export function SideBySideOperand({ cid, onClick }: Props) {
   function pickComponent() {
     const { A, B, C, D } = content;
     switch (content.Relation) {
-      case 'Analogy': return <Analogy A={A} B={B} C={C} D={D} />;
+      case 'Analogy': return <Analogy A={A} B={B} C={C} D={D} layout="stacked" />;
       case 'And': return <And A={A} B={B} />;
       case 'Identity': return <Identity A={A} B={B} />;
       case 'Implies': return <Implies A={A} B={B} />;

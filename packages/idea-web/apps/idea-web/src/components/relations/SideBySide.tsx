@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './SideBySide.css';
+
 export function SideBySide({ children }) {
   const [left, center, right] = children;
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { CIDOrPhrase } from './CIDOrPhrase';
 import { SideBySideOperand } from './SideBySideOperand';
 
+import './Negation.css';
+
 type Props = {
   A: string;
   layout?: 'sentence' | 'side-by-side';

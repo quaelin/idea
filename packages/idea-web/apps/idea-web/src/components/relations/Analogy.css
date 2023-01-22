@@ -1,0 +1,58 @@
+.idea-well .relation-analogy .relation-sentence {
+  align-items: center;
+  display: flex;
+}
+.idea-well .relation-analogy .relation-stacked {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 8em 1fr 7em 1fr;
+  grid-template-rows: 1fr 3em 1fr;
+}
+.idea-well .relation-analogy .relation-stacked .relation-analogy-label {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.idea-well .relation-analogy .relation-stacked .relation-operand-a {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.idea-well .relation-analogy .relation-stacked .relation-analogy-is-to-1 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.idea-well .relation-analogy .relation-stacked .relation-operand-b {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.idea-well .relation-analogy .relation-stacked .relation-analogy-as {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.idea-well .relation-analogy .relation-stacked .relation-operand-c {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+.idea-well .relation-analogy .relation-stacked .relation-analogy-is-to-2 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+.idea-well .relation-analogy .relation-stacked .relation-operand-d {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}

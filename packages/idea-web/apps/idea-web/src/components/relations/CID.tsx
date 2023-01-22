@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { fetchIdea } from '../../fetcher';
 
-export function CID({ cid }) {
+type Props = {
+  cid: string;
+  className?: string;
+};
+
+export function CID({ cid, className }: Props) {
   const [tooltip, setTooltip] = useState(cid);
 
   async function setContentAsTooltip() {
@@ -18,7 +23,7 @@ export function CID({ cid }) {
   });
 
   return (
-    <span className="relation-cid" title={tooltip}>
+    <span className={`relation-cid ${className}`} title={tooltip}>
       {`${cid.substr(0, 4)}...${cid.substr(-4)}`}
     </span>
   );

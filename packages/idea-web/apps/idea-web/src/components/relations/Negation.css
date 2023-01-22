@@ -1,0 +1,32 @@
+.idea-well .relation-negation {
+  position: relative;
+}
+.idea-well .relation.relation-negation::before,
+.idea-well .relation.relation-negation::after {
+  border-bottom: 3px solid #f88;
+  content: '';
+  opacity: 0.9;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 100%;
+  z-index: 1;
+}
+.idea-well .relation-negation::before {
+  transform: skewY(-15deg);
+}
+.idea-well .relation-negation::after {
+  transform: skewY(15deg);
+}
+
+.idea-well .relation-negation-not {
+  color: #600;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 4em;
+  left: 0em;
+  position: absolute;
+  top: -0.1em;
+  transform: rotate(-35deg);
+  z-index: 2;
+}

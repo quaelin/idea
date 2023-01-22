@@ -28,7 +28,7 @@ export function IdeaEntry({ initialText, onIdeaAdded }) {
       setTextAreaValue(initialText);
       setTextAreaFocus();
     }
-  }, [initialText]);
+  }, [initialText, setTextAreaValue, setTextAreaFocus]);
 
   const handleTextChange = ({ target: { value }}) => setTextAreaValue(value);
   const handleButtonClick = async () => {

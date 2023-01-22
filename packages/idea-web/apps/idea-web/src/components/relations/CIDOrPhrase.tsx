@@ -6,7 +6,12 @@ function isShortEnoughPhrase(phrase) {
   return phrase.length < 140 && phrase.split(' ').length < 20;
 }
 
-export function CIDOrPhrase({ cid }) {
+type Props = {
+  cid: string;
+  className?: string;
+};
+
+export function CIDOrPhrase({ cid, className }: Props) {
   const [phrase, setPhrase] = useState(null);
 
   async function loadContentAndCheckLength() {
@@ -22,9 +27,9 @@ export function CIDOrPhrase({ cid }) {
 
   return (
     phrase ? (
-      <span className="relation-cid-phrase">{phrase}</span>
+      <span className={`relation-cid-phrase ${className}`}>{phrase}</span>
     ) : (
-      <CID cid={cid} />
+      <CID cid={cid} className={className} />
     )
   );
 }

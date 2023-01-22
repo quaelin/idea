@@ -95,7 +95,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     return () => {
       document.removeEventListener('keydown', escFunction);
     };
-  }, []);
+  }, [escFunction]);
 
   useEffect(() => {
     if (ideas.length >= 1) {
