@@ -10,6 +10,8 @@ import { Or } from './relations/Or';
 import { XOr } from './relations/XOr';
 import { relationArity } from '../relationArity';
 
+import './Relation.css';
+
 type Operands = {
   A: string;
   B?: string;

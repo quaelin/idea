@@ -1,0 +1,9 @@
+.idea-well .relation-entry {
+  display: flex;
+  flex-direction: column;
+}
+.idea-well .relation-entry-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1.5em;
+}

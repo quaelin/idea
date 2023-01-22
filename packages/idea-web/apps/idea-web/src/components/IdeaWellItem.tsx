@@ -6,6 +6,8 @@ import { IdeaWellValuation } from './IdeaWellValuation';
 
 import type { AbstractIdea, ICID, Valuation } from '@quaelin/idea-api';
 
+import './IdeaWellItem.css';
+
 type Props = {
   iCid: ICID;
   index: number;

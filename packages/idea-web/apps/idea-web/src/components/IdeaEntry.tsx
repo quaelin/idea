@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import './IdeaEntry.css';
+
 async function saveIdea(text) {
   const response = await fetch('/api/idea', {
     method: 'POST',

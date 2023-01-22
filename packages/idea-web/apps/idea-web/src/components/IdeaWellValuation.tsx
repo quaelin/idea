@@ -3,6 +3,8 @@ import { Range } from 'react-range';
 
 import type { Valuation } from '@quaelin/idea-api';
 
+import './IdeaWellValuation.css';
+
 type Props = {
     valuation: Valuation | '??';
     onChange: (newValuation: number) => void;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './RelationEntry.css';
+
 async function saveRelation(relation) {
   const response = await fetch('/api/relation', {
     method: 'POST',
