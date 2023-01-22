@@ -14,7 +14,7 @@ type Props = {
   namespace?: string;
   onClickEdit: () => void;
   onClickTrash: () => void;
-  onSelected: () => void;
+  onSelected: (selectedCid: string | void) => void;
   selected: boolean;
   relationLabel: string;
   relationLabelRef: React.MutableRefObject<any>;

@@ -264,7 +264,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
                       namespace={namespace}
                       onClickEdit={() => populateEditor(iCid)}
                       onClickTrash={() => trashIdea(iCid)}
-                      onSelected={() => handleItemSelected(iCid)}
+                      onSelected={(selectedCid) => handleItemSelected(selectedCid || iCid)}
                       selected={includes(selected, iCid)}
                       valuation={has(currentPerspective, iCid) ? currentPerspective[iCid] : '??'}
                       onValuationChange={(newValue: number) => {

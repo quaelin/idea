@@ -36,14 +36,14 @@ export function Relation({ relation, onSelected }: Props) {
   function pickComponent() {
     switch (relation.Relation) {
       case 'Analogy': return <Analogy A={operands.A} B={operands.B} C={operands.C} D={operands.D} />;
-      case 'And': return <And A={operands.A} B={operands.B} layout="side-by-side" />;
-      case 'Identity': return <Identity A={operands.A} B={operands.B} layout="side-by-side" />;
-      case 'Implies': return <Implies A={operands.A} B={operands.B} layout="side-by-side" />;
-      case 'Improves': return <Improves A={operands.A} B={operands.B} layout="side-by-side" />;
-      case 'IsA': return <IsA A={operands.A} B={operands.B} layout="side-by-side" />;
+      case 'And': return <And A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
+      case 'Identity': return <Identity A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
+      case 'Implies': return <Implies A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
+      case 'Improves': return <Improves A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
+      case 'IsA': return <IsA A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
       case 'Negation': return <Negation A={operands.A} layout="side-by-side" />;
-      case 'Or': return <Or A={operands.A} B={operands.B} layout="side-by-side" />;
-      case 'XOr': return <XOr A={operands.A} B={operands.B} layout="side-by-side" />;
+      case 'Or': return <Or A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
+      case 'XOr': return <XOr A={operands.A} B={operands.B} layout="side-by-side" onSelected={onSelected} />;
       default: return (
         <>
           <div>NOT A RELATION</div>
