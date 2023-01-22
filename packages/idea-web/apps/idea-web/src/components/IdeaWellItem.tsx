@@ -61,17 +61,15 @@ export function IdeaWellItem({
               </div>
               <IdeaWellValuation valuation={valuation} onChange={onValuationChange} />
               <div className="idea-well-item-icid">{iCid}</div>
-              {selected ? (
-                <>
-                  <div className="idea-well-item-border" />
-                  <div className="idea-well-item-actions">
-                    <button title="Edit" onClick={onClickEdit}>
-                      <img src="assets/pencil-icon.png" alt="edit" />
-                    </button>
-                    <button title="Trash" onClick={onClickTrash}>X</button>
-                  </div>
-                </>
-              ) : ''}
+              {selected && <div className="idea-well-item-border" />}
+              <div className="idea-well-item-actions">
+                {selected && (
+                  <button title="Edit" onClick={onClickEdit}>
+                    <img src="assets/pencil-icon.png" alt="edit" />
+                  </button>
+                )}
+                <button title="Trash" onClick={onClickTrash}>X</button>
+              </div>
             </header>
             <div className="idea-well-item-body">
               {idea ? (
