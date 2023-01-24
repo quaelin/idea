@@ -20,6 +20,7 @@ type Props = {
   relationLabelRef: React.MutableRefObject<any>;
   valuation: Valuation | '??';
   onValuationChange: (newVal: Valuation) => void;
+  // perspective: Perspective;
 };
 
 export function IdeaWellItem({
@@ -34,6 +35,7 @@ export function IdeaWellItem({
   relationLabelRef,
   valuation,
   onValuationChange,
+  // perspective,
 }: Props) {
   const [idea, setIdea] = useState<AbstractIdea>();
   const classNames = ['idea-well-item'];

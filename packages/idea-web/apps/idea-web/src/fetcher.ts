@@ -5,7 +5,7 @@ const cacheKey = cid => `idea-dag:${cid}`;
 const isJson = ({ headers }) => startsWith(headers.get('Content-Type'), 'application/json');
 const { need, provide } = particl();
 
-export function fetchIdea(iCid) {
+export async function fetchIdea(iCid) {
   provide(iCid, async () => {
     const key = cacheKey(iCid);
 
@@ -21,3 +21,18 @@ export function fetchIdea(iCid) {
 
   return need(iCid);
 }
+
+/*
+export async function calculateDiscord(iCid, perspective) {
+  if (!perspective[iCid]) return undefined;
+
+  const content = await fetchIdea(iCid);
+  // deep-fetch the whole perspective (result includes ideas not directly referenced)
+  // things to look for:
+  //  - V(A) not the inverse of V(!A)
+  //  - A&B but not A or B
+  //  - AvB and ~A and ~B
+  //  - A>B and B>A
+  //  - A and A->B but not B
+}
+*/

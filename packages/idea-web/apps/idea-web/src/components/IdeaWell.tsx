@@ -95,7 +95,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
     return () => {
       document.removeEventListener('keydown', escFunction);
     };
-  }, [escFunction]);
+  }, [document, escFunction, key]);
 
   useEffect(() => {
     if (ideas.length >= 1) {
@@ -271,6 +271,7 @@ export function IdeaWell({ namespace, sharedTrashKey }: Props) {
                         currentPerspective[iCid] = newValue;
                         newPerspective(currentPerspective);
                       }}
+                      // perspective={currentPerspective}
                       {...relationLabelProps}
                     />
                   );
