@@ -13,17 +13,29 @@ describe('idea.relation.*', () => {
     describe('throws TypeError if the arguments are not CIDs', () => {
       test('non-CID string', () => expectTypeError(idea.relation.analogy('foo')));
 
-      test('only three CIDs', () => expectTypeError(idea.relation.analogy(iCid, iCid2, iCid3)));
+      test('only two CIDs', () => expectTypeError(idea.relation.analogy(iCid, iCid2)));
     });
 
-    test('relation can be loaded with idea.get()', async () => {
-      const relation = await idea.get(await idea.relation.analogy(iCid, iCid2, iCid3, iCid4));
-      expect(relation).toMatchObject({
-        Relation: 'Analogy',
-        A: iCid,
-        B: iCid2,
-        C: iCid3,
-        D: iCid4,
+    describe('relation can be loaded with idea.get()', () => {
+      test('when there are 3 operands', async () => {
+        const relation = await idea.get(await idea.relation.analogy(iCid, iCid2, iCid3));
+        expect(relation).toMatchObject({
+          Relation: 'Analogy',
+          A: iCid,
+          B: iCid2,
+          C: iCid3,
+        });
+      });
+
+      test('when there are 4 operands', async () => {
+        const relation = await idea.get(await idea.relation.analogy(iCid, iCid2, iCid3, iCid4));
+        expect(relation).toMatchObject({
+          Relation: 'Analogy',
+          A: iCid,
+          B: iCid2,
+          C: iCid3,
+          D: iCid4,
+        });
       });
     });
   });

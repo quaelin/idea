@@ -24,8 +24,12 @@ function canonicalOrderForCommutativeOperands({ A, B }) {
 
 export function initRelationApi(ipfs) {
   async function analogy(A, B, C, D) {
-    assertOperands({ A, B, C, D });
-    const content = `{"Relation":"Analogy","A":"${A}","B":"${B}","C":"${C}","D":"${D}"}`;
+    // May have 3 or 4 operands
+    assertOperands({ A, B, C });
+    if (D) assertOperands({ D });
+    const content = D
+      ? `{"Relation":"Analogy","A":"${A}","B":"${B}","C":"${C}","D":"${D}"}`
+      : `{"Relation":"Analogy","A":"${A}","B":"${B}","C":"${C}"}`;
     return ipfs.addContent(content);
   }
 

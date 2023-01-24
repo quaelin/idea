@@ -61,10 +61,18 @@ Ideas so `iCid` is still applicable.
 
 The operands provided must be content IDs for other Ideas or Relations.
 
-### idea.relation.analogy(A, B, C, D)
+### idea.relation.analogy(A, B, C)
 
-Create an `Analogy` relation, meaning _"A is to B as C is to D"_, returning the
+### idea.relation.analogy(A, B, C, [D])
+
+Creates an `Analogy` relation, meaning _"A is to B as C is to D"_, returning the
 `rCid`.
+
+For any analogy in which two of the four operands would otherwise be the same
+`iCid`, the 3-parameter form should be used, and the erstwhile repeated member
+should be A.  In this case, the meaning is _"A is to B as A is to C"_.  (This
+makes it possible for 3-term analogies to have a canonical form in the
+Idea-DAG.)
 
 ```js
 const rCid = await idea.relation.analogy(a, b, c, d);
@@ -118,7 +126,7 @@ Create a `Negation` relation, meaning _"the opposite of A"_, and returning the
 
 ### idea.relation.or(A, B)
 
-Create an `Or` relation, meaning _"A is true, or else B is; possibly both"_,
+Create an `Or` relation, meaning _"A is true, or B is (possibly both)"_,
 and returning the `rCid`.
 
 `Or` is a commutative relation, so it doesn't matter which order you pass the
