@@ -7,43 +7,49 @@ relationship between _other_ Ideas (including other Relations).
 When notating Relations, we use **A-D** as operands representing different
 `iCids`.  The types are as follows.
 
-## R:Analogy(A, B, C, D)
+## Analogy(A, B, C)
 
-The most complex relation, this asserts an analogy of the form **A:B::C:D**.  In
-other words, _"**A** is to **B** as **C** is to **D**"_.
+The 3-term analogy relation represents an analogy of the form **A:B::A:C**
+(_"**A** is to **B** as **A** is to **C**"_).
 
-## R:And(A, B)
+## Analogy(A, B, C, D)
+
+The most complex relation, the 4-term analogy asserts an analogy of the form
+**A:B::C:D** (_"**A** is to **B** as **C** is to **D**"_).
+
+## And(A, B)
 
 Asserts that _both_ **A** and **B** are true.
 
-## R:Identity(A, B)
+## Identity(A, B)
 
-Asserts that **A** and **B** are so similar as to be effectively the same thing.
+Asserts that **A** and **B** are the same, or so similar as to be effectively
+the same thing.
 
-## R:Implies(A, B)
+## Implies(A, B)
 
 Asserts that if **A** is true, **B** must also be true.  Or, more fuzzily, _"to
 the extent that **A** is true, **B** must also be true"_.
 
-## R:Improves(A, B)
+## Improves(A, B)
 
 Asserts that **A** _improves upon_ **B** in some meaningful way, overall.
 
-## R:IsA(A, B)
+## IsA(A, B)
 
 Asserts that **A** is in some way a _specific example_, _subgroup_ or _instance_
 of **B** (and hence **B** is a _generalization_ of **A**).
 
-## R:Negation(A)
+## Negation(A)
 
 The simplest relation, this asserts the _opposite_ of **A**.
 
-## R:Or(A, B)
+## Or(A, B)
 
 Asserts that either **A** or **B** must be true.  This is an "inclusive or",
 meaning it allows for _both_ to be true.  Contrast with `R:XOr`.
 
-## R:XOr(A, B)
+## XOr(A, B)
 
 _Exclusive_ "or".  Asserts that either **A** or **B** must be true, _but NOT
 both_.
