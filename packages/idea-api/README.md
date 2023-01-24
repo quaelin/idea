@@ -61,17 +61,15 @@ Ideas so `iCid` is still applicable.
 
 The operands provided must be content IDs for other Ideas or Relations.
 
-### idea.relation.analogy(A, B, C)
-
 ### idea.relation.analogy(A, B, C, [D])
 
 Creates an `Analogy` relation, meaning _"A is to B as C is to D"_, returning the
 `rCid`.
 
 For any analogy in which two of the four operands would otherwise be the same
-`iCid`, the 3-parameter form should be used, and the erstwhile repeated member
-should be A.  In this case, the meaning is _"A is to B as A is to C"_.  (This
-makes it possible for 3-term analogies to have a canonical form in the
+`iCid`, the 3-argument form should be used instead, and the erstwhile repeated
+member should be A.  In this case, the meaning is _"A is to B as A is to C"_.
+(This makes it possible for 3-term analogies to have a canonical form in the
 Idea-DAG.)
 
 ```js
